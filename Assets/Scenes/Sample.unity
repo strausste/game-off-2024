@@ -486,8 +486,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeX: 34
   gridSizeY: 20
+  maxNumberOfRooms: 5
+  minRoomWidth: 5
+  maxRoomWidth: 14
+  minRoomHeight: 5
+  maxRoomHeight: 14
+  roomOffset: 2
+  maxDoorsPerRoom: 2
   gridParent: {fileID: 71927338}
   debugPrefab: {fileID: 2727260348895534933, guid: 8bc0bfc635b435944b3d669e43681863, type: 3}
+  doorPrefab: {fileID: 3044603016384070141, guid: 485d398a24222484ebbcb39bf329817e, type: 3}
   wallPrefab: {fileID: 3044603016384070141, guid: 572925c98672f904a8854a58e8bde258, type: 3}
 --- !u!1 &832575517
 GameObject:

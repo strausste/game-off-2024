@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -9,14 +10,14 @@ public class GridManager : MonoBehaviour
      private struct Cell
     {
         public Vector2Int position; 
-        public bool isOccupied;
-        public GameObject tilePrefab;
+        public bool isOccupied; // TODO: keep only tileObject and check for isOccupied by tileObject != null
+        public GameObject tileObject;
 
         public Cell(int x, int y)
         {
             position = new Vector2Int(x, y);
             isOccupied = false;
-            tilePrefab = null;
+            tileObject = null;
         }
     }
 
@@ -36,19 +37,21 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int gridSizeY = 20;
 
     // TODO: Make these scale up with the levels
-    [Header("Rooms settings")]
-    [SerializeField] private int numberOfRooms = 5;
+    [Header("Room settings")]
+    [SerializeField] private int maxNumberOfRooms = 5;
     [SerializeField] private int minRoomWidth = 3;
     [SerializeField] private int maxRoomWidth = 8;
     [SerializeField] private int minRoomHeight = 3;
     [SerializeField] private int maxRoomHeight = 6;
     [SerializeField] private int roomOffset = 1; // TODO: make it optional ?
+    [SerializeField] private int maxDoorsPerRoom = 2;
 
 
     [Header("Prefabs")] 
     [SerializeField] private GameObject gridParent;
 
     [SerializeField] private GameObject debugPrefab;
+    [SerializeField] private GameObject doorPrefab;
     [SerializeField] private GameObject wallPrefab;
 
     // [SerializeField] private GameObject chestPrefab;
@@ -105,23 +108,25 @@ public class GridManager : MonoBehaviour
     /** Instantiates and stores the desired prefab in the _grid */
     public void CreateCube(GameObject prefab, int x, int z)
     {
-        Vector3 cubePosition = new Vector3(x, 0, z); // y is set to 0 because all cubes have the same height
-
-        // Instantiate the prefab
+        // Position for the cube
+        Vector3 cubePosition = new Vector3(x, 0, z);
         GameObject cube = Instantiate(prefab, cubePosition, Quaternion.identity);
         cube.transform.parent = gridParent.transform;
 
-        // Storing the cube in the grid array
-        _grid[x, z].isOccupied = true;
-        _grid[x, z].tilePrefab = cube;
+        // Update grid cell
+        _grid[x, z].tileObject = cube;
+        _grid[x, z].isOccupied = prefab != null;
     }
 
-
+    /** Deletes a prefab in the _grid */
     public void DeleteCube(int x, int z)
     {
-        Destroy(_grid[x, z].tilePrefab);
-        _grid[x, z].tilePrefab = null;
-        _grid[x, z].isOccupied = false;
+        if (_grid[x, z].tileObject != null)
+        {
+            Destroy(_grid[x, z].tileObject);
+            _grid[x, z].tileObject = null;
+            _grid[x, z].isOccupied = false;
+        }
     }
 
 
@@ -144,12 +149,12 @@ public class GridManager : MonoBehaviour
         int roomsCreated = 0;
         int maxAttemps = 1000; // TODO: [SerializeField] ???
 
-        while(roomsCreated < numberOfRooms && maxAttemps > 0)
+        while(roomsCreated < maxNumberOfRooms && maxAttemps > 0)
         {
-            int roomWidth = Random.Range(minRoomWidth, maxRoomWidth);
-            int roomHeight = Random.Range(minRoomHeight, maxRoomHeight);
-            int startX = Random.Range(1, gridSizeX - roomWidth - 1);  // Avoiding edges
-            int startZ = Random.Range(1, gridSizeY - roomHeight - 1); // Avoiding edges
+            int roomWidth = UnityEngine.Random.Range(minRoomWidth, maxRoomWidth);
+            int roomHeight = UnityEngine.Random.Range(minRoomHeight, maxRoomHeight);
+            int startX = UnityEngine.Random.Range(1, gridSizeX - roomWidth - 1);  // Avoiding edges
+            int startZ = UnityEngine.Random.Range(1, gridSizeY - roomHeight - 1); // Avoiding edges
 
             if (CanPlaceRoom(startX, startZ, roomWidth, roomHeight))
             {
@@ -193,19 +198,48 @@ public class GridManager : MonoBehaviour
 
                 if (isWall)
                 {
-                    GameObject wall = Instantiate(wallPrefab, new Vector3(x, 0, z), Quaternion.identity);
-                    wall.transform.parent = gridParent.transform;
+                    CreateCube(wallPrefab, x, z);
 
                     if (x == startX || x == startX + width - 1)
-                        wall.transform.rotation = Quaternion.Euler(0, 90, 0);
+                        _grid[x,z].tileObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+                }
+            }
+        }
 
-                    _grid[x, z].isOccupied = true;
-                }
-                else
-                {
-                    if (_grid[x, z].isOccupied) Destroy(_grid[x, z].tilePrefab);
-                    _grid[x, z].isOccupied = true;
-                }
+        // Doors
+        int doorsInThisRoom = UnityEngine.Random.Range(1, maxDoorsPerRoom);
+        for(int i=0; i<doorsInThisRoom; i++)
+        {
+            // Randomly choose one of the four walls
+            int wall = UnityEngine.Random.Range(0, 4);
+            int doorX = startX;
+            int doorZ = startZ;
+
+            switch (wall)
+            {
+                case 0: // Top wall, exclude corners
+                    doorX = UnityEngine.Random.Range(startX + 1, startX + width - 1);
+                    doorZ = startZ;
+                    break;
+                case 1: // Bottom wall, exclude corners
+                    doorX = UnityEngine.Random.Range(startX + 1, startX + width - 1);
+                    doorZ = startZ + height - 1;
+                    break;
+                case 2: // Left wall, exclude corners
+                    doorX = startX;
+                    doorZ = UnityEngine.Random.Range(startZ + 1, startZ + height - 1);
+                    break;
+                case 3: // Right wall, exclude corners
+                    doorX = startX + width - 1;
+                    doorZ = UnityEngine.Random.Range(startZ + 1, startZ + height - 1);
+                    break;
+            }
+
+            if (_grid[doorX, doorZ].tileObject.CompareTag("Wall"))
+            {
+                // Remove wall and place door
+                DeleteCube(doorX, doorZ);
+                CreateCube(doorPrefab, doorX, doorZ);
             }
         }
     }
