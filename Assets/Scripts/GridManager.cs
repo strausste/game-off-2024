@@ -142,8 +142,9 @@ public class GridManager : MonoBehaviour
     private void GenerateRooms()
     {
         int roomsCreated = 0;
+        int maxAttemps = 1000; // TODO: [SerializeField] ???
 
-        while(roomsCreated < numberOfRooms)
+        while(roomsCreated < numberOfRooms && maxAttemps > 0)
         {
             int roomWidth = Random.Range(minRoomWidth, maxRoomWidth);
             int roomHeight = Random.Range(minRoomHeight, maxRoomHeight);
@@ -156,6 +157,8 @@ public class GridManager : MonoBehaviour
                 MarkArea(startX, startZ, roomWidth, roomHeight);
                 roomsCreated++;
             }
+
+            maxAttemps--;
         }
     }
     
