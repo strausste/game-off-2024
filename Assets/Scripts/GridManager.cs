@@ -3,16 +3,47 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     // ====================================================================================
+    // Custom types definitions
+    // ====================================================================================
+
+     private struct Cell
+    {
+        public Vector2Int position; 
+        public bool isOccupied;
+        public GameObject tilePrefab;
+
+        public Cell(int x, int y)
+        {
+            position = new Vector2Int(x, y);
+            isOccupied = false;
+            tilePrefab = null;
+        }
+    }
+
+    // ====================================================================================
+
+
+    // ====================================================================================
     // Class attributes
     // ====================================================================================
 
     // TODO: Probably this is overkilled (we just need coordinates)
-    private GameObject[,] _grid;
+    private Cell[,] _grid;
     private static GridManager _instance; // Singleton
 
     [Header("Grid settings")] 
     [SerializeField] private int gridSizeX = 34;
     [SerializeField] private int gridSizeY = 20;
+
+    // TODO: Make these scale up with the levels
+    [Header("Rooms settings")]
+    [SerializeField] private int numberOfRooms = 5;
+    [SerializeField] private int minRoomWidth = 3;
+    [SerializeField] private int maxRoomWidth = 8;
+    [SerializeField] private int minRoomHeight = 3;
+    [SerializeField] private int maxRoomHeight = 6;
+    [SerializeField] private int roomOffset = 1; // TODO: make it optional ?
+
 
     [Header("Prefabs")] 
     [SerializeField] private GameObject gridParent;
@@ -22,6 +53,7 @@ public class GridManager : MonoBehaviour
 
     // [SerializeField] private GameObject chestPrefab;
     // [SerializeField] private GameObject enemyPrefab;
+    // ...
 
     // ====================================================================================
 
@@ -56,22 +88,15 @@ public class GridManager : MonoBehaviour
     }
 
 
-    public GameObject[,] GetGrid()
-    {
-        return this._grid;
-    }
-
-
     private void CreateGrid()
     {
-        _grid = new GameObject[gridSizeX, gridSizeY];
+        _grid = new Cell[gridSizeX, gridSizeY];
 
-        // Create all debug cubes
-        for (int x = 0; x < gridSizeX; x++)
+         for (int x = 0; x < gridSizeX; x++)
         {
             for (int z = 0; z < gridSizeY; z++)
             {
-                CreateCube(debugPrefab, x, z);
+                _grid[x, z] = new Cell(x, z);
             }
         }
     }
@@ -87,26 +112,101 @@ public class GridManager : MonoBehaviour
         cube.transform.parent = gridParent.transform;
 
         // Storing the cube in the grid array
-        _grid[x, z] = cube;
+        _grid[x, z].isOccupied = true;
+        _grid[x, z].tilePrefab = cube;
     }
 
 
     public void DeleteCube(int x, int z)
     {
-        Destroy(_grid[x, z]);
+        Destroy(_grid[x, z].tilePrefab);
+        _grid[x, z].tilePrefab = null;
+        _grid[x, z].isOccupied = false;
+    }
+
+
+    /** Marks area as occupied in the Cell struct */
+    private void MarkArea(int startX, int startZ, int width, int height)
+    {
+        for (int x = startX; x < startX + width; x++)
+        {
+            for (int z = startZ; z < startZ + height; z++)
+            {
+                _grid[x, z].isOccupied = true;
+            }
+        }
     }
     
 
-    /*
-    private void GenerateRoom() {
-        
+    /** Generates random rooms within the grid */
+    private void GenerateRooms()
+    {
+        int roomsCreated = 0;
+
+        while(roomsCreated < numberOfRooms)
+        {
+            int roomWidth = Random.Range(minRoomWidth, maxRoomWidth);
+            int roomHeight = Random.Range(minRoomHeight, maxRoomHeight);
+            int startX = Random.Range(1, gridSizeX - roomWidth - 1);  // Avoiding edges
+            int startZ = Random.Range(1, gridSizeY - roomHeight - 1); // Avoiding edges
+
+            if (CanPlaceRoom(startX, startZ, roomWidth, roomHeight))
+            {
+                CreateRoom(startX, startZ, roomWidth, roomHeight);
+                MarkArea(startX, startZ, roomWidth, roomHeight);
+                roomsCreated++;
+            }
+        }
+    }
+    
+
+    private bool CanPlaceRoom(int startX, int startZ, int width, int height)
+    {
+        // Ensure we have roomOffset space around the room
+        int startXWithOffset = Mathf.Max(0, startX - roomOffset);
+        int startZWithOffset = Mathf.Max(0, startZ - roomOffset);
+        int endXWithOffset = Mathf.Min(gridSizeX, startX + width + roomOffset);
+        int endZWithOffset = Mathf.Min(gridSizeY, startZ + height + roomOffset);
+
+        for (int x = startXWithOffset; x < endXWithOffset; x++)
+        {
+            for (int z = startZWithOffset; z < endZWithOffset; z++)
+            {
+                if (_grid[x, z].isOccupied) return false; // Room can't be placed here
+            }
+        }
+
+        return true;
     }
 
-    private void PopolateRoom() {
-        // parametric w.r.t. level
+
+    private void CreateRoom(int startX, int startZ, int width, int height)
+    {
+        for (int x = startX; x < startX + width; x++)
+        {
+            for (int z = startZ; z < startZ + height; z++)
+            {
+                bool isWall = (x == startX || x == startX + width - 1 || z == startZ || z == startZ + height - 1);
+
+                if (isWall)
+                {
+                    GameObject wall = Instantiate(wallPrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    wall.transform.parent = gridParent.transform;
+
+                    if (x == startX || x == startX + width - 1)
+                        wall.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+                    _grid[x, z].isOccupied = true;
+                }
+                else
+                {
+                    if (_grid[x, z].isOccupied) Destroy(_grid[x, z].tilePrefab);
+                    _grid[x, z].isOccupied = true;
+                }
+            }
+        }
     }
 
-    */
     // ====================================================================================
 
 
@@ -129,6 +229,7 @@ public class GridManager : MonoBehaviour
         }
         
         CreateGrid();
+        GenerateRooms();
     }
 
     // ====================================================================================
