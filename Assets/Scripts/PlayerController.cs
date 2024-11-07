@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 movement = moveSpeed * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         
-        cc.Move(moveSpeed * Time.smoothDeltaTime * movement);
+        movement += Vector3.down * 9.81f;
+        
+        cc.Move(Time.smoothDeltaTime * movement);
     }
 }
