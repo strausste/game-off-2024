@@ -8,13 +8,21 @@ public class EnemyController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform player; 
-    
-    [Header("Enemy properties")] 
+    [SerializeField] private PlayerHealthController phc; 
+
+
+    [Header("Property")] 
     [SerializeField] private EnemyType enemyType;
+
+    [Header("Movement")] 
     [SerializeField] private float engageDistance;
     [SerializeField] private float disengageDistance;
+
+    [Header("Attack")] 
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackDistance;
+    [SerializeField] private int attackDamage;
+
     
     private NavMeshAgent agent;
     private float lastAttackTime = 0f;
@@ -39,6 +47,8 @@ public class EnemyController : MonoBehaviour
             if (distanceToPlayer <= attackDistance)
             {
                 Attack();
+
+                Debug.Log("Current player's health: " + phc.GetCurrentHealth());
             }
         }
         // Disengage
@@ -54,8 +64,7 @@ public class EnemyController : MonoBehaviour
         {
             lastAttackTime = Time.time;
 
-            // TODO
-            Debug.Log("Attack");
+            phc.TakeDamage(attackDamage);
         }
     }
 
