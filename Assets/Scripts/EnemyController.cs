@@ -11,7 +11,8 @@ public class EnemyController : MonoBehaviour
     
     [Header("Enemy properties")] 
     [SerializeField] private EnemyType enemyType;
-    [SerializeField] private float followDistance;
+    [SerializeField] private float engageDistance;
+    [SerializeField] private float disengageDistance;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float attackDistance;
     
@@ -30,8 +31,8 @@ public class EnemyController : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Follow player if within follow distance
-        if (distanceToPlayer <= followDistance)
+        // Engage
+        if (distanceToPlayer <= engageDistance)
         {
             agent.SetDestination(player.position);
 
@@ -39,6 +40,11 @@ public class EnemyController : MonoBehaviour
             {
                 Attack();
             }
+        }
+        // Disengage
+        else if (distanceToPlayer > disengageDistance)
+        {
+            agent.ResetPath();
         }
     }
 
@@ -58,9 +64,13 @@ public class EnemyController : MonoBehaviour
     {
         if (player != null)
         {
-            // Follow distance
+            // Engage distance
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, followDistance);
+            Gizmos.DrawWireSphere(transform.position, engageDistance);
+
+            // Disengage distance
+            Gizmos.color = Color.grey;
+            Gizmos.DrawWireSphere(transform.position, disengageDistance);
 
             // Attack distance
             Gizmos.color = Color.red;
