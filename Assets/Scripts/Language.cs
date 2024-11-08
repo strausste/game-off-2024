@@ -5,17 +5,18 @@ public class Language : MonoBehaviour
 {
     public Texture2D[] symbolImages; 
     //Symbols in the language
-    [SerializeField]
-    List<Symbol> symbols = new List<Symbol>();
+    public List<Symbol> symbols = new List<Symbol>();
     List<string> singleMeanings = new List<string>(){
         "START", 
         "ME",
         "YOU",
-        "YES",
-        "NO",
+        "POSITIVE",
+        "NEGATIVE",
         "STRENGHT",
         "DEFENSE",
         "SPEED",
+        "OPEN",
+        "HERE",
         "OBJECT"
     };
 
@@ -25,17 +26,18 @@ public class Language : MonoBehaviour
         "BOOTS"
     };
     
-    Dictionary<List<int>, string> language = new Dictionary<List<int>, string>();
-    Dictionary<string, List<int>> reversed_l = new Dictionary<string, List<int>>();
+    //Dictionary<List<int>, string> language = new Dictionary<List<int>, string>();
+    Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
+    //Dictionary<string, List<int>> reversed_l = new Dictionary<string, List<int>>();
+    Dictionary<string, List<Symbol>> reversed_l = new Dictionary<string, List<Symbol>>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        genSymbols();
-        setMeanings();
+        GenSymbols();
+        SetMeanings();
     }
 
-    void genSymbols(){
+    void GenSymbols(){
         int i = 0;
         foreach (Texture2D image in symbolImages) {
             symbols.Add(new Symbol(i, image));
@@ -43,17 +45,18 @@ public class Language : MonoBehaviour
         }
     }
 
-    void setMeanings(){
+    void SetMeanings(){
         //Sets meanings in order
         int index = 0;
-        //Sets meanings randomly
-        //int index = Rand
 
         //Single Symbol Meanings
         foreach (string m in singleMeanings){
-            List<int> id = new List<int>(){symbols[index].getId()};
+            //Sets meanings randomly
+            //int index = Rand
+            //List<int> id = new List<int>(){symbols[index].getId()};
+            List<Symbol> s = new List<Symbol>(){symbols[index]};
             symbols.RemoveAt(index);
-            language.Add(id, m);
+            language.Add(s, m);
         }
 
         //Create reversed dictionary
@@ -67,7 +70,8 @@ public class Language : MonoBehaviour
             return;
         }
             
-        int obj = reversed_l["OBJECT"][0];
+        //int obj = reversed_l["OBJECT"][0];
+        Symbol obj = reversed_l["OBJECT"][0];
 
         //Multiple Symbol Meanings
         foreach (string m in multiMeanings){
@@ -82,40 +86,46 @@ public class Language : MonoBehaviour
                 default: stat = "";
                 break;
             }
-            List<int> id = new List<int>(){
+            List<Symbol> sym = new List<Symbol>(){
                 obj,
                 reversed_l[stat][0]
             };
-            symbols.RemoveAt(index);
 
-            language.Add(id, m);
-            List<int> reversed = new List<int>(){
+            language.Add(sym, m);
+            List<Symbol> reversed = new List<Symbol>(){
                 reversed_l[stat][0],
                 obj
             };
             language.Add(reversed, m); 
+            reversed_l.Add(m, sym);
         }
     }
 
     //Gets a meaning from a list of Symbols
-    public string getMeaning(List<Symbol> s){
-        List<int> key = new List<int>();
+    public string GetMeaning(List<Symbol> s){
+        /*List<int> key = new List<int>();
         foreach (Symbol symbol in s){
             key.Add(symbol.getId());
-        }
+        }*/
 
-        if (language.ContainsKey(key)){
-            return language[key];
-        }
+        if (language.ContainsKey(s))
+            return language[s];
 
+        return null;
+    }
+
+    public List<Symbol> GetSymbol(string mean){
+        if (reversed_l.ContainsKey(mean))
+            return reversed_l[mean];
+        
         return null;
     }
     
     //Gets a meaning from a list of Symbol ids
-    public string getMeaningById(List<int> ids){
+    /*public string getMeaningById(List<int> ids){
         if (language.ContainsKey(ids)){
             return language[ids];
         }
         return null;
-    }
+    }*/
 }
