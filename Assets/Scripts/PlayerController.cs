@@ -4,12 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController cc;
     [SerializeField] float moveSpeed = 10f;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -19,10 +14,22 @@ public class PlayerController : MonoBehaviour
             return;
         }
         
-        Vector3 movement = moveSpeed * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 movement = Vector3.zero;
         
+        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){
+            transform.forward = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+            movement = moveSpeed * transform.forward.normalized;
+        }
+
+        animator.SetFloat("Speed", movement.magnitude);
+
         movement += Vector3.down * 9.81f;
         
         cc.Move(Time.smoothDeltaTime * movement);
+
+        if(Input.GetButtonDown("Fire1")){
+            animator.SetTrigger("Attack");
+        }
     }
 }
