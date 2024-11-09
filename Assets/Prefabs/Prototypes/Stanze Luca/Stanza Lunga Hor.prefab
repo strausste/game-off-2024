@@ -46,7 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1947775107383558955}
   m_Layer: 0
-  m_Name: Lato sx (1)
+  m_Name: Lato dx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 5444785689305876433}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1399994, y: -3.8, z: -6.84}
+  m_LocalPosition: {x: 7.1399994, y: -3.8, z: -8.18}
   m_LocalScale: {x: 27.488245, y: 6.3722696, z: 0.85437995}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2200,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 935806930815462672, guid: 7a937ee5bc40ba142a195e3a41fa7258, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.487005
+      value: 8.24
       objectReference: {fileID: 0}
     - target: {fileID: 935806930815462672, guid: 7a937ee5bc40ba142a195e3a41fa7258, type: 3}
       propertyPath: m_LocalRotation.w
