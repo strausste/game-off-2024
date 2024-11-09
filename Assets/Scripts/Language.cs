@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Language : MonoBehaviour
 {
-    public Texture2D[] symbolImages; 
+    public Sprite[] symbolImages; 
     //Symbols in the language
     public List<Symbol> symbols = new List<Symbol>();
     List<string> singleMeanings = new List<string>(){
@@ -27,19 +27,28 @@ public class Language : MonoBehaviour
     };
     
     //Dictionary<List<int>, string> language = new Dictionary<List<int>, string>();
-    Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
+    public Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
     //Dictionary<string, List<int>> reversed_l = new Dictionary<string, List<int>>();
     Dictionary<string, List<Symbol>> reversed_l = new Dictionary<string, List<Symbol>>();
 
+    public static Language instance;
+    
     void Awake()
     {
+        if (instance && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+        instance = this;
+        
         GenSymbols();
         SetMeanings();
     }
 
     void GenSymbols(){
         int i = 0;
-        foreach (Texture2D image in symbolImages) {
+        foreach (Sprite image in symbolImages) {
             symbols.Add(new Symbol(i, image));
             i++;
         }
@@ -48,14 +57,16 @@ public class Language : MonoBehaviour
     void SetMeanings(){
         //Sets meanings in order
         int index = 0;
-
+        List<Symbol> tmpSymbols = new List<Symbol>();
+        tmpSymbols.AddRange(symbols);
+        
         //Single Symbol Meanings
         foreach (string m in singleMeanings){
             //Sets meanings randomly
             //int index = Rand
             //List<int> id = new List<int>(){symbols[index].getId()};
-            List<Symbol> s = new List<Symbol>(){symbols[index]};
-            symbols.RemoveAt(index);
+            List<Symbol> s = new List<Symbol>(){tmpSymbols[index]};
+            tmpSymbols.RemoveAt(index);
             language.Add(s, m);
         }
 
