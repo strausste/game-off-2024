@@ -1656,14 +1656,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1515362451358172894, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 1937241411636406514, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 2215107070636783620, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 2566672105554167140, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 3130364359947064253, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 3511304377721113800, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a89186d67d4a4f46bc3fb2c7d1e01e0, type: 2}
+    - target: {fileID: 3619929302857327995, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
     - target: {fileID: 3682588596188823353, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
       propertyPath: m_LocalPosition.z
       value: 8.92
       objectReference: {fileID: 0}
+    - target: {fileID: 4700519337731603614, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a89186d67d4a4f46bc3fb2c7d1e01e0, type: 2}
+    - target: {fileID: 4879240148767414037, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a89186d67d4a4f46bc3fb2c7d1e01e0, type: 2}
+    - target: {fileID: 5165628699200420064, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a89186d67d4a4f46bc3fb2c7d1e01e0, type: 2}
+    - target: {fileID: 5974844739250871757, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
     - target: {fileID: 6082765040667143985, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
       propertyPath: m_Name
       value: Stanza Normale
       objectReference: {fileID: 0}
+    - target: {fileID: 6832694630781304474, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e97224d75e01ab948be33ad63ad000f5, type: 2}
+    - target: {fileID: 6996283336891912286, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
+    - target: {fileID: 8590528950935800558, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fceac14832c40d24db3ed12b0f4fef7a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

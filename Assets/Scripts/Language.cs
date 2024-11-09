@@ -17,13 +17,24 @@ public class Language : MonoBehaviour
         "SPEED",
         "OPEN",
         "HERE",
+        "MONEY",
+        //"DOOR",
+        //"CHEST",
+        //"GO",
+        //"ROOM",
+        //"SECRET",
         "OBJECT"
+        // ?
     };
 
     List<string> multiMeanings = new List<string>(){
         "WEAPON", 
         "SHIELD",
         "BOOTS"
+        // FRIEND = YOU POSITIVE
+        // ENEMY = YOU NEGATIVE
+        // 
+
     };
     
     //Dictionary<List<int>, string> language = new Dictionary<List<int>, string>();
