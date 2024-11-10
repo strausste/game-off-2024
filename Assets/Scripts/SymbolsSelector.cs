@@ -1,17 +1,20 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class SymbolsSelector : MonoBehaviour
 {
-    public UnityEvent<Symbol> pressedSymbolEvent = new UnityEvent<Symbol>();
-    public Symbol pressedSymbol;
+    public UnityEvent<Symbol[]> inputSymbolsEvent = new UnityEvent<Symbol[]>();
+    //If not empty filters symbols to leave only those that matter in this context
+    [SerializeField] private List<string> possibleAnswers = new List<string>();
+    private List<Symbol> symbols = new List<Symbol>();
+    [SerializeField] private bool singleMode = false; //Select only one symbol
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetSymbols();
-        pressedSymbolEvent.AddListener((symbol) => { Debug.Log("Symbol pressed "+ symbol.getId()); });
     }
 
     void SetSymbols()
@@ -21,7 +24,15 @@ public class SymbolsSelector : MonoBehaviour
 
     void PressedSymbol(Symbol symbol)
     {
-        pressedSymbol = symbol;
-        pressedSymbolEvent.Invoke(symbol);
+        if (singleMode)
+        {
+            symbols.Clear();
+        }
+        symbols.Add(symbol);
+    }
+
+    public void ConfirmSymbols()
+    {
+        inputSymbolsEvent.Invoke(symbols.ToArray());
     }
 }
