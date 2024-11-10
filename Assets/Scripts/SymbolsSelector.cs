@@ -4,13 +4,14 @@ using UnityEngine.Events;
 
 public class SymbolsSelector : MonoBehaviour
 {
-    public UnityEvent pressedSymbolEvent = new UnityEvent();
+    public UnityEvent<Symbol> pressedSymbolEvent = new UnityEvent<Symbol>();
     public Symbol pressedSymbol;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SetSymbols();
+        pressedSymbolEvent.AddListener((symbol) => { Debug.Log("Symbol pressed "+ symbol.getId()); });
     }
 
     void SetSymbols()
@@ -20,8 +21,7 @@ public class SymbolsSelector : MonoBehaviour
 
     void PressedSymbol(Symbol symbol)
     {
-        Debug.Log(symbol);
         pressedSymbol = symbol;
-        pressedSymbolEvent.Invoke();
+        pressedSymbolEvent.Invoke(symbol);
     }
 }
