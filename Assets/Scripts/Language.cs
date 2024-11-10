@@ -19,10 +19,10 @@ public class Language : MonoBehaviour
         "HERE",
         "MONEY",
         //"DOOR",
-        //"CHEST",
+        "CHEST",
         //"GO",
         //"ROOM",
-        //"SECRET",
+        "SECRET",
         "OBJECT"
         // ?
     };
@@ -73,9 +73,6 @@ public class Language : MonoBehaviour
         
         //Single Symbol Meanings
         foreach (string m in singleMeanings){
-            //Sets meanings randomly
-            //int index = Rand
-            //List<int> id = new List<int>(){symbols[index].getId()};
             List<Symbol> s = new List<Symbol>(){tmpSymbols[index]};
             tmpSymbols.RemoveAt(index);
             language.Add(s, m);
