@@ -23,7 +23,6 @@ public class UIController : MonoBehaviour
     {
         foreach (Symbol symbol in symbols)
         {
-            Debug.Log(symbol.getId());
             GameObject symbolUi = Instantiate(symbolPrefab, symbolPanel.transform);
 
             symbolUi.name = symbol.getId().ToString();
@@ -32,7 +31,6 @@ public class UIController : MonoBehaviour
             
             var button = symbolUi.GetComponent<Button>();
             button.onClick.AddListener(() => onClick.Invoke(symbol));
-            button.onClick.AddListener(() => Debug.Log("pressed button"));
         }
     }
 }
