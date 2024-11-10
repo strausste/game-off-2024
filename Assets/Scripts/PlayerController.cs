@@ -1,10 +1,31 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController cc;
     [SerializeField] float moveSpeed = 10f;
+    [Header("Roll")]
+    [SerializeField] float rollSpeed = 12f;
+    [SerializeField] float rollCooldown = .5f;
+    float lastRollTime = -1;
+
+    [Header("Animation")]
     [SerializeField] Animator animator;
+
+    [Header("Equipment")]
+    [SerializeField] Transform weaponBone;
+    [SerializeField] Transform shieldBone;
+    [SerializeField] Weapon equippedWeapon;
+    GameObject equippedWeaponObject = null;
+    [SerializeField] Shield equippedShield;
+    GameObject equippedShieldObject = null;
+
+    void Start(){
+        //Init weapon and shield
+        EquipWeapon(equippedWeapon);
+        EquipShield(equippedShield);
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,20 +37,78 @@ public class PlayerController : MonoBehaviour
         
         Vector3 movement = Vector3.zero;
         
-        if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){
+        //Se non sta rollando e si sta muovendo
+        if((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && 
+            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             transform.forward = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
             movement = moveSpeed * transform.forward.normalized;
+        }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
+            movement = rollSpeed * transform.forward.normalized;
+            lastRollTime = Time.time;
         }
 
-        animator.SetFloat("Speed", movement.magnitude);
+        animator.SetFloat("Speed", movement.magnitude);        
+
+        HandleAttack();
+
+        //Se preme tast roll e cooldown roll finito setta il trigger
+        if(Input.GetButtonDown("Roll") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll") && 
+        Time.time - lastRollTime > rollCooldown){
+            animator.SetTrigger("Roll");
+        }
 
         movement += Vector3.down * 9.81f;
-        
         cc.Move(Time.smoothDeltaTime * movement);
+    }
 
-        if(Input.GetButtonDown("Fire1")){
+    void HandleAttack(){
+        if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
         }
+
+        //Mentre è in corso un animazione di attacco, attiva hitbox
+        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack")){
+            Collider []hits = Physics.OverlapSphere(transform.position + equippedWeapon.hitboxOffset, equippedWeapon.hitboxSize);
+
+            foreach(Collider hit in hits){
+                if(!hit.CompareTag("Enemy"))
+                    return;
+
+                EnemyController enemy = hit.GetComponent<EnemyController>();
+
+                enemy.TakeDamage(equippedWeapon.attack);
+            }
+        }
+    }
+
+    void HandleShield(){
+
+    }
+
+    void EquipWeapon(Weapon weapon){
+        if(!weapon)
+            return;
+
+        if(equippedWeaponObject){
+            Destroy(equippedWeaponObject);
+        }
+
+        equippedWeapon = weapon;
+        equippedWeaponObject = Instantiate(weapon.model, weaponBone);
+        equippedWeaponObject.transform.localScale = weapon.modelScale;
+        equippedWeaponObject.transform.localPosition = weapon.modelOffset;
+    }
+
+    void EquipShield(Shield shield){
+        if(!shield)
+            return;
+
+        if(equippedShieldObject){
+            Destroy(equippedWeaponObject);
+        }
+
+        equippedShield = shield;
+        equippedWeaponObject = Instantiate(shield.model, shieldBone);
     }
 }

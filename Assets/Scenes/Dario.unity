@@ -6781,6 +6781,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!4 &1452044483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6628650437936774808, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+  m_PrefabInstance: {fileID: 4338176157905909504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1464661581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10706,10 +10711,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3326215791558671094, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4694965549695347986, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: shieldBone
+      value: 
+      objectReference: {fileID: 1452044483}
+    - target: {fileID: 4694965549695347986, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: equippedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 16484878e263e864db88e44022216994, type: 2}
     - target: {fileID: 6123412835902427474, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -10755,7 +10764,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6360430429578298849, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}

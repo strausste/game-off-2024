@@ -86,4 +86,9 @@ public class EnemyController : MonoBehaviour
             Gizmos.DrawWireSphere(transform.position, attackDistance);
         }
     }
+
+    public void TakeDamage(int damage){
+        //Aggiunta per iniziare a metterla nel player controller
+        Debug.Log($"Hit {gameObject} for {damage}");
+    }
 }
