@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
-        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack")){
+        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && equippedWeapon){
             Collider []hits = Physics.OverlapSphere(transform.position + equippedWeapon.hitboxOffset, equippedWeapon.hitboxSize);
 
             foreach(Collider hit in hits){
