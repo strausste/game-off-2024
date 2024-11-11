@@ -43,16 +43,19 @@ public class PlayerController : MonoBehaviour
         
         //Se non sta rollando e si sta muovendo
         if((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && 
-            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            transform.forward = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll"))
+        {
+            var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            
+            transform.forward = input.normalized;
 
-            movement = moveSpeed * transform.forward.normalized;
+            movement = moveSpeed * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             movement = rollSpeed * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 
-        animator.SetFloat("Speed", movement.magnitude);        
+        animator.SetFloat("Speed", movement.magnitude/moveSpeed);        
 
         HandleAttack();
 
