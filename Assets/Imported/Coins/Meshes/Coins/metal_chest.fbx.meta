@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: ae07d30327baa6a48b02f0e5ea576859
+AssetOrigin:
+  serializedVersion: 1
+  productId: 250070
+  packageName: Lowpoly Coin Treasure Bundle With Animation 3D
+  packageVersion: 1.0
+  assetPath: Assets/Coins/Meshes/Coins/metal_chest.fbx
+  uploadId: 583777
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -21,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -45,6 +50,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -103,7 +109,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
@@ -111,10 +117,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 250070
-  packageName: Lowpoly Coin Treasure Bundle With Animation 3D
-  packageVersion: 1.0
-  assetPath: Assets/Coins/Meshes/Coins/metal_chest.fbx
-  uploadId: 583777

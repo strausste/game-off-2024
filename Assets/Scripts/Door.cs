@@ -8,7 +8,6 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player trovato");
             other.gameObject.SetActive(false);
             other.gameObject.transform.position = destination.transform.position;
             other.gameObject.SetActive(true);
