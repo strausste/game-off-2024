@@ -37,9 +37,7 @@ public class Language : MonoBehaviour
 
     };
     
-    //Dictionary<List<int>, string> language = new Dictionary<List<int>, string>();
     public Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
-    //Dictionary<string, List<int>> reversed_l = new Dictionary<string, List<int>>();
     Dictionary<string, List<Symbol>> reversed_l = new Dictionary<string, List<Symbol>>();
 
     public static Language instance;
@@ -122,11 +120,6 @@ public class Language : MonoBehaviour
 
     //Gets a meaning from a list of Symbols
     public string GetMeaning(List<Symbol> s){
-        /*List<int> key = new List<int>();
-        foreach (Symbol symbol in s){
-            key.Add(symbol.getId());
-        }*/
-
         if (language.ContainsKey(s))
             return language[s];
 
@@ -139,12 +132,4 @@ public class Language : MonoBehaviour
         
         return null;
     }
-    
-    //Gets a meaning from a list of Symbol ids
-    /*public string getMeaningById(List<int> ids){
-        if (language.ContainsKey(ids)){
-            return language[ids];
-        }
-        return null;
-    }*/
 }

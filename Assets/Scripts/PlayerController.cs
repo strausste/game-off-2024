@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
     GameObject equippedWeaponObject = null;
     [SerializeField] Shield equippedShield;
     GameObject equippedShieldObject = null;
+
+    [Header("Effects")]
+    [SerializeField] VisualEffect slashEffect;
 
     void Start(){
         //Init weapon and shield
@@ -65,6 +69,7 @@ public class PlayerController : MonoBehaviour
     void HandleAttack(){
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
+            slashEffect.Play();
         }
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
