@@ -33,7 +33,8 @@ public class Language : MonoBehaviour
         "BOOTS"
         // FRIEND = YOU POSITIVE
         // ENEMY = YOU NEGATIVE
-        // 
+        // SHOP = MONEY OBJECT o ROOM MONEY
+        // KEY = OBJECT OPEN
 
     };
     
