@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     public static UIController instance;
     [SerializeField] GameObject symbolPrefab;
     [SerializeField] TMP_Text timer;
+    private float timerStart;
     
     private void Awake()
     {
@@ -20,6 +21,8 @@ public class UIController : MonoBehaviour
         }
         
         instance = this;
+
+        timerStart = Time.time;
     }
 
     public void SetSymbols(Symbol[] symbols, Action<Symbol> onClick)
@@ -43,8 +46,8 @@ public class UIController : MonoBehaviour
 
     void FixedUpdate()
     {
-        int minutes = (int)Time.time / 60;
-        float seconds = Time.time %60f;
+        int minutes = (int)(Time.time - timerStart) / 60;
+        float seconds = (Time.time - timerStart) %60f;
         
         timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
         
