@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class WriteSymbols : MonoBehaviour
 {
@@ -9,9 +10,29 @@ public class WriteSymbols : MonoBehaviour
     [SerializeField]
     HorizontalLayoutGroup layout;
     [SerializeField]
-    string[] meanings;
+    Meaning[] meanings;
     Language language;
     
+    enum Meaning {
+        START, 
+        ME,
+        YOU,
+        POSITIVE,
+        NEGATIVE,
+        STRENGHT,
+        DEFENSE,
+        SPEED,
+        OPEN,
+        HERE,
+        MONEY,
+        //"DOOR",
+        CHEST,
+        //"GO",
+        //"ROOM",
+        SECRET,
+        OBJECT
+        // ?
+    };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,8 +43,8 @@ public class WriteSymbols : MonoBehaviour
 
     void writeSymbols(){
         List<Symbol> symbols = new List<Symbol>();
-        foreach (string mean in meanings){
-            symbols.AddRange(language.GetSymbol(mean));
+        foreach (Meaning mean in meanings){
+            symbols.AddRange(language.GetSymbol(Enum.GetName(typeof(Meaning), mean)));
         }
 
         foreach (Symbol symbol in symbols){

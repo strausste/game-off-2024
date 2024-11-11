@@ -89,31 +89,37 @@ public class Language : MonoBehaviour
         }
             
         //int obj = reversed_l["OBJECT"][0];
-        Symbol obj = reversed_l["OBJECT"][0];
+        Symbol first = reversed_l["START"][0];
+        Symbol second = reversed_l["START"][0];
 
         //Multiple Symbol Meanings
         foreach (string m in multiMeanings){
-            string stat;
             switch (m){
-                case "WEAPON": stat = "STRENGHT";
-                break;
-                case "SHIELD": stat = "DEFENSE";
-                break;
-                case "BOOTS": stat = "SPEED";
-                break;
-                default: stat = "";
-                break;
+                case "WEAPON": 
+                    first = reversed_l["OBJECT"][0];
+                    second = reversed_l["STRENGHT"][0];
+                    break;
+                case "SHIELD": 
+                    first = reversed_l["OBJECT"][0];
+                    second = reversed_l["DEFENSE"][0];
+                    break;
+                case "BOOTS":
+                    first = reversed_l["OBJECT"][0];
+                    second = reversed_l["SPEED"][0];
+                    break;
+                case "FRIEND":
+                    first = reversed_l["YOU"][0];
+                    second = reversed_l["POSITIVE"][0];
+                    break;
+                case "ENEMY":
+                    first = reversed_l["YOU"][0];
+                    second = reversed_l["NEGATIVE"][0];
+                    break;
             }
-            List<Symbol> sym = new List<Symbol>(){
-                obj,
-                reversed_l[stat][0]
-            };
-
+            List<Symbol> sym = new List<Symbol>(){first, second};
             language.Add(sym, m);
-            List<Symbol> reversed = new List<Symbol>(){
-                reversed_l[stat][0],
-                obj
-            };
+
+            List<Symbol> reversed = new List<Symbol>(){second, first};
             language.Add(reversed, m); 
             reversed_l.Add(m, sym);
         }
