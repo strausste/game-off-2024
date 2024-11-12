@@ -6,31 +6,55 @@ public class Chest : MonoBehaviour, IInteractable
     private bool open = false;
 
     public GameObject canvas;               
-    public float detectionRadius = 3f;     
+    [SerializeField] public float detectionRadius;
+    private LayerMask mask;             // Layer per limitare i rilevamenti (es. solo il Player)
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         canvas.SetActive(false);
+        mask = LayerMask.GetMask("Player");
     }
 
     private void Update()
     {
         // Direzione dello SphereCast (in questo caso, verso il basso) ??
         Vector3 direction = Vector3.down;
-
-        if (Physics.SphereCast(transform.position, detectionRadius, direction, out RaycastHit hit, 10f))
-        {
-            if (hit.collider.CompareTag("Player"))
+        if (!open) {
+            /*
+            if (Physics.SphereCast(transform.position, detectionRadius, direction, out RaycastHit hit, detectionRadius, mask))
             {
-                Debug.Log("Player trovato");
-                canvas.SetActive(true);
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Player trovato");
+                    canvas.SetActive(true);
+                }
+                else
+                {
+                    canvas.SetActive(false);
+                }
+            }*/
+
+
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, detectionRadius);
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("Player"))
+                {
+                    Debug.Log("Player trovato");
+                    canvas.SetActive(true);
+                }
+                else
+                {
+                    canvas.SetActive(false);
+                }
             }
         }
         else
         {
             canvas.SetActive(false);
         }
+
     }
 
     private void OnDrawGizmos()
