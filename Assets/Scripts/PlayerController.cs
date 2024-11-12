@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Effects")]
     [SerializeField] VisualEffect slashEffect;
+    [SerializeField] BoxCollider swordCollider;
 
     void Start(){
         //Init weapon and shield
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
             slashEffect.Play();
+            swordCollider.enabled = true;
+            StartCoroutine(disableSwordHitbox());
         }
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
@@ -118,5 +122,11 @@ public class PlayerController : MonoBehaviour
 
         equippedShield = shield;
         equippedWeaponObject = Instantiate(shield.model, shieldBone);
+    }
+
+    IEnumerator disableSwordHitbox(){
+        //Disables the attack hitbox after attacking
+        yield return new WaitForSeconds(0.1f);
+        swordCollider.enabled = false;
     }
 }
