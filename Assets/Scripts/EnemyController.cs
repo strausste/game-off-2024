@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
             {
                 Attack();
 
-                Debug.Log("Current player's health: " + phc.GetCurrentHealth());
+                //Debug.Log("Current player's health: " + phc.GetCurrentHealth());
             }
         }
         // Disengage
@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
         {
             lastAttackTime = Time.time;
 
-            phc.TakeDamage(attackDamage);
+            //phc.TakeDamage(attackDamage);
         }
     }
 
