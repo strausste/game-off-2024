@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class EntityStats : MonoBehaviour
 {
+    [Header ("Stats")]
     [SerializeField] int maxHp = 10;
     [SerializeField] int attackLv = 1;
     [SerializeField] int defenseLv = 1;
     [SerializeField] int speedLv = 1;
     
-    Rigidbody rigidbody;
+    [Header ("Effects")]
+    [SerializeField] ParticleSystem hitParticles;
+
+    Rigidbody rb;
     MeshRenderer meshRenderer;
     Color origColor;
     float flashTime = 0.1f;
@@ -18,7 +22,7 @@ public class EntityStats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         origColor = meshRenderer.material.color;
         hp = maxHp;
@@ -26,7 +30,8 @@ public class EntityStats : MonoBehaviour
 
     public void TryHurt(int damage){
         int trueDamage = damage - GetDefense();
-        if (trueDamage > 0 && hp >= 0){
+        Mathf.Clamp(trueDamage, 1, damage);
+        if (hp >= 0){
             Hurt(trueDamage);
         }
 
@@ -51,6 +56,7 @@ public class EntityStats : MonoBehaviour
     }
 
     IEnumerator Flash(){
+        Instantiate(hitParticles, transform.position, Quaternion.identity);
         meshRenderer.material.color = Color.white;
         yield return new WaitForSeconds(flashTime);
         meshRenderer.material.color = origColor;
@@ -59,7 +65,7 @@ public class EntityStats : MonoBehaviour
     public void Push(int knockBackForce){
         //Pushes Back the Entity
         Vector3 force = -transform.forward * knockBackForce;
-        rigidbody.AddForce(force, ForceMode.Impulse);
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
     public int GetHp(){
