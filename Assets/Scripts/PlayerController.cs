@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rollCooldown = .5f;
     float lastRollTime = -1;
 
-    [Header("Animation")]
-    [SerializeField] Animator animator;
-
+    [Header("Animation")] 
+    [SerializeField] private Animator animator;
+    
     [Header("Equipment")]
     [SerializeField] Transform weaponBone;
     [SerializeField] Transform shieldBone;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Effects")]
     [SerializeField] VisualEffect slashEffect;
-    [SerializeField] BoxCollider swordCollider;
+    //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
 
     void Start(){
         //Init weapon and shield
@@ -43,9 +43,12 @@ public class PlayerController : MonoBehaviour
         
         Vector3 movement = Vector3.zero;
         
+        bool canMove = (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) &&
+            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll") &&
+            !animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
+        
         //Se non sta rollando e si sta muovendo
-        if((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && 
-            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll"))
+        if(canMove)
         {
             var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             
@@ -70,13 +73,14 @@ public class PlayerController : MonoBehaviour
         movement += Vector3.down * 9.81f;
         cc.Move(Time.smoothDeltaTime * movement);
     }
-
+    
+    private float lastAttackTime;
     void HandleAttack(){
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
             slashEffect.Play();
-            swordCollider.enabled = true;
-            StartCoroutine(disableSwordHitbox());
+            //swordCollider.enabled = true;
+            //StartCoroutine(disableSwordHitbox());
         }
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
@@ -107,7 +111,7 @@ public class PlayerController : MonoBehaviour
         }
 
         equippedWeapon = weapon;
-        equippedWeaponObject = Instantiate(weapon.model, weaponBone);
+        equippedWeaponObject = Instantiate(weapon.prefab, weaponBone);
         equippedWeaponObject.transform.localScale = weapon.modelScale;
         equippedWeaponObject.transform.localPosition = weapon.modelOffset;
     }
@@ -121,12 +125,12 @@ public class PlayerController : MonoBehaviour
         }
 
         equippedShield = shield;
-        equippedWeaponObject = Instantiate(shield.model, shieldBone);
+        equippedWeaponObject = Instantiate(shield.prefab, shieldBone);
     }
 
-    IEnumerator disableSwordHitbox(){
-        //Disables the attack hitbox after attacking
-        yield return new WaitForSeconds(0.1f);
-        swordCollider.enabled = false;
-    }
+    // IEnumerator disableSwordHitbox(){    //
+    //     //Disables the attack hitbox after attacking
+    //     yield return new WaitForSeconds(0.1f);
+    //     swordCollider.enabled = false;
+    // }
 }

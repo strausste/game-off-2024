@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -12,6 +13,10 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject symbolPrefab;
     [SerializeField] TMP_Text timer;
     private float timerStart;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject inventoryContentPanel;
+    private List<GameObject> inventoryChilds = new List<GameObject>();
+    [SerializeField] private GameObject inventoryItemPrefab;
     
     private void Awake()
     {
@@ -23,6 +28,8 @@ public class UIController : MonoBehaviour
         instance = this;
 
         timerStart = Time.time;
+        
+        inventoryPanel.SetActive(false);
     }
 
     public void SetSymbols(Symbol[] symbols, Action<Symbol> onClick)
@@ -50,6 +57,32 @@ public class UIController : MonoBehaviour
         float seconds = (Time.time - timerStart) %60f;
         
         timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
+    }
+
+    public void OpenInventory(bool open, Item []items = null)
+    {
+        inventoryPanel.SetActive(open);
         
+        if (open)
+        {
+            foreach (var item in items)
+            {
+                GameObject inventoryItem = Instantiate(inventoryItemPrefab, inventoryContentPanel.transform);
+
+                var itemUI = inventoryItem.GetComponent<InventoryItemUI>();
+                itemUI.SetItem(item);
+                
+                inventoryChilds.Add(inventoryItem);
+            }
+        }
+        else
+        {
+            foreach (var child in inventoryChilds)
+            {
+                //Please officer I can explain
+                Destroy(child);
+            }
+            inventoryChilds.Clear();
+        }
     }
 }

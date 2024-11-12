@@ -4,6 +4,6 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName;
-    private Sprite sprite;
-    public GameObject model;
+    public Sprite sprite;  //Preview in inventory
+    public GameObject prefab;
 }
