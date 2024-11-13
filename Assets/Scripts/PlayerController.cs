@@ -91,9 +91,9 @@ public class PlayerController : MonoBehaviour
                 if(!hit.CompareTag("Enemy"))
                     return;
 
-                EnemyController enemy = hit.GetComponent<EnemyController>();
+                EntityStats enemy = hit.GetComponent<EntityStats>();
 
-                enemy.TakeDamage(equippedWeapon.attack);
+                enemy.TryHurt(equippedWeapon.attack);
             }
         }
     }
