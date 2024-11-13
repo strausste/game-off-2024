@@ -665,7 +665,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 8
-    angle: 2.67
+    angle: 19.87
     length: 3
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -4780,7 +4780,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ef734cffd0e9e8e42b0b1d3ca94054b6, type: 2}
+  - {fileID: 2100000, guid: e3a6fdd6f02cb854781d8080e6e3eb10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

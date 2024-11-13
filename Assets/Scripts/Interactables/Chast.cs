@@ -28,6 +28,7 @@ public class Chest : MonoBehaviour, IInteractable
             {
                 animator.SetTrigger("Trigger");
                 open = true;
+                canvas.SetActive(false);
             }
         }
     }

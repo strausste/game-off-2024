@@ -862,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107.5
+      value: 163.8
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -870,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.4
+      value: -7.1
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2366,10 +2366,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1839351521}
     m_Modifications:
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 4.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: ShapeModule.length
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571739462189924174, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4177962328021963898, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
       propertyPath: destination
       value: 
       objectReference: {fileID: 938943531}
+    - target: {fileID: 8458927216436069477, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.087
+      objectReference: {fileID: 0}
     - target: {fileID: 8529333689011727183, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
       propertyPath: m_Name
       value: Porta sud
