@@ -84,16 +84,19 @@ public class PlayerController : MonoBehaviour
         }
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
+        //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
         if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && equippedWeapon){
-            Collider []hits = Physics.OverlapSphere(transform.position + equippedWeapon.hitboxOffset, equippedWeapon.hitboxSize);
-
+            Collider []hits = Physics.OverlapSphere(transform.position + equippedWeapon.hitboxOffset, 
+                equippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
+            Debug.DrawLine(transform.position + equippedWeapon.hitboxOffset, 
+                transform.position + equippedWeapon.hitboxOffset + transform.forward * equippedWeapon.hitboxSize, Color.red);
+            Debug.DrawLine(transform.position + equippedWeapon.hitboxOffset, 
+                transform.position + equippedWeapon.hitboxOffset - transform.forward * equippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
-                if(!hit.CompareTag("Enemy"))
-                    return;
-
-                EntityStats enemy = hit.GetComponent<EntityStats>();
-
-                enemy.TryHurt(equippedWeapon.attack);
+                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy))
+                {
+                    enemy.TryHurt(equippedWeapon.attack);
+                }
             }
         }
     }

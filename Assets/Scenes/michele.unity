@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: swordCollider
       value: 
       objectReference: {fileID: 905482244}
+    - target: {fileID: 4694965549695347986, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: equippedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 16484878e263e864db88e44022216994, type: 2}
     - target: {fileID: 6123412835902427474, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_Name
       value: Player & cam
@@ -672,6 +676,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9159644394087874270, guid: daf9a888f9318b8d484cc14cf8260303, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030517578
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -844,6 +852,14 @@ PrefabInstance:
     - target: {fileID: 4931193196436175986, guid: 7241e1fff202aca4ba585328830f3c9f, type: 3}
       propertyPath: m_Name
       value: Debug Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4931193196436175986, guid: 7241e1fff202aca4ba585328830f3c9f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751276265050116174, guid: 7241e1fff202aca4ba585328830f3c9f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8926696080611559656, guid: 7241e1fff202aca4ba585328830f3c9f, type: 3}
       propertyPath: m_Camera
@@ -1622,9 +1638,9 @@ GameObject:
   - component: {fileID: 1704935375}
   - component: {fileID: 1704935374}
   - component: {fileID: 1704935373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Melee Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
