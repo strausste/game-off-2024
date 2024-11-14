@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] private GameObject symbolSelector;
     [SerializeField] private GameObject symbolPanel;
     public static UIController instance;
     [SerializeField] GameObject symbolPrefab;
@@ -34,6 +35,11 @@ public class UIController : MonoBehaviour
 
     public void SetSymbols(Symbol[] symbols, Action<Symbol> onClick)
     {
+        for (int i = 0; i < symbolPanel.transform.childCount; i++)
+        {
+            Destroy(symbolPanel.transform.GetChild(i).gameObject);   
+        }
+        
         foreach (Symbol symbol in symbols)
         {
             GameObject symbolUi = Instantiate(symbolPrefab, symbolPanel.transform);
@@ -84,5 +90,10 @@ public class UIController : MonoBehaviour
             }
             inventoryChilds.Clear();
         }
+    }
+
+    public void OpenSymbolSelector(bool open)
+    {
+        symbolSelector.SetActive(open);
     }
 }

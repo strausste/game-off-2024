@@ -18,9 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Equipment")]
     [SerializeField] Transform weaponBone;
     [SerializeField] Transform shieldBone;
-    [SerializeField] Weapon equippedWeapon;
     GameObject equippedWeaponObject = null;
-    [SerializeField] Shield equippedShield;
     GameObject equippedShieldObject = null;
 
     [Header("Effects")]
@@ -28,9 +26,6 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
 
     void Start(){
-        //Init weapon and shield
-        EquipWeapon(equippedWeapon);
-        EquipShield(equippedShield);
     }
 
     // Update is called once per frame
@@ -85,17 +80,17 @@ public class PlayerController : MonoBehaviour
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
-        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && equippedWeapon){
-            Collider []hits = Physics.OverlapSphere(transform.position + equippedWeapon.hitboxOffset, 
-                equippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
-            Debug.DrawLine(transform.position + equippedWeapon.hitboxOffset, 
-                transform.position + equippedWeapon.hitboxOffset + transform.forward * equippedWeapon.hitboxSize, Color.red);
-            Debug.DrawLine(transform.position + equippedWeapon.hitboxOffset, 
-                transform.position + equippedWeapon.hitboxOffset - transform.forward * equippedWeapon.hitboxSize, Color.red);
+        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon){
+            Collider []hits = Physics.OverlapSphere(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
+                Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
+            Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
+                transform.position + Inventory.instance.EquippedWeapon.hitboxOffset + transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
+            Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
+                transform.position + Inventory.instance.EquippedWeapon.hitboxOffset - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
                 if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy))
                 {
-                    enemy.TryHurt(equippedWeapon.attack);
+                    enemy.TryHurt(Inventory.instance.EquippedWeapon.attack);
                 }
             }
         }
@@ -105,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void EquipWeapon(Weapon weapon){
+    public void EquipWeapon(Weapon weapon){
         if(!weapon)
             return;
 
@@ -113,13 +108,12 @@ public class PlayerController : MonoBehaviour
             Destroy(equippedWeaponObject);
         }
 
-        equippedWeapon = weapon;
         equippedWeaponObject = Instantiate(weapon.prefab, weaponBone);
         equippedWeaponObject.transform.localScale = weapon.modelScale;
         equippedWeaponObject.transform.localPosition = weapon.modelOffset;
     }
 
-    void EquipShield(Shield shield){
+    public void EquipShield(Shield shield){
         if(!shield)
             return;
 
@@ -127,7 +121,6 @@ public class PlayerController : MonoBehaviour
             Destroy(equippedWeaponObject);
         }
 
-        equippedShield = shield;
         equippedWeaponObject = Instantiate(shield.prefab, shieldBone);
     }
 

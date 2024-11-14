@@ -9,6 +9,26 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     private bool open = false;
     
+    [SerializeField]  Weapon equippedWeapon;
+
+    public Weapon EquippedWeapon
+    {
+        get
+        {
+            return equippedWeapon;
+        }
+    }
+    [SerializeField] Shield equippedShield;
+
+    public Shield EquippedShield
+    {
+        get
+        {
+            return equippedShield;
+        }
+    }
+    PlayerController player;
+    
     private void Start()
     {
         if (instance && instance != this)
