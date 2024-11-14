@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3462543600517380058}
   canvas: {fileID: 7271962835660294708}
+  player: {fileID: 0}
+  item: {fileID: 0}
 --- !u!135 &8924309504287082405
 SphereCollider:
   m_ObjectHideFlags: 0
