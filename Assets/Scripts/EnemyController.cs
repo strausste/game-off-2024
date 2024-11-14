@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     
     private NavMeshAgent agent;
     private float lastAttackTime = 0f;
+    private bool following = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +43,12 @@ public class EnemyController : MonoBehaviour
         // Engage
         if (distanceToPlayer <= engageDistance)
         {
+            if (!following && TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker))
+            {
+                speaker.Speak(SymbolSpeaker.PhraseType.PLAYER_SPOTTED);
+            }
+            following = true;
+
             agent.SetDestination(player.position);
 
             if (distanceToPlayer <= attackDistance)
@@ -54,6 +61,7 @@ public class EnemyController : MonoBehaviour
         // Disengage
         else if (distanceToPlayer > disengageDistance)
         {
+            following = false;
             agent.ResetPath();
         }
     }

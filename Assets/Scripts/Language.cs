@@ -1,6 +1,32 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum Meaning {
+        START, 
+        ME,
+        YOU,
+        POSITIVE,
+        NEGATIVE,
+        STRENGHT,
+        DEFENSE,
+        SPEED,
+        OPEN,
+        HERE,
+        MONEY,
+        //"DOOR",
+        CHEST,
+        //"GO",
+        //"ROOM",
+        SECRET,
+        OBJECT,
+        WEAPON,
+        SHIELD,
+        BOOTS,
+        FRIEND,
+        ENEMY
+        // ?
+    };
+
 public class Language : MonoBehaviour
 {
     public Sprite[] symbolImages; 
@@ -30,14 +56,13 @@ public class Language : MonoBehaviour
     List<string> multiMeanings = new List<string>(){
         "WEAPON", 
         "SHIELD",
-        "BOOTS"
-        // FRIEND = YOU POSITIVE
-        // ENEMY = YOU NEGATIVE
+        "BOOTS",
+        "FRIEND",
+        "ENEMY"
         // SHOP = MONEY OBJECT o ROOM MONEY
         // KEY = OBJECT OPEN
-
     };
-    
+
     public Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
     Dictionary<string, List<Symbol>> reversed_l = new Dictionary<string, List<Symbol>>();
 

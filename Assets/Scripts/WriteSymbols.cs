@@ -5,34 +5,10 @@ using System;
 
 public class WriteSymbols : MonoBehaviour
 {
-    [SerializeField]
-    GameObject symbolPrefab;
-    [SerializeField]
-    HorizontalLayoutGroup layout;
-    [SerializeField]
-    Meaning[] meanings;
+    [SerializeField] GameObject symbolPrefab;
+    [SerializeField] HorizontalLayoutGroup layout;
+    [SerializeField] Meaning[] meanings;
     Language language;
-    
-    enum Meaning {
-        START, 
-        ME,
-        YOU,
-        POSITIVE,
-        NEGATIVE,
-        STRENGHT,
-        DEFENSE,
-        SPEED,
-        OPEN,
-        HERE,
-        MONEY,
-        //"DOOR",
-        CHEST,
-        //"GO",
-        //"ROOM",
-        SECRET,
-        OBJECT
-        // ?
-    };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +18,7 @@ public class WriteSymbols : MonoBehaviour
     }
 
     void writeSymbols(){
+        language = Language.instance;
         List<Symbol> symbols = new List<Symbol>();
         foreach (Meaning mean in meanings){
             symbols.AddRange(language.GetSymbol(Enum.GetName(typeof(Meaning), mean)));
@@ -52,5 +29,9 @@ public class WriteSymbols : MonoBehaviour
             GameObject instance = Instantiate(symbolPrefab, layout.transform);
             instance.GetComponent<Image>().sprite = symbol.getSprite();
         }
+    }
+
+    public void SetMeanings(Meaning[] newMeanings){
+        meanings = newMeanings;
     }
 }
