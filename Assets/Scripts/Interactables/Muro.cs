@@ -6,10 +6,12 @@ public class Muro : MonoBehaviour, IInteractable
     [SerializeField] float numberOfTries;
     public GameObject canvas;
     public GameObject secretDoor;
-    private bool solved = false;
+    private bool solved;
 
     //[SerializeField] TipoListaSimboliInput[] listaSimboliInput;
+    [SerializeField] Meaning[] listaSimboliInput;
     //[SerializeField] TipoListaSimboliRiposta[] listaSimboliRiposta;
+    [SerializeField] Meaning[] listaSimboliRiposta;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,14 +34,16 @@ public class Muro : MonoBehaviour, IInteractable
     {
         if (!solved)
         {
-            //if (numberOfTries > 0) {
-            
+            if (numberOfTries > 0) {
+
                 // prende la lista dei simboli dati in input dal player
                 // se la lista dei simboli in input è uguale a quella dei simboli della risposta allora
-                       
-                       canvas.SetActive(false);
-                       solved = true;
-            //}
+                if (listaSimboliInput.Equals(listaSimboliRiposta))
+                {
+                    canvas.SetActive(false);
+                    solved = true;
+                }
+            }
         }
     }
     private void OnTriggerEnter()

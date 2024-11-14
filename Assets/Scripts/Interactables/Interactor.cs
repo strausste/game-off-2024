@@ -31,7 +31,7 @@ public class Interactor : MonoBehaviour
             {   
                 //se trova un oggetto di fronte a se che eredita l'interfaccia IInteractable
                 if(hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                {   
+                {
                     //chiama la funzione di quell'oggetto
                     interactObj.Interact();
                 }
