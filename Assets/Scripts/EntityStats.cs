@@ -11,10 +11,11 @@ public class EntityStats : MonoBehaviour
     
     [Header ("Effects")]
     [SerializeField] ParticleSystem hitParticles;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] Material flashMaterial;
 
     Rigidbody rb;
-    MeshRenderer meshRenderer;
-    Color origColor;
+    Material origMaterial;
     float flashTime = 0.1f;
 
     int hp;
@@ -23,14 +24,13 @@ public class EntityStats : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        origColor = meshRenderer.material.color;
+        origMaterial = meshRenderer.material;
         hp = maxHp;
     }
 
     public void TryHurt(int damage){
         int trueDamage = damage - GetDefense();
-        Mathf.Clamp(trueDamage, 1, damage);
+        trueDamage = Mathf.Clamp(trueDamage, 1, damage);
         if (hp >= 0){
             Hurt(trueDamage);
         }
@@ -39,6 +39,7 @@ public class EntityStats : MonoBehaviour
     }
 
     int Hurt(int damage){
+        print(damage);
         int rest = hp - damage;
         hp -= damage;
 
@@ -53,13 +54,15 @@ public class EntityStats : MonoBehaviour
 
     void Die(){
         print(this + " è morto");
+        //Should call death animation first
+        Destroy(gameObject);
     }
 
     IEnumerator Flash(){
         Instantiate(hitParticles, transform.position, Quaternion.identity);
-        meshRenderer.material.color = Color.white;
+        meshRenderer.material = flashMaterial;
         yield return new WaitForSeconds(flashTime);
-        meshRenderer.material.color = origColor;
+        meshRenderer.material = origMaterial;
     }
 
     public void Push(int knockBackForce){
