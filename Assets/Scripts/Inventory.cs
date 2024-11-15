@@ -41,6 +41,8 @@ public class Inventory : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -80,6 +82,17 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("Equipped weapon");
             equippedWeapon = (Weapon)item;
+            player.EquipWeapon(equippedWeapon);
+        }
+        else if (item.GetType() == typeof(Shield))
+        {
+            equippedShield = (Shield)item;
+            player.EquipShield(equippedShield);
+        }
+        else
+        {
+            Debug.Log("Implement item use here");
+            //We could just spawn the prefab attached to the object and handle the behaviour in there
         }
         changedEquipment.Invoke();
     }

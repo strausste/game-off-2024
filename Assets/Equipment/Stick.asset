@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Stick
   sprite: {fileID: 21300000, guid: ad2272d846acd5072bab3e6303ccab6a, type: 3}
-  prefab: {fileID: 0}
+  prefab: {fileID: 919132149155446097, guid: 958013be90849fa4c80576a146b32e8a, type: 3}
   attack: 1
   modelOffset: {x: 0, y: 0.3, z: 0}
   modelScale: {x: 0.7, y: 0.7, z: 0.7}
+  modelRotation: {x: 0, y: 0, z: 0}
   hitboxSize: 1
   hitboxOffset: {x: 0, y: 0, z: 1}

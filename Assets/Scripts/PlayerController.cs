@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
         equippedWeaponObject = Instantiate(weapon.prefab, weaponBone);
         equippedWeaponObject.transform.localScale = weapon.modelScale;
         equippedWeaponObject.transform.localPosition = weapon.modelOffset;
+        equippedWeaponObject.transform.localRotation = Quaternion.Euler(weapon.modelRotation);
     }
 
     public void EquipShield(Shield shield){
@@ -118,10 +119,13 @@ public class PlayerController : MonoBehaviour
             return;
 
         if(equippedShieldObject){
-            Destroy(equippedWeaponObject);
+            Destroy(equippedShieldObject);
         }
 
-        equippedWeaponObject = Instantiate(shield.prefab, shieldBone);
+        equippedShieldObject = Instantiate(shield.prefab, shieldBone);
+        equippedShieldObject.transform.localScale = shield.modelScale;
+        equippedShieldObject.transform.localPosition = shield.modelOffset;
+        equippedShieldObject.transform.localRotation = Quaternion.Euler(shield.modelRotation);
     }
 
     // IEnumerator disableSwordHitbox(){    //
