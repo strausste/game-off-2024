@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
             slashEffect.Play();
             Debug.Log("Starting attack");
+            hitEnemies.Clear();
             //swordCollider.enabled = true;
             //StartCoroutine(disableSwordHitbox());
         }
