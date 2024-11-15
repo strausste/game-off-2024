@@ -275,7 +275,6 @@ GameObject:
   - component: {fileID: 2818734770858064768}
   - component: {fileID: 2852520813627773490}
   - component: {fileID: 4540161306560969078}
-  - component: {fileID: 6525323122885014319}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -421,8 +420,6 @@ MonoBehaviour:
   animator: {fileID: 4203384678252278769}
   weaponBone: {fileID: 5561683222975476019}
   shieldBone: {fileID: 0}
-  equippedWeapon: {fileID: 0}
-  equippedShield: {fileID: 0}
   slashEffect: {fileID: 8690375538966534662}
 --- !u!81 &8198126454188989281
 AudioListener:
@@ -512,20 +509,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 2
---- !u!114 &6525323122885014319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3293567711111656712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca3e4c8269d02715a60152e20f437a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _items:
-  - {fileID: 11400000, guid: 16484878e263e864db88e44022216994, type: 2}
 --- !u!1 &6123412835902427474
 GameObject:
   m_ObjectHideFlags: 0

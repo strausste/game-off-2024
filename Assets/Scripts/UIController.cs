@@ -77,6 +77,7 @@ public class UIController : MonoBehaviour
 
                 var itemUI = inventoryItem.GetComponent<InventoryItemUI>();
                 itemUI.SetItem(item);
+                itemUI.OnClick.AddListener(ClickedItem);
                 
                 inventoryChilds.Add(inventoryItem);
             }
@@ -90,6 +91,11 @@ public class UIController : MonoBehaviour
             }
             inventoryChilds.Clear();
         }
+    }
+
+    void ClickedItem(Item item)
+    {
+        Inventory.instance.UseItem(item);
     }
 
     public void OpenSymbolSelector(bool open)

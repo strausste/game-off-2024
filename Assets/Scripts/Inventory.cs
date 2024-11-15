@@ -31,8 +31,9 @@ public class Inventory : MonoBehaviour
     
     private void Start()
     {
-        if (instance && instance != this)
+        if (instance != null && instance != this)
         {
+            Debug.Log("Destroying duplicate Inventory");
             Destroy(gameObject);
         }
 
@@ -69,5 +70,14 @@ public class Inventory : MonoBehaviour
         if (open)
             items = GetItems();
         UIController.instance.OpenInventory(open, items);
+    }
+
+    public void UseItem(Item item)
+    {
+        if (item.GetType() == typeof(Weapon))
+        {
+            Debug.Log("Equipped weapon");
+            equippedWeapon = (Weapon)item;
+        }
     }
 }
