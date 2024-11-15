@@ -585,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf7a0de7184c01338a0229b3babed77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolSelector: {fileID: 0}
+  symbolSelector: {fileID: 1054617448374237995}
   symbolPanel: {fileID: 7464796770038642009}
   symbolPrefab: {fileID: 8280706984845107759, guid: 8bf45f4dc80a3f4d488784f153793286, type: 3}
   timer: {fileID: 8787011311770503676}
@@ -798,6 +798,11 @@ PrefabInstance:
 --- !u!224 &862407071947286299 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8787653983688907290, guid: 2d2c5a58e7a4c9da299dc0c87c31623f, type: 3}
+  m_PrefabInstance: {fileID: 8215663121476435201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1054617448374237995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8980501943342810666, guid: 2d2c5a58e7a4c9da299dc0c87c31623f, type: 3}
   m_PrefabInstance: {fileID: 8215663121476435201}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7464796770038642009 stripped

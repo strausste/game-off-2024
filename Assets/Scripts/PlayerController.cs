@@ -97,7 +97,14 @@ public class PlayerController : MonoBehaviour
                 if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy) && !hitEnemies.Contains(hit.gameObject))
                 {
                     hitEnemies.Add(hit.gameObject);
-                    enemy.TryHurt(Inventory.instance.EquippedWeapon.attack);
+                    if (GameController.instance.GetCheatCodes().onePunch)
+                    {
+                        enemy.TryHurt(100000);  //One shots any enemy (hopefully)
+                    }
+                    else
+                    {
+                        enemy.TryHurt(Inventory.instance.EquippedWeapon.attack);
+                    }
                 }
             }
         }

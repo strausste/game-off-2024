@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173959397162763713}
   - component: {fileID: 3720806774723170506}
+  - component: {fileID: 8872712335983749531}
   m_Layer: 0
   m_Name: Game controller
   m_TagString: Untagged
@@ -44,3 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fcc4416fd25d5009ac20740ce3c775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheatCodes: {fileID: 8872712335983749531}
+--- !u!114 &8872712335983749531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253679395014054267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2332c80b69dbe52494be7c8ec4563e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxInputLength: 30
+  onePunch: 0
+  phantomPain: 0

@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour
     }
 
     public static GameController instance;
-
+    [SerializeField] CheatCodes cheatCodes;
+    
     void Awake(){
         if(instance && instance != this){
             Destroy(gameObject);
@@ -23,5 +24,10 @@ public class GameController : MonoBehaviour
 
     public void PauseGame(bool pause){
         this.gamePaused = pause;
+    }
+
+    public CheatCodes GetCheatCodes()
+    {
+        return cheatCodes;
     }
 }

@@ -50,6 +50,14 @@ public class UIController : MonoBehaviour
             
             var button = symbolUi.GetComponent<Button>();
             button.onClick.AddListener(() => onClick.Invoke(symbol));
+
+            if (GameController.instance.GetCheatCodes().phantomPain)
+            {
+                var meaningText = symbolUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                var symbolList = new List<Symbol>();
+                symbolList.Add(symbol);
+                meaningText.text = Language.instance.GetMeaning(symbolList);
+            }
         }
     }
 
