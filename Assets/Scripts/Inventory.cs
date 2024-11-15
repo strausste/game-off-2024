@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 
 public class Inventory : MonoBehaviour
@@ -10,7 +11,8 @@ public class Inventory : MonoBehaviour
     private bool open = false;
     
     [SerializeField]  Weapon equippedWeapon;
-
+    public UnityEvent changedEquipment;
+    
     public Weapon EquippedWeapon
     {
         get
@@ -79,5 +81,6 @@ public class Inventory : MonoBehaviour
             Debug.Log("Equipped weapon");
             equippedWeapon = (Weapon)item;
         }
+        changedEquipment.Invoke();
     }
 }
