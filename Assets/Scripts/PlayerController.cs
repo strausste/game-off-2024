@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] VisualEffect slashEffect;
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
 
+    List<GameObject> hitEnemies = new List<GameObject>();
+    
     void Start(){
     }
 
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
             slashEffect.Play();
+            Debug.Log("Starting attack");
             //swordCollider.enabled = true;
             //StartCoroutine(disableSwordHitbox());
         }
@@ -81,6 +85,7 @@ public class PlayerController : MonoBehaviour
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
         if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon){
+            Debug.Log("Attacking");
             Collider []hits = Physics.OverlapSphere(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
                 Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
             Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
@@ -88,8 +93,10 @@ public class PlayerController : MonoBehaviour
             Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
                 transform.position + Inventory.instance.EquippedWeapon.hitboxOffset - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
-                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy))
+                Debug.Log(hit.gameObject.name);
+                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy) && !hitEnemies.Contains(hit.gameObject))
                 {
+                    hitEnemies.Add(hit.gameObject);
                     enemy.TryHurt(Inventory.instance.EquippedWeapon.attack);
                 }
             }
