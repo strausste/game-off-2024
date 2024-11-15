@@ -42,8 +42,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = Vector3.zero;
         
         bool canMove = (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) &&
-            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll") &&
-            !animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
+            !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll");
         
         //Se non sta rollando e si sta muovendo
         if(canMove)
