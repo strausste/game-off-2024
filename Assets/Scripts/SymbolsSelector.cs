@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class SymbolsSelector : MonoBehaviour
 {
-    public UnityEvent<Symbol[]> inputSymbolsEvent = new UnityEvent<Symbol[]>();
+    public static UnityEvent<Symbol[]> inputSymbolsEvent;
     //If not empty filters symbols to leave only those that matter in this context
     [SerializeField] private List<string> possibleAnswers = new List<string>();
     private List<Symbol> symbols = new List<Symbol>();
