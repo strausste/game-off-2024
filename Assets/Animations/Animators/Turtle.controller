@@ -78,7 +78,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Slime
+  m_Name: Turtle
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: following
@@ -356,7 +356,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a3010b0fc7044499ad34afdf5326f623, type: 3}
+  m_Motion: {fileID: 7400000, guid: 1f583387dcc14604b6836cea4b8d68d0, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -383,7 +383,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ced1d66978a144d0b646ff621ebe620c, type: 3}
+  m_Motion: {fileID: 7400000, guid: 38db71b772e940b791a0d173406cbb04, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -437,7 +437,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a3010b0fc7044499ad34afdf5326f623, type: 3}
+  m_Motion: {fileID: 7400000, guid: 1f583387dcc14604b6836cea4b8d68d0, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -463,7 +463,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 35bb20ecf5de4fdd8dcd8e28e4053f3d, type: 3}
+  m_Motion: {fileID: 7400000, guid: b5feebd3cb9a4b82aa44801bbe7548bb, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -491,7 +491,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 373e018c84074eaca27e94e2b90039bb, type: 3}
+  m_Motion: {fileID: 7400000, guid: 60dd7ef4512a4404896e945d3004f2b6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -724,7 +724,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f99c1e532d874b5aa4c470d8aad16a64, type: 3}
+  m_Motion: {fileID: 7400000, guid: eee9d7beb7b440a58147d924f277c7ce, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

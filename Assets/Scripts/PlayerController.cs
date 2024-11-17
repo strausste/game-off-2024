@@ -94,16 +94,16 @@ public class PlayerController : MonoBehaviour
                 transform.position + Inventory.instance.EquippedWeapon.hitboxOffset - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
                 Debug.Log(hit.gameObject.name);
-                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EntityStats enemy) && !hitEnemies.Contains(hit.gameObject))
+                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EnemyController enemy) && !hitEnemies.Contains(hit.gameObject))
                 {
                     hitEnemies.Add(hit.gameObject);
                     if (GameController.instance.GetCheatCodes().onePunch)
                     {
-                        enemy.TryHurt(100000);  //One shots any enemy (hopefully)
+                        enemy.TakeDamage(100000);  //One shots any enemy (hopefully)
                     }
                     else
                     {
-                        enemy.TryHurt(Inventory.instance.EquippedWeapon.attack);
+                        enemy.TakeDamage(Inventory.instance.EquippedWeapon.attack);
                     }
                 }
             }

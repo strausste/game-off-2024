@@ -19,61 +19,123 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float disengageDistance;
 
     [Header("Attack")] 
-    [SerializeField] private float attackCooldown;
+    [SerializeField] private float attackCooldown = 1;
     [SerializeField] private float attackDistance;
     [SerializeField] private int attackDamage;
 
     
     private NavMeshAgent agent;
+    private Animator animator;
+    private EntityStats stats;
     private float lastAttackTime = 0f;
-    private bool following = false;
 
+    enum State {IDLE, FOLLOW, ATTACK, DIE}
+    private State state = State.IDLE;
+    Vector3 lastPlayerPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        stats = GetComponent<EntityStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        switch (state){
+            case State.IDLE: Idle();
+            break;
+            case State.FOLLOW: Follow();
+            break;
+            case State.ATTACK: Attack();
+            break;
+            case State.DIE: Dying();
+            break;
+        }
+    }
+
+    void Idle(){
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         // Engage
         if (distanceToPlayer <= engageDistance)
         {
-            if (!following && TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker))
+            if (TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker))
             {
                 speaker.Speak(SymbolSpeaker.PhraseType.PLAYER_SPOTTED);
             }
-            following = true;
 
-            agent.SetDestination(player.position);
-
-            if (distanceToPlayer <= attackDistance)
-            {
-                Attack();
-
-                //Debug.Log("Current player's health: " + phc.GetCurrentHealth());
-            }
+            state = State.FOLLOW;
+            animator.SetBool("following", true);
         }
-        // Disengage
-        else if (distanceToPlayer > disengageDistance)
+    }
+    
+    void Follow(){
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer <= attackDistance)
         {
-            following = false;
-            agent.ResetPath();
+            state = State.ATTACK;
+            animator.SetBool("attacking", true);         
         }
+
+        if (distanceToPlayer > disengageDistance)
+        {
+            agent.ResetPath();
+            state = State.IDLE;
+            animator.SetBool("following", false);
+        }
+        if (distanceToPlayer <= engageDistance)
+        {
+            lastPlayerPos = player.position;
+        }
+
+        agent.SetDestination(lastPlayerPos);
     }
 
     void Attack()
     {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer > attackDistance)
+        {
+            state = State.FOLLOW;
+            animator.SetBool("attacking", false);
+        }
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             lastAttackTime = Time.time;
-
+            animator.SetTrigger("attack");
             //phc.TakeDamage(attackDamage);
         }
+        
+        Vector3 targetDirection = player.position - transform.position;
+        int rotSpeed = 5;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * rotSpeed, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    void Dying(){
+        
+    }
+
+    void Die(){
+        print(this + " è morto");
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int damage){
+        if (state == State.DIE)
+            return;
+
+        if (!stats.TryHurt(damage)){
+            state = State.DIE;
+            animator.SetTrigger("die");
+        }
+
+        //Aggiunta per iniziare a metterla nel player controller
+        Debug.Log($"Hit {gameObject} for {damage}");
     }
 
     // Debug
@@ -93,10 +155,5 @@ public class EnemyController : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDistance);
         }
-    }
-
-    public void TakeDamage(int damage){
-        //Aggiunta per iniziare a metterla nel player controller
-        Debug.Log($"Hit {gameObject} for {damage}");
     }
 }

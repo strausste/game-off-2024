@@ -28,14 +28,19 @@ public class EntityStats : MonoBehaviour
         hp = maxHp;
     }
 
-    public void TryHurt(int damage){
+    public bool TryHurt(int damage){
         int trueDamage = damage - GetDefense();
+        int rest = GetHp();
         trueDamage = Mathf.Clamp(trueDamage, 1, damage);
         if (hp >= 0){
-            Hurt(trueDamage);
+            rest = Hurt(trueDamage);
         }
 
         Push(5);
+
+        if (rest <= 0)
+            return false;
+        return true;
     }
 
     int Hurt(int damage){
@@ -53,9 +58,7 @@ public class EntityStats : MonoBehaviour
     }
 
     void Die(){
-        print(this + " è morto");
-        //Should call death animation first
-        Destroy(gameObject);
+        
     }
 
     IEnumerator Flash(){
