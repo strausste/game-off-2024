@@ -164,4 +164,30 @@ public class Language : MonoBehaviour
         
         return null;
     }
+
+    public string GetMeaningByID(List<int> ids)
+    {
+        List<Symbol> sym = new List<Symbol>();
+
+        foreach (int id in ids) {
+
+            sym.Add(GetSymbolById(id));
+        
+        }
+        return GetMeaning(sym);
+    }
+
+    public Symbol GetSymbolById(int id)
+    {
+        foreach (var symbol in symbols)
+        {
+            if(symbol.getId() == id)
+            {
+                return symbol;
+            }
+        }
+        
+
+        return null;
+    }
 }
