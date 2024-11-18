@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
     /* -ste: I've not decided yet if divide this class in two childs (RangedEnemyController and MeleeEnemyController) */
-    public enum EnemyType {Melee, Ranged};
+    public enum EnemyType {MELEE, RANGED};
+    enum State {IDLE, FOLLOW, ATTACK, DIE}
 
     [Header("References")]
     [SerializeField] private Transform player; 
@@ -19,17 +21,19 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float disengageDistance;
 
     [Header("Attack")] 
+    [SerializeField] private Collider attackBox;
     [SerializeField] private float attackCooldown = 1;
     [SerializeField] private float attackDistance;
     [SerializeField] private int attackDamage;
 
+    [Header("Ranged")] 
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform shootTransform;
     
     private NavMeshAgent agent;
     private Animator animator;
     private EntityStats stats;
     private float lastAttackTime = 0f;
-
-    enum State {IDLE, FOLLOW, ATTACK, DIE}
     private State state = State.IDLE;
     Vector3 lastPlayerPos;
 
@@ -39,6 +43,8 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         stats = GetComponent<EntityStats>();
+
+        agent.speed = stats.GetSpeed();
     }
 
     // Update is called once per frame
@@ -91,6 +97,7 @@ public class EnemyController : MonoBehaviour
             lastPlayerPos = player.position;
         }
 
+        agent.isStopped = false;
         agent.SetDestination(lastPlayerPos);
     }
 
@@ -108,12 +115,18 @@ public class EnemyController : MonoBehaviour
             lastAttackTime = Time.time;
             animator.SetTrigger("attack");
             //phc.TakeDamage(attackDamage);
+            if (enemyType == EnemyType.MELEE){
+                attackBox.enabled = true;
+                StartCoroutine(disableSwordHitbox());
+            }
         }
         
         Vector3 targetDirection = player.position - transform.position;
         int rotSpeed = 5;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * rotSpeed, 0.0f);
+        newDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(newDirection);
+        agent.isStopped = true;
     }
 
     void Dying(){
@@ -136,6 +149,17 @@ public class EnemyController : MonoBehaviour
 
         //Aggiunta per iniziare a metterla nel player controller
         Debug.Log($"Hit {gameObject} for {damage}");
+    }
+
+    void ShootProjectile(){
+        GameObject newProj = Instantiate(projectile, shootTransform.position, transform.rotation);
+        newProj.GetComponent<Projectile>().SetSender(gameObject);
+    }
+
+    IEnumerator disableSwordHitbox(){   
+        //Disables the attack hitbox after attacking
+        yield return new WaitForSeconds(0.1f);
+        attackBox.enabled = false;
     }
 
     // Debug

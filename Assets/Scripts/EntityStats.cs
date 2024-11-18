@@ -80,14 +80,14 @@ public class EntityStats : MonoBehaviour
     public int GetAttack(){
         //Sostituire con valori globali 
         //ES: global_attack_modifier
-        return attackLv * 2;
+        return (int)(attackLv * Globals.globalAttackScaling);
     }
     public int GetDefense(){
         //Sostituire con valori globali
-        return defenseLv * 1;
+        return (int)(defenseLv * Globals.globalDefenseScaling);
     }
     public int GetSpeed(){
         //Sostituire con valori globali
-        return speedLv * 10;
+        return (int)(Globals.baseSpeed + speedLv * Globals.globalSpeedScaling);
     }
 }
