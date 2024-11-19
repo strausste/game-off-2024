@@ -4,7 +4,7 @@ public class BalloonText : MonoBehaviour
 {
     [SerializeField] Transform target;
     WriteSymbols canvas;
-    public Vector3 offset = new Vector3(1.5f,1.2f,0f);
+    public Vector3 offset = new Vector3(1.5f,2f,0f);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

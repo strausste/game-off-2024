@@ -80,6 +80,15 @@ public class EnemyController : MonoBehaviour
     
     void Follow(){
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+    
+        if (distanceToPlayer <= engageDistance)
+        {
+            lastPlayerPos = player.position;
+        }
+
+        agent.isStopped = false;
+        agent.SetDestination(lastPlayerPos);
+
         if (distanceToPlayer <= attackDistance)
         {
             state = State.ATTACK;
@@ -92,33 +101,16 @@ public class EnemyController : MonoBehaviour
             state = State.IDLE;
             animator.SetBool("following", false);
         }
-        if (distanceToPlayer <= engageDistance)
-        {
-            lastPlayerPos = player.position;
-        }
-
-        agent.isStopped = false;
-        agent.SetDestination(lastPlayerPos);
     }
 
     void Attack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer > attackDistance)
-        {
-            state = State.FOLLOW;
-            animator.SetBool("attacking", false);
-        }
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             lastAttackTime = Time.time;
             animator.SetTrigger("attack");
-            //phc.TakeDamage(attackDamage);
-            if (enemyType == EnemyType.MELEE){
-                attackBox.enabled = true;
-                StartCoroutine(disableSwordHitbox());
-            }
         }
         
         Vector3 targetDirection = player.position - transform.position;
@@ -127,6 +119,12 @@ public class EnemyController : MonoBehaviour
         newDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(newDirection);
         agent.isStopped = true;
+
+        if (distanceToPlayer > attackDistance && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            state = State.FOLLOW;
+            animator.SetBool("attacking", false);
+        }
     }
 
     void Dying(){
@@ -134,8 +132,14 @@ public class EnemyController : MonoBehaviour
     }
 
     void Die(){
-        print(this + " è morto");
+        //print(this + " è morto");
         Destroy(gameObject);
+    }
+
+    void LandAttack(){
+        if (enemyType == EnemyType.MELEE){
+            StartCoroutine(EnableAttackBox());
+        }
     }
 
     public void TakeDamage(int damage){
@@ -156,7 +160,8 @@ public class EnemyController : MonoBehaviour
         newProj.GetComponent<Projectile>().SetSender(gameObject);
     }
 
-    IEnumerator disableSwordHitbox(){   
+    IEnumerator EnableAttackBox(){  
+        attackBox.enabled = true; 
         //Disables the attack hitbox after attacking
         yield return new WaitForSeconds(0.1f);
         attackBox.enabled = false;

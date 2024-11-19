@@ -11,7 +11,7 @@ public class EntityStats : MonoBehaviour
     
     [Header ("Effects")]
     [SerializeField] ParticleSystem hitParticles;
-    [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] Renderer[] meshRenderers;
     [SerializeField] Material flashMaterial;
 
     Rigidbody rb;
@@ -24,7 +24,9 @@ public class EntityStats : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        origMaterial = meshRenderer.material;
+        if (meshRenderers.Length > 0) {
+            origMaterial = meshRenderers[0].material;
+        }
         hp = maxHp;
     }
 
@@ -44,7 +46,7 @@ public class EntityStats : MonoBehaviour
     }
 
     int Hurt(int damage){
-        print(damage);
+        //print(damage);
         int rest = hp - damage;
         hp -= damage;
 
@@ -63,9 +65,14 @@ public class EntityStats : MonoBehaviour
 
     IEnumerator Flash(){
         Instantiate(hitParticles, transform.position, Quaternion.identity);
-        meshRenderer.material = flashMaterial;
+        foreach (Renderer renderer in meshRenderers){
+            renderer.material = flashMaterial;
+        }
         yield return new WaitForSeconds(flashTime);
-        meshRenderer.material = origMaterial;
+
+        foreach (Renderer renderer in meshRenderers){
+            renderer.material = origMaterial;
+        }
     }
 
     public void Push(int knockBackForce){

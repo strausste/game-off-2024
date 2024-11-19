@@ -23,7 +23,7 @@ public class SymbolSpeaker : MonoBehaviour
     public void Speak(PhraseType phrase_type){
         switch (phrase_type){
             case PhraseType.PLAYER_SPOTTED: 
-                StartCoroutine(ShowBalloon(generalPhrase));
+                StartCoroutine(ShowBalloon(playerSpottedPhrase));
                 break;
             case PhraseType.DIE: 
                 StartCoroutine(ShowBalloon(diePhrase));
