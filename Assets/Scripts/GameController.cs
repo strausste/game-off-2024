@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
         }
 
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PauseGame(bool pause){

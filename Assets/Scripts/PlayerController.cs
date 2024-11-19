@@ -51,9 +51,9 @@ public class PlayerController : MonoBehaviour
             
             transform.forward = input.normalized;
 
-            movement = moveSpeed * input;
+            movement = GameController.instance.GetCheatCodes().iAmSpeed ? 100 * input : moveSpeed * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            movement = rollSpeed * transform.forward.normalized;
+            movement = GameController.instance.GetCheatCodes().iAmSpeed ? 110 * transform.forward.normalized : rollSpeed * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 

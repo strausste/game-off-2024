@@ -31,6 +31,20 @@ public class Inventory : MonoBehaviour
     }
     PlayerController player;
     
+    int money = 0;
+
+    public int Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+        }
+    }
+    
     private void Start()
     {
         if (instance != null && instance != this)
@@ -43,6 +57,8 @@ public class Inventory : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        
+        CheatCodes.activatedCheat.AddListener(SetInfiniteMoney);
     }
 
     private void Update()
@@ -95,5 +111,13 @@ public class Inventory : MonoBehaviour
             //We could just spawn the prefab attached to the object and handle the behaviour in there
         }
         changedEquipment.Invoke();
+    }
+
+    void SetInfiniteMoney()
+    {
+        if (GameController.instance.GetCheatCodes().dollarDollarBillYall)
+        {
+            money = 1000000000;
+        }
     }
 }
