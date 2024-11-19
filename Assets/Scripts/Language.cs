@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using System.Linq;
 
 public enum Meaning {
         START, 
@@ -153,9 +155,11 @@ public class Language : MonoBehaviour
     //Gets a meaning from a list of Symbols
     public string GetMeaning(List<Symbol> s){
         if (language.ContainsKey(s))
+        {
             return language[s];
+        }
 
-        return null;
+         return null;
     }
 
     public List<Symbol> GetSymbol(string mean){
@@ -165,8 +169,30 @@ public class Language : MonoBehaviour
         return null;
     }
 
+    public string HardGetMeaning(Symbol[] symbols)
+    {
+        foreach(var l in language)
+        {
+            for (int i = 0; i < symbols.Count(); i++) {
+                if (!l.Key[i].Equals(symbols[i]))
+                {
+                    break;
+                }
+                if(i== l.Key.Count - 1)
+                {
+                    return l.Value;
+                }
+                
+            }
+        }
+        return null;
+    }
+
+
+    /*
     public string GetMeaningByID(List<int> ids)
     {
+        
         List<Symbol> sym = new List<Symbol>();
 
         foreach (int id in ids) {
@@ -174,7 +200,10 @@ public class Language : MonoBehaviour
             sym.Add(GetSymbolById(id));
         
         }
+
+
         return GetMeaning(sym);
+
     }
 
     public Symbol GetSymbolById(int id)
@@ -189,5 +218,5 @@ public class Language : MonoBehaviour
         
 
         return null;
-    }
+    }*/
 }

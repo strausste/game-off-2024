@@ -16,12 +16,10 @@ public class Muro : MonoBehaviour, IInteractable
     private List<string> listaStringInput = new List<string>();
 
     [SerializeField] Meaning[] risposta;
-    private List<string> listaStringRisposta;
+    private List<string> listaStringRisposta = new List<string>();
 
     UnityEvent<Symbol[]> eventoSimboliInput = new UnityEvent<Symbol[]>();
-    UnityAction<Symbol[]> call;
 
-    List<Symbol> temp;
 
 
 
@@ -37,7 +35,7 @@ public class Muro : MonoBehaviour, IInteractable
         {
             listaStringRisposta.Add(Enum.GetName(typeof(Meaning), risp));
         }
-
+        
     }
 
     // Update is called once per frame
@@ -49,7 +47,6 @@ public class Muro : MonoBehaviour, IInteractable
             secretDoor.SetActive(true);
         }
 
-        //Debug.Log(listaSimboliInput[0]);
     }
 
     public void Interact()
@@ -60,7 +57,6 @@ public class Muro : MonoBehaviour, IInteractable
             if (numberOfTries > 0) {
                 // prende la lista dei simboli dati in input dal player
                 UIController.instance.OpenSymbolSelector(true);
-                print("fuori fuori");
 
             }
         }
@@ -68,37 +64,33 @@ public class Muro : MonoBehaviour, IInteractable
 
     public void GetInputSymbols(Symbol[] symbols)
     {
-        print("Dentro");
-        //Debug.Log(symbols[0].getId());
-
-        List<int> ints = new List<int>();
-
-        foreach (Symbol s in symbols)
-        {
-            ints.Add(s.getId());
-        }
-
-        listaStringInput.Add(Language.instance.GetMeaningByID(ints));
+        
+        listaStringInput.Add(Language.instance.HardGetMeaning(symbols));
 
         Control();
-
     }
 
     public void Control()
     {
-        print(listaStringInput[0]);
-        print(listaStringRisposta[0]);
-        if (listaStringInput.Equals(listaStringRisposta))
+        bool flag = true;
+        for (int i = 0; i < listaStringRisposta.Count; i++)
         {
+
+            if (!(listaStringInput[i] == listaStringRisposta[i]))
+            {
+
+                flag = false;
+                break;
+            }
             
-            print("Corretto");
-            //canvas.SetActive(false);
-            //solved = true;
         }
-        else
+        if(flag == true)
         {
-            print("sbagliato");
+            canvas.SetActive(true);
+            solved = true;
         }
+        
+        numberOfTries--;
     }
 
 

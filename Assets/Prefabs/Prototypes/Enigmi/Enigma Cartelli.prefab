@@ -502,8 +502,7 @@ MonoBehaviour:
   numberOfTries: 1
   canvas: {fileID: 6124793366512932380}
   secretDoor: {fileID: 1690715993226437981}
-  listaSimboliInput: 
-  listaSimboliRiposta: 
+  risposta: 0300000004000000
 --- !u!65 &3841617316732475561
 BoxCollider:
   m_ObjectHideFlags: 0
