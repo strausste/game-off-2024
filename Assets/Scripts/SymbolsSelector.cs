@@ -33,7 +33,6 @@ public class SymbolsSelector : MonoBehaviour
 
     public void ConfirmSymbols()
     {
-        Debug.Log(symbols.ToArray().Length);
         inputSymbolsEvent.Invoke(symbols.ToArray());
         ClearSymbols();
         UIController.instance.OpenSymbolSelector(false);

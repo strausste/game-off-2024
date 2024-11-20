@@ -65,7 +65,7 @@ public class Muro : MonoBehaviour, IInteractable
     public void GetInputSymbols(Symbol[] symbols)
     {
         
-        listaStringInput.Add(Language.instance.HardGetMeaning(symbols));
+        listaStringInput.Add(Language.instance.GetMeaning(symbols));
 
         Control();
     }

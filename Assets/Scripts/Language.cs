@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using System.Linq;
 
 public enum Meaning {
@@ -25,15 +24,17 @@ public enum Meaning {
         SHIELD,
         BOOTS,
         FRIEND,
-        ENEMY
-        // ?
+        ENEMY,
+        QUESTION
     };
 
 public class Language : MonoBehaviour
 {
-    public Sprite[] symbolImages; 
+    [SerializeField] Sprite[] symbolImages;
+    [SerializeField] Sprite questionSprite;
     //Symbols in the language
     public List<Symbol> symbols = new List<Symbol>();
+    Symbol questionMark;
     List<string> singleMeanings = new List<string>(){
         "START", 
         "ME",
@@ -52,7 +53,6 @@ public class Language : MonoBehaviour
         //"ROOM",
         "SECRET",
         "OBJECT"
-        // ?
     };
 
     List<string> multiMeanings = new List<string>(){
@@ -65,8 +65,9 @@ public class Language : MonoBehaviour
         // KEY = OBJECT OPEN
     };
 
-    public Dictionary<List<Symbol>, string> language = new Dictionary<List<Symbol>, string>();
-    Dictionary<string, List<Symbol>> reversed_l = new Dictionary<string, List<Symbol>>();
+    static SymbolsComparer comparer = new SymbolsComparer();
+    Dictionary<Symbol[], string> language = new(comparer);
+    Dictionary<string, Symbol[]> reversed_l = new Dictionary<string, Symbol[]>();
 
     public static Language instance;
     
@@ -89,6 +90,8 @@ public class Language : MonoBehaviour
             symbols.Add(new Symbol(i, image));
             i++;
         }
+        //Adds question Mark
+        questionMark = new Symbol(i, questionSprite);
     }
 
     void SetMeanings(){
@@ -99,7 +102,7 @@ public class Language : MonoBehaviour
         
         //Single Symbol Meanings
         foreach (string m in singleMeanings){
-            List<Symbol> s = new List<Symbol>(){tmpSymbols[index]};
+            Symbol[] s = {tmpSymbols[index]};
             tmpSymbols.RemoveAt(index);
             language.Add(s, m);
         }
@@ -143,17 +146,17 @@ public class Language : MonoBehaviour
                     second = reversed_l["NEGATIVE"][0];
                     break;
             }
-            List<Symbol> sym = new List<Symbol>(){first, second};
+            Symbol[] sym = {first, second};
             language.Add(sym, m);
 
-            List<Symbol> reversed = new List<Symbol>(){second, first};
+            Symbol[] reversed = {second, first};
             language.Add(reversed, m); 
             reversed_l.Add(m, sym);
         }
     }
 
     //Gets a meaning from a list of Symbols
-    public string GetMeaning(List<Symbol> s){
+    public string GetMeaning(Symbol[] s){
         if (language.ContainsKey(s))
         {
             return language[s];
@@ -162,61 +165,13 @@ public class Language : MonoBehaviour
          return null;
     }
 
-    public List<Symbol> GetSymbol(string mean){
+    public Symbol[] GetSymbol(string mean){
+        if (mean == "QUESTION") {
+            return new Symbol[]{questionMark};
+        }
         if (reversed_l.ContainsKey(mean))
             return reversed_l[mean];
         
         return null;
     }
-
-    public string HardGetMeaning(Symbol[] symbols)
-    {
-        foreach(var l in language)
-        {
-            for (int i = 0; i < symbols.Count(); i++) {
-                if (!l.Key[i].Equals(symbols[i]))
-                {
-                    break;
-                }
-                if(i== l.Key.Count - 1)
-                {
-                    return l.Value;
-                }
-                
-            }
-        }
-        return null;
-    }
-
-
-    /*
-    public string GetMeaningByID(List<int> ids)
-    {
-        
-        List<Symbol> sym = new List<Symbol>();
-
-        foreach (int id in ids) {
-
-            sym.Add(GetSymbolById(id));
-        
-        }
-
-
-        return GetMeaning(sym);
-
-    }
-
-    public Symbol GetSymbolById(int id)
-    {
-        foreach (var symbol in symbols)
-        {
-            if(symbol.getId() == id)
-            {
-                return symbol;
-            }
-        }
-        
-
-        return null;
-    }*/
 }

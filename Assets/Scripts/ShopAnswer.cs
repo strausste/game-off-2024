@@ -1,35 +1,70 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ShopAnswer : MonoBehaviour
+[RequireComponent(typeof(SymbolSpeaker))]
+public class ShopAnswer : MonoBehaviour, IInteractable
 {
+    [SerializeField] public GameObject canvas;
     Language language;
-    Dictionary<List<Symbol>, List<Symbol>> answers = new Dictionary<List<Symbol>, List<Symbol>>();
+    SymbolSpeaker speaker;
+    Animator animator;
+    static SymbolsComparer comparer = new();
+    Dictionary<Symbol[], Meaning[]> answers = new(comparer);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        language = FindFirstObjectByType<Language>();
-        initAnswers();
+        SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
+        speaker = GetComponent<SymbolSpeaker>();
+        animator = GetComponent<Animator>();
+        canvas.SetActive(false);
+        language = Language.instance;
+        InitAnswers();
     }
 
-    public List<Symbol> Answer(List<Symbol> phrase){
-        List<Symbol> ans = new List<Symbol>(){language.symbols[^1]};
+    public void Answer(Symbol[] phrase){
         if (answers.ContainsKey(phrase)){
-            return answers[phrase];
+            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, answers[phrase]);
+            if (phrase.Equals(language.GetSymbol("WEAPON")) || phrase.Equals(language.GetSymbol("SHIELD")) ||
+                phrase.Equals(language.GetSymbol("BOOTS"))){
+
+                animator.SetTrigger("placeItem");
+            }
         }
-        return ans;
+        else {
+            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.QUESTION});
+        }
+        animator.SetTrigger("speak");
     }
 
-    void initAnswers(){
-        answers.Add(language.GetSymbol("STRENGHT"), new List<Symbol>(language.GetSymbol("STRENGHT")){language.symbols[^1]});
-        answers.Add(language.GetSymbol("DEFENSE"), new List<Symbol>(language.GetSymbol("DEFENSE")){language.symbols[^1]});
-        answers.Add(language.GetSymbol("SPEED"), new List<Symbol>(language.GetSymbol("SPEED")){language.symbols[^1]});
+    void InitAnswers(){
+        answers.Add(language.GetSymbol("STRENGHT"), new Meaning[]{Meaning.STRENGHT, Meaning.QUESTION});
+        answers.Add(language.GetSymbol("DEFENSE"), new Meaning[]{Meaning.DEFENSE, Meaning.QUESTION});
+        answers.Add(language.GetSymbol("SPEED"), new Meaning[]{Meaning.SPEED, Meaning.QUESTION});
 
-        answers.Add(new List<Symbol>(language.GetSymbol("HERE")){language.GetSymbol("OBJECT")[0]}, language.GetSymbol("POSITIVE"));
+        answers.Add(new Symbol[]{language.GetSymbol("HERE")[0], language.GetSymbol("OBJECT")[0]}, new Meaning[]{Meaning.POSITIVE});
 
-        answers.Add(language.GetSymbol("WEAPON") , language.GetSymbol("POSITIVE"));
-        answers.Add(language.GetSymbol("SHIELD") , language.GetSymbol("POSITIVE"));
-        answers.Add(language.GetSymbol("BOOTS") , language.GetSymbol("POSITIVE"));
+        answers.Add(language.GetSymbol("WEAPON") , new Meaning[]{Meaning.POSITIVE});
+        answers.Add(language.GetSymbol("SHIELD") , new Meaning[]{Meaning.POSITIVE});
+        answers.Add(language.GetSymbol("BOOTS") , new Meaning[]{Meaning.POSITIVE});
+        answers.Add(language.GetSymbol("FRIEND") , new Meaning[]{Meaning.POSITIVE});
+        answers.Add(language.GetSymbol("ENEMY") , new Meaning[]{Meaning.NEGATIVE});
     }
+
+    public void Interact()
+    {
+        UIController.instance.OpenSymbolSelector(true);
+    }
+
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            canvas.SetActive(true);
+    }
+    
+    private void OnTriggerExit(Collider other) {
+        if (other.TryGetComponent<PlayerController>(out PlayerController player))
+            canvas.SetActive(false);
+    }
+
 }

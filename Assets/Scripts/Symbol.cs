@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Symbol
 {
@@ -22,17 +22,32 @@ public class Symbol
         return image;
     }
 
-    public bool Equals(Symbol s)
+    // override object.Equals
+    public override bool Equals(object obj)
     {
-        if (this == s)
+        if (obj == null || GetType() != obj.GetType())
         {
-            return true;
-        }
-        if (this.getId() == s.getId())
-        {
-            return true;
+            return false;
         }
 
-        return false;
+        Symbol symbol = (Symbol) obj;
+        
+        if (this.getId() == symbol.getId())
+        {
+            return true;
+        }
+        
+        return base.Equals (obj);
+    }
+    
+    // override object.GetHashCode
+    public override int GetHashCode()
+    {
+        // TODO: write your implementation of GetHashCode() here
+        return HashCode.Combine(id,image);
+    }
+    public override string ToString()
+    {
+        return "Symbol " + getId();
     }
 }

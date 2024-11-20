@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
             slashEffect.Play();
-            Debug.Log("Starting attack");
+            //Debug.Log("Starting attack");
             hitEnemies.Clear();
             //swordCollider.enabled = true;
             //StartCoroutine(disableSwordHitbox());

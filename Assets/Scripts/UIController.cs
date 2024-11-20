@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -54,8 +55,8 @@ public class UIController : MonoBehaviour
             if (GameController.instance.GetCheatCodes().phantomPain)
             {
                 var meaningText = symbolUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                var symbolList = new List<Symbol>();
-                symbolList.Add(symbol);
+                var symbolList = new Symbol[]{};
+                symbolList.Append(symbol);
                 meaningText.text = Language.instance.GetMeaning(symbolList);
             }
         }

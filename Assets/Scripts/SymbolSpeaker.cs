@@ -11,7 +11,8 @@ public class SymbolSpeaker : MonoBehaviour
     public enum PhraseType {
         PLAYER_SPOTTED,
         DIE,
-        GENERAL
+        GENERAL,
+        CUSTOM
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +21,7 @@ public class SymbolSpeaker : MonoBehaviour
         //StartCoroutine(ShowBalloon(generalPhrase));
     }
     
-    public void Speak(PhraseType phrase_type){
+    public void Speak(PhraseType phrase_type, Meaning[] customPhrase = null){
         switch (phrase_type){
             case PhraseType.PLAYER_SPOTTED: 
                 StartCoroutine(ShowBalloon(playerSpottedPhrase));
@@ -31,8 +32,10 @@ public class SymbolSpeaker : MonoBehaviour
             case PhraseType.GENERAL: 
                 StartCoroutine(ShowBalloon(generalPhrase));
                 break;
+            case PhraseType.CUSTOM: 
+                StartCoroutine(ShowBalloon(customPhrase));
+                break;
         }
-        
     }
 
     IEnumerator ShowBalloon(Meaning[] phrase){
