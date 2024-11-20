@@ -27,6 +27,15 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
 
     List<GameObject> hitEnemies = new List<GameObject>();
+    bool isRolling = false;
+
+    public bool IsRolling
+    {
+        get
+        {
+            return isRolling;
+        }
+    }
     
     void Start(){
     }
@@ -51,14 +60,16 @@ public class PlayerController : MonoBehaviour
             
             transform.forward = input.normalized;
 
-            movement = GameController.instance.GetCheatCodes().iAmSpeed ? 100 * input : moveSpeed * input;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : moveSpeed * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            movement = GameController.instance.GetCheatCodes().iAmSpeed ? 110 * transform.forward.normalized : rollSpeed * transform.forward.normalized;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : rollSpeed * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 
-        animator.SetFloat("Speed", movement.magnitude/moveSpeed);        
+        isRolling = animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll");
 
+        animator.SetFloat("Speed", movement.magnitude/moveSpeed);        
+        
         HandleAttack();
 
         //Se preme tast roll e cooldown roll finito setta il trigger
@@ -97,7 +108,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EnemyController enemy) && !hitEnemies.Contains(hit.gameObject))
                 {
                     hitEnemies.Add(hit.gameObject);
-                    if (GameController.instance.GetCheatCodes().onePunch)
+                    if (GameController.instance.GetCheatCodes().oneShot)
                     {
                         enemy.TakeDamage(100000);  //One shots any enemy (hopefully)
                     }

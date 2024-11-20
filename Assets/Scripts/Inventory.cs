@@ -115,7 +115,7 @@ public class Inventory : MonoBehaviour
 
     void SetInfiniteMoney()
     {
-        if (GameController.instance.GetCheatCodes().dollarDollarBillYall)
+        if (GameController.instance.GetCheatCodes().getMoney)
         {
             money = 1000000000;
         }

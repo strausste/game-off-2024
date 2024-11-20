@@ -14,7 +14,6 @@ public class UIController : MonoBehaviour
     public static UIController instance;
     [SerializeField] GameObject symbolPrefab;
     [SerializeField] TMP_Text timer;
-    private float timerStart;
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject inventoryContentPanel;
     private List<GameObject> inventoryChilds = new List<GameObject>();
@@ -29,7 +28,6 @@ public class UIController : MonoBehaviour
         
         instance = this;
 
-        timerStart = Time.time;
         
         inventoryPanel.SetActive(false);
     }
@@ -52,11 +50,12 @@ public class UIController : MonoBehaviour
             var button = symbolUi.GetComponent<Button>();
             button.onClick.AddListener(() => onClick.Invoke(symbol));
 
-            if (GameController.instance.GetCheatCodes().phantomPain)
+            if (GameController.instance.GetCheatCodes().unlockMeanings)
             {
                 var meaningText = symbolUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                 var symbolList = new Symbol[]{};
                 symbolList.Append(symbol);
+                meaningText.gameObject.SetActive(true);
                 meaningText.text = Language.instance.GetMeaning(symbolList);
             }
         }
@@ -64,14 +63,6 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-    }
-
-    void FixedUpdate()
-    {
-        int minutes = (int)(Time.time - timerStart) / 60;
-        float seconds = (Time.time - timerStart) %60f;
-        
-        timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
     }
 
     public void OpenInventory(bool open, Item []items = null)
@@ -110,5 +101,13 @@ public class UIController : MonoBehaviour
     public void OpenSymbolSelector(bool open)
     {
         symbolSelector.SetActive(open);
+    }
+
+    public void SetTimer(float timeSinceStart)
+    {
+        int minutes = (int)timeSinceStart / 60;
+        float seconds = timeSinceStart % 60f;
+        
+        timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
     }
 }

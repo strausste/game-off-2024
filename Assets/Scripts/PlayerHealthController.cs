@@ -4,7 +4,8 @@ public class PlayerHealthController : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 10;
     private int currentHealth;  
-
+    PlayerController pc;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +14,11 @@ public class PlayerHealthController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (pc.IsRolling || GameController.instance.GetCheatCodes().noDamage) //Non prende danno se rotola, ho aggiunto ora sto controllo nel player controller
+        {
+            return;
+        }
+        
         currentHealth -= damage;
         Debug.Log("Player health: " + currentHealth);
 

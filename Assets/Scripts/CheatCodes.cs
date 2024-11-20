@@ -7,10 +7,11 @@ public class CheatCodes : MonoBehaviour
     private string input;
     [SerializeField] private int maxInputLength = 30; 
     
-    public bool onePunch = false;   //one shot
-    public bool phantomPain = false;    //gain access to symbols meanings
-    public bool dollarDollarBillYall = false; //Gain excessive amount of money
-    public bool iAmSpeed = false; //Increase max speed
+    public bool oneShot = false;   //one shot
+    public bool unlockMeanings = false;    //gain access to symbols meanings
+    public bool getMoney = false; //Gain excessive amount of money
+    public bool speedIncrease = false; //Increase max speed
+    public bool noDamage = false;
     //other cheat codes bools here
     
     public static UnityEvent activatedCheat = new UnityEvent();
@@ -26,28 +27,34 @@ public class CheatCodes : MonoBehaviour
         }
 
         input = input.ToLower();    
-        if (!onePunch && input.Contains("onepunch"))
+        if (!oneShot && input.Contains("onepunch"))
         {
-            onePunch = true;
+            oneShot = true;
             Debug.Log("OnePunchhhhhhhhhhhhhhhhhhh");
             activatedCheat.Invoke();
         }
-        else if (!phantomPain && input.Contains("phantompain"))
+        else if (!unlockMeanings && input.Contains("phantompain"))
         {
-            phantomPain = true;
+            unlockMeanings = true;
             Debug.Log("Why are we still here, just to suffer?");
             activatedCheat.Invoke();
         }
-        else if (!dollarDollarBillYall && input.Contains("dollardollarbillyall"))
+        else if (!getMoney && input.Contains("dollardollarbillyall"))
         {
-            dollarDollarBillYall = true;
+            getMoney = true;
             Debug.Log("Dollar Dollar Bill Yall");
             activatedCheat.Invoke();
         }
-        else if (!iAmSpeed && input.Contains("kachow"))
+        else if (!speedIncrease && input.Contains("kachow"))
         {
-            iAmSpeed = true;
+            speedIncrease = true;
             Debug.Log("I am speed");
+            activatedCheat.Invoke();
+        }
+        else if (noDamage)
+        {
+            noDamage = true;
+            Debug.Log("UNLIMITED POWAAAAAAAAAA");
             activatedCheat.Invoke();
         }
     }
