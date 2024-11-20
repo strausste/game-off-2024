@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor;
 
 [RequireComponent(typeof(SymbolSpeaker))]
 public class ShopAnswer : MonoBehaviour, IInteractable
 {
     [SerializeField] public GameObject canvas;
+    [SerializeField] ItemDisplay itemDisplay;
+    [SerializeField] Item[] shopItems;
     Language language;
     SymbolSpeaker speaker;
     Animator animator;
@@ -25,11 +28,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     public void Answer(Symbol[] phrase){
         if (answers.ContainsKey(phrase)){
             speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, answers[phrase]);
-            if (phrase.Equals(language.GetSymbol("WEAPON")) || phrase.Equals(language.GetSymbol("SHIELD")) ||
-                phrase.Equals(language.GetSymbol("BOOTS"))){
-
-                animator.SetTrigger("placeItem");
-            }
+            Deal(phrase);
         }
         else {
             speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.QUESTION});
@@ -42,7 +41,10 @@ public class ShopAnswer : MonoBehaviour, IInteractable
         answers.Add(language.GetSymbol("DEFENSE"), new Meaning[]{Meaning.DEFENSE, Meaning.QUESTION});
         answers.Add(language.GetSymbol("SPEED"), new Meaning[]{Meaning.SPEED, Meaning.QUESTION});
 
-        answers.Add(new Symbol[]{language.GetSymbol("HERE")[0], language.GetSymbol("OBJECT")[0]}, new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol("HERE")[0], 
+            language.GetSymbol("OBJECT")[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
 
         answers.Add(language.GetSymbol("WEAPON") , new Meaning[]{Meaning.POSITIVE});
         answers.Add(language.GetSymbol("SHIELD") , new Meaning[]{Meaning.POSITIVE});
@@ -56,6 +58,31 @@ public class ShopAnswer : MonoBehaviour, IInteractable
         UIController.instance.OpenSymbolSelector(true);
     }
 
+    void Deal(Symbol[] phrase){
+        Item toDisplay = null;
+        foreach (Item item in shopItems){
+                print(item.GetType());
+                if (item is Weapon && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("WEAPON"))){
+                    print("WEAPON");
+                    toDisplay = item;
+                    break;
+                }
+                if (item is Shield && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("SHIELD"))){
+                    print("SHIELD");
+                    toDisplay = item;
+                    break;
+                }
+                //SHOULD BE BOOTS
+                if (item is Shield && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("BOOTS"))){
+                    toDisplay = item;
+                    break;
+                }
+            }
+        
+        if (toDisplay){
+            itemDisplay.SetItem(toDisplay);
+        }
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent<PlayerController>(out PlayerController player))
