@@ -5,7 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private string timePlayerPrefsKey = "Times";
+    private string timePlayerPrefsKey = "Times";
     bool gamePaused = false;
     public bool GamePaused{
         get{
@@ -52,18 +52,31 @@ public class GameController : MonoBehaviour
     //Call this when the player reachs the end of the game
     public void EndGame()
     {
-        var times = PlayerPrefs.GetString(timePlayerPrefsKey) + "\n" + (Time.time - timerStart);
+        var times = PlayerPrefs.GetString(timePlayerPrefsKey);
 
+        if (times != "")
+        {
+            times += "\n" + (Time.time - timerStart).ToString("0.00");
+        }
+        else
+        {
+            times = (Time.time - timerStart).ToString();
+        }
+        
+        Debug.Log(times);
+        
         var timesList = times.Split("\n").ToList();
+        
         
         timesList.Sort((a, b) =>
         {
             var timeA = float.Parse(a);
             var timeB = float.Parse(b);
             
-            return timeB.CompareTo(timeA);
+            return timeA.CompareTo(timeB);
         });
         
         PlayerPrefs.SetString(timePlayerPrefsKey, String.Join("\n", timesList));
+        PlayerPrefs.Save();
     }
 }
