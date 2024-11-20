@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject optionsPanel;
+    [SerializeField] GameObject scoreboardPanel;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,5 +26,10 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenScoreboard(bool open)
+    {
+        scoreboardPanel.SetActive(open);
     }
 }
