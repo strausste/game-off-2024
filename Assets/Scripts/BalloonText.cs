@@ -17,6 +17,9 @@ public class BalloonText : MonoBehaviour
         if (target){
             transform.position = target.position + offset;
         }
+        else {
+            Destroy(gameObject);
+        }
         
         transform.LookAt(Camera.main.transform);
     }
