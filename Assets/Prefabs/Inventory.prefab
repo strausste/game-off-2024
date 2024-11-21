@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3e4c8269d02715a60152e20f437a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _items: []
+  equippedWeapon: {fileID: 11400000, guid: 16484878e263e864db88e44022216994, type: 2}
+  changedEquipment:
+    m_PersistentCalls:
+      m_Calls: []
+  equippedShield: {fileID: 11400000, guid: a1ca70db3cbc71c4e8ce7665d96e7aeb, type: 2}

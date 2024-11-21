@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9884b419c5ffd4d48b3e420d65a23172, type: 3}
-  m_Name: The Stickest
+  m_Name: Sword 3
   m_EditorClassIdentifier: 
-  itemName: The Stickest
-  sprite: {fileID: 21300000, guid: ad2272d846acd5072bab3e6303ccab6a, type: 3}
-  prefab: {fileID: 919132149155446097, guid: 958013be90849fa4c80576a146b32e8a, type: 3}
+  itemName: Great Sword
+  sprite: {fileID: 21300000, guid: 7091c16663ec90a5e99a5682ecfc713e, type: 3}
+  prefab: {fileID: 849505831518952209, guid: f3f894c2d9dae634fb4778892a6cbe43, type: 3}
   attack: 1
-  modelOffset: {x: 0, y: 0.3, z: 0}
-  modelScale: {x: 0.7, y: 0.7, z: 0.7}
+  modelOffset: {x: 0, y: 0, z: 0}
+  modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: 0, y: 0, z: 0}
-  hitboxSize: 1
-  hitboxOffset: {x: 0, y: 0, z: 0}
+  hitboxSize: 2
+  hitboxOffset: {x: 0, y: 0, z: 1}

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2960e20c432a0a47aefffd41231751b, type: 3}
-  m_Name: Scudazzo
+  m_Name: Shield 4
   m_EditorClassIdentifier: 
-  itemName: Scudazzo
+  itemName: Spicked Shield
   sprite: {fileID: 21300000, guid: 0b2c8790f5b38d6e09681f6c81af5b7c, type: 3}
-  prefab: {fileID: 4796543646644090803, guid: 573036acf9f1e0c42845dddc25cea245, type: 3}
+  prefab: {fileID: 942179967608840624, guid: 26db8f629f54a26408fb23b996b597b1, type: 3}
   modelOffset: {x: 0, y: 0, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: 180, y: 90, z: 90}
