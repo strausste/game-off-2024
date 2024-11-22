@@ -51,7 +51,7 @@ public class CheatCodes : MonoBehaviour
             Debug.Log("I am speed");
             activatedCheat.Invoke();
         }
-        else if (noDamage)
+        else if (!noDamage && input.Contains("unlimitedpower"))
         {
             noDamage = true;
             Debug.Log("UNLIMITED POWAAAAAAAAAA");
