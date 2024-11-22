@@ -33,10 +33,14 @@ public class ItemDisplay : MonoBehaviour
         DisplayItem();
     }
 
-    void DisplayItem(){
+    public void Clear(){
         if (itemInstance){
             Destroy(itemInstance);
         }
+    }
+
+    void DisplayItem(){
+        Clear();
         itemInstance = Instantiate(item.prefab, transform);
         itemInstance.transform.localScale *= itemScale;
         itemInstance.transform.Rotate(Vector3.forward * itemTilt);

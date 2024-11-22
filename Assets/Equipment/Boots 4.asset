@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b60b4237c66f5d4a9c4b8cc744163ee, type: 3}
+  m_Name: Boots 4
+  m_EditorClassIdentifier: 
+  itemName: Iron Boots+
+  sprite: {fileID: 0}
+  prefab: {fileID: 1174071662317179840, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+  modelOffsetLeft: {x: -0.1270005, y: 0.002999189, z: 0.009996047}
+  modelOffsetRight: {x: 0.1, y: 0.058, z: -0.005}
+  modelRotationLeft: {x: 7.399, y: -85.817, z: 0}
+  modelRotationRight: {x: -152.745, y: -78.388, z: -22.104}
+  modelScale: {x: 88, y: 65.99998, z: 58}
+  speed: 4

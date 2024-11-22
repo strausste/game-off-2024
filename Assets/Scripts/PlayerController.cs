@@ -1,6 +1,5 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -19,8 +18,11 @@ public class PlayerController : MonoBehaviour
     [Header("Equipment")]
     [SerializeField] Transform weaponBone;
     [SerializeField] Transform shieldBone;
-    GameObject equippedWeaponObject = null;
-    GameObject equippedShieldObject = null;
+    [SerializeField] Transform bootsBoneLeft;
+    [SerializeField] Transform bootsBoneRight;
+    [SerializeField] GameObject equippedWeaponObject = null;
+    [SerializeField] GameObject equippedShieldObject = null;
+    [SerializeField] GameObject[] equippedBootsObject = new GameObject[2];
 
     [Header("Effects")]
     [SerializeField] VisualEffect slashEffect;
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
         if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon){
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
             Collider []hits = Physics.OverlapSphere(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
                 Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
             Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
@@ -151,6 +153,32 @@ public class PlayerController : MonoBehaviour
         equippedShieldObject.transform.localScale = shield.modelScale;
         equippedShieldObject.transform.localPosition = shield.modelOffset;
         equippedShieldObject.transform.localRotation = Quaternion.Euler(shield.modelRotation);
+    }
+
+    public void EquipBoots(Boots boots){
+        if(!boots)
+            return;
+
+        if(equippedBootsObject[0]){
+            Destroy(equippedBootsObject[0]);
+            Destroy(equippedBootsObject[1]);
+        }
+
+        equippedBootsObject[0] = Instantiate(boots.prefab.transform.GetChild(0).gameObject, bootsBoneLeft);
+        equippedBootsObject[1] = Instantiate(boots.prefab.transform.GetChild(1).gameObject, bootsBoneRight);
+        
+        equippedBootsObject[0].transform.localScale = boots.modelScale;
+        equippedBootsObject[0].transform.localPosition = boots.modelOffsetLeft;
+        equippedBootsObject[0].transform.localRotation = Quaternion.Euler(boots.modelRotationLeft);
+        equippedBootsObject[1].transform.localScale = boots.modelScale;
+        equippedBootsObject[1].transform.localPosition = boots.modelOffsetRight;
+        equippedBootsObject[1].transform.localRotation = Quaternion.Euler(boots.modelRotationRight);
+    }
+
+    public void Equip(Item item){
+        if (item is Weapon) EquipWeapon((Weapon) item);
+        if (item is Shield) EquipShield((Shield) item);
+        if (item is Boots) EquipBoots((Boots) item);
     }
 
     // IEnumerator disableSwordHitbox(){    //

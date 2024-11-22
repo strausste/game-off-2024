@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.PlayerLoop;
 
 public class Inventory : MonoBehaviour
 {
@@ -29,6 +27,17 @@ public class Inventory : MonoBehaviour
             return equippedShield;
         }
     }
+
+    [SerializeField] Boots equippedBoots;
+
+    public Boots EquippedBoots
+    {
+        get
+        {
+            return equippedBoots;
+        }
+    }
+
     PlayerController player;
     
     int money = 0;
@@ -104,6 +113,11 @@ public class Inventory : MonoBehaviour
         {
             equippedShield = (Shield)item;
             player.EquipShield(equippedShield);
+        }
+        else if (item.GetType() == typeof(Boots))
+        {
+            equippedBoots = (Boots)item;
+            player.EquipBoots(equippedBoots);
         }
         else
         {
