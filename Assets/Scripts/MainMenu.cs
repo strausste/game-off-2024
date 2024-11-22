@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         Cursor.visible = true;
-        SceneManager.LoadScene("Luca");
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()

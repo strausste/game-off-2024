@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ public class SymbolsComparer: EqualityComparer<Symbol[]>
         if (s2 is null || s1 is null)
             return false;
 
-        return ArrayUtility.ArrayEquals(s1, s2);
+        return s1.SequenceEqual(s2);
     }
 
     public override int GetHashCode(Symbol[] symbols)

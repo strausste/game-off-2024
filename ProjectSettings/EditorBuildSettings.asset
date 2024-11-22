@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Main menu.unity
     guid: 8316306c71e917f729833163c42fd501
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Livelli/Livello 1.unity
+    guid: 689d6f5be8d7bdd4e80adcd12d1af323
+  - enabled: 1
+    path: Assets/Scenes/Livelli/Livello 2.unity
+    guid: 3f4b08b661793634a8ee4e5322810b03
+  - enabled: 1
+    path: Assets/Scenes/Livelli/Livello 3.unity
+    guid: 5ef70f8722f5c794289c9c427d397a4b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

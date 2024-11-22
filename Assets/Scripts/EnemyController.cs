@@ -115,7 +115,7 @@ public class EnemyController : MonoBehaviour
         
         Vector3 targetDirection = player.position - transform.position;
         int rotSpeed = 5;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime * rotSpeed, 0.0f);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection.normalized, Time.deltaTime * rotSpeed, 0.0f);
         newDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(newDirection);
         agent.isStopped = true;

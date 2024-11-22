@@ -62,9 +62,9 @@ public class PlayerController : MonoBehaviour
             
             transform.forward = input.normalized;
 
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : moveSpeed * input;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : moveSpeed * (Inventory.instance.EquippedBoots?.speed ?? 1) * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : rollSpeed * transform.forward.normalized;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : rollSpeed * (Inventory.instance.EquippedBoots?.speed ?? 1) * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        enemy.TakeDamage(Inventory.instance.EquippedWeapon.attack);
+                        enemy.TakeDamage((int)(Inventory.instance.EquippedWeapon.attack * Globals.globalAttackScaling));
                     }
                 }
             }

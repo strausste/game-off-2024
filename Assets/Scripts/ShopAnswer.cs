@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
 using System.Linq;
 
 [RequireComponent(typeof(SymbolSpeaker))]
@@ -31,14 +30,14 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     public void Answer(Symbol[] phrase){
         if (dealing){
-            if (ArrayUtility.ArrayEquals(phrase, language.GetSymbol("POSITIVE"))){
+            if (phrase.SequenceEqual(language.GetSymbol("POSITIVE"))){
                 print("EQUIPPA");
                 player.Equip(toDisplay);
 
                 dealing = false;
                 itemDisplay.Clear();
             }
-            else if (ArrayUtility.ArrayEquals(phrase, language.GetSymbol("NEGATIVE"))){
+            else if (phrase.SequenceEqual(language.GetSymbol("NEGATIVE"))){
                 dealing = false;
                 itemDisplay.Clear();
             }
@@ -84,15 +83,15 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     void ShowRelativeItem(Symbol[] phrase){
         foreach (Item item in shopItems){
                 print(item.GetType());
-                if (item is Weapon && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("WEAPON"))){
+                if (item is Weapon && phrase.SequenceEqual(language.GetSymbol("WEAPON"))){
                     toDisplay = item;
                     break;
                 }
-                if (item is Shield && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("SHIELD"))){
+                if (item is Shield && phrase.SequenceEqual(language.GetSymbol("SHIELD"))){
                     toDisplay = item;
                     break;
                 }
-                if (item is Boots && ArrayUtility.ArrayEquals(phrase, language.GetSymbol("BOOTS"))){
+                if (item is Boots && phrase.SequenceEqual(language.GetSymbol("BOOTS"))){
                     toDisplay = item;
                     break;
                 }
