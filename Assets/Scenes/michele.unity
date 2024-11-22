@@ -1251,6 +1251,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7853cea8837d3f4ca8fe0263a3e713e, type: 3}
+--- !u!1001 &1464167305598572695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.444
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521361867371175289, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5961022875077393775, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
+      propertyPath: m_Name
+      value: Stivali Pelle+
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8e32dfc250d40e49a89fc803931c292, type: 3}
 --- !u!1001 &2144071205936198121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1382,6 +1439,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26db8f629f54a26408fb23b996b597b1, type: 3}
+--- !u!1001 &2372968223613401239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.506
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737460603387739602, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140423875149599732, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_Name
+      value: Stivali Pelle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7705808251041123325, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739090028167546581, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
 --- !u!1001 &2492460925035038440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1907,6 +2029,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
+--- !u!1001 &5446953492548222354
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 524391075751888371, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_Name
+      value: Stivali Oro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4741852085162770591, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79110b4a16ad6a6438bb8daffa5603fa, type: 3}
 --- !u!1001 &7238422357164915454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1964,6 +2143,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b649297161e9104dad30489c7f44362, type: 3}
+--- !u!1001 &7259758352998828070
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1174071662317179840, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_Name
+      value: Stivali Ferro+
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.393
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719377383684834328, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
+--- !u!1001 &8982617581708537445
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3918615271299321335, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_Name
+      value: Stivali Ferro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 16.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989029906089428631, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13c74d708a4ed1840a90874df70f14b9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1995,3 +2288,8 @@ SceneRoots:
   - {fileID: 4537862643351637287}
   - {fileID: 2364364584334334456}
   - {fileID: 4083742054285398081}
+  - {fileID: 2372968223613401239}
+  - {fileID: 1464167305598572695}
+  - {fileID: 8982617581708537445}
+  - {fileID: 7259758352998828070}
+  - {fileID: 5446953492548222354}
