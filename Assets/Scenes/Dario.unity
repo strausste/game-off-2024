@@ -10888,6 +10888,10 @@ PrefabInstance:
       propertyPath: 'walkAudioClips.Array.data[7]'
       value: 
       objectReference: {fileID: 8300000, guid: 853bf9c18882447489286cf9cc4290e3, type: 3}
+    - target: {fileID: 4203384678252278769, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6123412835902427474, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_Name
       value: Player
