@@ -10820,14 +10820,74 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2852520813627773490, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: runAudioClips.Array.size
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4694965549695347986, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: equippedWeaponObject
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: walkAudioClips.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7acb9476ef3b74c4b8b58617fc136c28, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e5afde727cae4d242b94200d8be379c4, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 93ebf4046a66c0646b05131bb3d6f69e, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0cecef037d09a4d4f8e626615ffa3f84, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c69854aaf644544fb94ba968ccc5285, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f8a69686d22323e41b11ea614a4d3669, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'runAudioClips.Array.data[9]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bf4472acf07ef844b9f5c51d086a2a1a, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e5ede07e6d6c9744080e67d06195a14f, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 025b0e46a734ff040aa707cd1e3f4596, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 66dad5c02291f624a92f8763edb58aa5, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a391f1cdc627c63449bfd3beb242df23, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ac69a9f846ad1e4ab43abb1252750ed, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e83a8b01357080419458a8c240fe4d4, type: 3}
+    - target: {fileID: 2818734770858064768, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: 'walkAudioClips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 853bf9c18882447489286cf9cc4290e3, type: 3}
     - target: {fileID: 6123412835902427474, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_Name
       value: Player
