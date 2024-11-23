@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -30,7 +31,11 @@ public class PlayerController : MonoBehaviour
 
     List<GameObject> hitEnemies = new List<GameObject>();
     bool isRolling = false;
-
+    [SerializeField] private int maxBlocks = 2;
+    private int currentBlocks = 2;
+    [SerializeField] private float gainBlockTime = 2;
+    bool isBlocking = false;
+    
     public bool IsRolling
     {
         get
@@ -38,8 +43,11 @@ public class PlayerController : MonoBehaviour
             return isRolling;
         }
     }
+    string lastAnimatorState = "";
     
     void Start(){
+        currentBlocks = maxBlocks;
+        StartCoroutine(GainBlocks(gainBlockTime));
     }
 
     // Update is called once per frame
@@ -73,7 +81,8 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", movement.magnitude/moveSpeed);        
         
         HandleAttack();
-
+        HandleShield();
+        
         //Se preme tast roll e cooldown roll finito setta il trigger
         if(Input.GetButtonDown("Roll") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll") && 
         Time.time - lastRollTime > rollCooldown){
@@ -124,7 +133,31 @@ public class PlayerController : MonoBehaviour
     }
 
     void HandleShield(){
+        if (Input.GetButtonDown("Block") && currentBlocks > 0)
+        {
+            animator.SetBool("Block", true);
+        }
 
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Block"))
+        {
+            isBlocking = true;
+        }
+        else if (isBlocking)
+        {
+            animator.SetBool("Block", false);
+        }
+    }
+
+    IEnumerator GainBlocks(float gainTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(gainTime);
+            if (currentBlocks < maxBlocks)
+            {
+                currentBlocks++;
+            }
+        }
     }
 
     public void EquipWeapon(Weapon weapon){
