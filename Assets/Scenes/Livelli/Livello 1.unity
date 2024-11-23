@@ -703,6 +703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Post processing
       objectReference: {fileID: 0}
+    - target: {fileID: 6563541043191426334, guid: bd2e3161f6345bc31b271de7167e0f7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6864280408996489652, guid: bd2e3161f6345bc31b271de7167e0f7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38.21716
@@ -2403,8 +2407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  globalVolume: 0
   mode: 2
   size: {x: 10, y: 10, z: 10}
   overrideRendererFilters: 0
@@ -2435,6 +2437,8 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: -107734472
   fillEmptySpaces: 1
+  version: 2
+  globalVolume: 0
 --- !u!4 &1571068275
 Transform:
   m_ObjectHideFlags: 0
