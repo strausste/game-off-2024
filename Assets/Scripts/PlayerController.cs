@@ -7,7 +7,6 @@ using UnityEngine.VFX;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController cc;
-    [SerializeField] float moveSpeed = 10f;
     [Header("Roll")]
     [SerializeField] float rollSpeed = 12f;
     [SerializeField] float rollCooldown = .5f;
@@ -29,6 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] VisualEffect slashEffect;
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
 
+    EntityStats stats;
     List<GameObject> hitEnemies = new List<GameObject>();
     bool isRolling = false;
     [SerializeField] private int maxBlocks = 2;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     string lastAnimatorState = "";
     
     void Start(){
+         stats = GetComponent<EntityStats>();
         currentBlocks = maxBlocks;
         StartCoroutine(GainBlocks(gainBlockTime));
     }
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
             
             transform.forward = input.normalized;
 
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : moveSpeed * (Inventory.instance.EquippedBoots?.speed ?? 1) * input;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : stats.GetSpeed() * (Inventory.instance.EquippedBoots?.speed ?? 1) * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : rollSpeed * (Inventory.instance.EquippedBoots?.speed ?? 1) * transform.forward.normalized;
             lastRollTime = Time.time;
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         isRolling = animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll");
 
-        animator.SetFloat("Speed", movement.magnitude/moveSpeed);        
+        animator.SetFloat("Speed", movement.magnitude/stats.GetSpeed());        
         
         HandleAttack();
         HandleShield();
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        enemy.TakeDamage((int)(Inventory.instance.EquippedWeapon.attack * Globals.globalAttackScaling));
+                        enemy.TakeDamage(stats.GetAttack());
                     }
                 }
             }
@@ -172,6 +173,8 @@ public class PlayerController : MonoBehaviour
         equippedWeaponObject.transform.localScale = weapon.modelScale;
         equippedWeaponObject.transform.localPosition = weapon.modelOffset;
         equippedWeaponObject.transform.localRotation = Quaternion.Euler(weapon.modelRotation);
+
+        stats.SetAttackLv(weapon.attack);
     }
 
     public void EquipShield(Shield shield){
@@ -186,6 +189,8 @@ public class PlayerController : MonoBehaviour
         equippedShieldObject.transform.localScale = shield.modelScale;
         equippedShieldObject.transform.localPosition = shield.modelOffset;
         equippedShieldObject.transform.localRotation = Quaternion.Euler(shield.modelRotation);
+
+        stats.SetDefenseLv(shield.damageProtection);
     }
 
     public void EquipBoots(Boots boots){
@@ -206,12 +211,25 @@ public class PlayerController : MonoBehaviour
         equippedBootsObject[1].transform.localScale = boots.modelScale;
         equippedBootsObject[1].transform.localPosition = boots.modelOffsetRight;
         equippedBootsObject[1].transform.localRotation = Quaternion.Euler(boots.modelRotationRight);
+
+        stats.SetSpeedLv(boots.speed);
     }
 
     public void Equip(Item item){
         if (item is Weapon) EquipWeapon((Weapon) item);
         if (item is Shield) EquipShield((Shield) item);
         if (item is Boots) EquipBoots((Boots) item);
+    }
+
+    public void TakeDamage(int damage){
+        if (!stats.TryHurt(damage)){
+            animator.SetTrigger("die");
+            Die();
+        }
+    }
+
+    void Die(){
+
     }
 
     // IEnumerator disableSwordHitbox(){    //

@@ -19,6 +19,7 @@ public class EntityStats : MonoBehaviour
     float flashTime = 0.1f;
 
     int hp;
+    bool isImmune = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +35,7 @@ public class EntityStats : MonoBehaviour
         int trueDamage = damage - GetDefense();
         int rest = GetHp();
         trueDamage = Mathf.Clamp(trueDamage, 1, damage);
-        if (hp >= 0){
+        if (hp >= 0 && !isImmune){
             rest = Hurt(trueDamage);
         }
 
@@ -80,6 +81,24 @@ public class EntityStats : MonoBehaviour
         Vector3 force = -transform.forward * knockBackForce;
         rb.AddForce(force, ForceMode.Impulse);
     }
+
+    public void SetImmune(bool immune){
+        isImmune = immune;
+    }
+
+    public void SetAttackLv(int level){
+        attackLv = level;
+    }
+
+    public void SetDefenseLv(int level){
+        defenseLv = level;
+    }
+
+
+    public void SetSpeedLv(int level){
+        speedLv = level;
+    }
+
 
     public int GetHp(){
         return hp;

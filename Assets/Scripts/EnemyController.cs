@@ -50,6 +50,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!player)
+            return;
+            
         switch (state){
             case State.IDLE: Idle();
             break;
@@ -150,9 +153,6 @@ public class EnemyController : MonoBehaviour
             state = State.DIE;
             animator.SetTrigger("die");
         }
-
-        //Aggiunta per iniziare a metterla nel player controller
-        Debug.Log($"Hit {gameObject} for {damage}");
     }
 
     void ShootProjectile(){
