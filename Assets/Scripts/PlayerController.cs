@@ -141,6 +141,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Block", true);
         }
+        else if (Input.GetButtonUp("Block"))
+        {
+            animator.SetBool("Block", false);
+            isBlocking = false;
+        }
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Block"))
         {
@@ -149,6 +154,7 @@ public class PlayerController : MonoBehaviour
         else if (isBlocking)
         {
             animator.SetBool("Block", false);
+            isBlocking = false;
         }
     }
 

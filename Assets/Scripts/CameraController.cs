@@ -6,11 +6,13 @@ public class CameraController : MonoBehaviour
     Vector3 offset;
     [SerializeField] private float speed = 5;
     [SerializeField] private Transform targetTransform;
-
+    private Vector3 originalRotation;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         offset = transform.position - player.position;
+        originalRotation = transform.rotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -27,14 +29,15 @@ public class CameraController : MonoBehaviour
     void UpdatePosition()
     {
         var targetPosition = player.position + offset;
+        var targetRotation = Quaternion.Euler(originalRotation);
 
         if (targetTransform != null)
         {
             targetPosition = targetTransform.position;
-            transform.rotation =
-                Quaternion.Lerp(transform.rotation, targetTransform.rotation, speed * Time.smoothDeltaTime);
+            targetRotation = targetTransform.rotation;
         }
 
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.smoothDeltaTime);
         transform.position = Vector3.Slerp(transform.position, targetPosition, Time.smoothDeltaTime * speed);
     }
 
