@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -44,7 +45,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     string lastAnimatorState = "";
-    
+
+    public UnityEvent onAttack = new UnityEvent();
 
     private void Awake() {
         stats = GetComponent<EntityStats>();
@@ -95,18 +97,25 @@ public class PlayerController : MonoBehaviour
 
         movement += Vector3.down * 9.81f;
         cc.Move(Time.smoothDeltaTime * movement);
+        
+        lastAnimatorState = animator.GetCurrentAnimatorStateInfo(1).fullPathHash.ToString();
     }
     
     private float lastAttackTime;
     void HandleAttack(){
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
-            slashEffect.Play();
-            //Debug.Log("Starting attack");
-            hitEnemies.Clear();
-            //swordCollider.enabled = true;
-            //StartCoroutine(disableSwordHitbox());
         }
+        
+        //Should enter here only when is actually starting the attack
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && 
+            lastAnimatorState != animator.GetCurrentAnimatorStateInfo(1).fullPathHash.ToString())
+        {
+            slashEffect.Play();
+            hitEnemies.Clear();
+            onAttack.Invoke();
+        }
+        
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
