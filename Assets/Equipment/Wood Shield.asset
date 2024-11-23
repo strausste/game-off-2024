@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Wood Shield
   sprite: {fileID: 21300000, guid: 0b2c8790f5b38d6e09681f6c81af5b7c, type: 3}
   prefab: {fileID: 8277787768503935153, guid: 2e22955c88f95c045ba7f353c42c6804, type: 3}
-  modelOffset: {x: 0, y: 0, z: 0}
+  modelOffset: {x: 0, y: 0.084, z: 0.053}
   modelScale: {x: 1, y: 1, z: 1}
-  modelRotation: {x: 180, y: 90, z: 90}
+  modelRotation: {x: -35.155, y: -46.107, z: -30}
   damageProtection: 0

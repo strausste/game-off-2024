@@ -68,6 +68,10 @@ public class Inventory : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         
         CheatCodes.activatedCheat.AddListener(SetInfiniteMoney);
+
+        if (equippedWeapon) UseItem(equippedWeapon);
+        if (equippedShield) UseItem(equippedShield);
+        if (equippedBoots) UseItem(equippedBoots);
     }
 
     private void Update()
@@ -105,12 +109,13 @@ public class Inventory : MonoBehaviour
     {
         if (item.GetType() == typeof(Weapon))
         {
-            Debug.Log("Equipped weapon");
+            //Debug.Log("Equipped weapon");
             equippedWeapon = (Weapon)item;
             player.EquipWeapon(equippedWeapon);
         }
         else if (item.GetType() == typeof(Shield))
         {
+            Debug.Log("Equipped shield");
             equippedShield = (Shield)item;
             player.EquipShield(equippedShield);
         }

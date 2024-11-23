@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform shieldBone;
     [SerializeField] Transform bootsBoneLeft;
     [SerializeField] Transform bootsBoneRight;
-    [SerializeField] GameObject equippedWeaponObject = null;
-    [SerializeField] GameObject equippedShieldObject = null;
-    [SerializeField] GameObject[] equippedBootsObject = new GameObject[2];
+    GameObject equippedWeaponObject = null;
+    GameObject equippedShieldObject = null;
+    GameObject[] equippedBootsObject = new GameObject[2];
 
     [Header("Effects")]
     [SerializeField] VisualEffect slashEffect;
@@ -45,8 +45,11 @@ public class PlayerController : MonoBehaviour
     }
     string lastAnimatorState = "";
     
+
+    private void Awake() {
+        stats = GetComponent<EntityStats>();
+    }
     void Start(){
-         stats = GetComponent<EntityStats>();
         currentBlocks = maxBlocks;
         StartCoroutine(GainBlocks(gainBlockTime));
     }
@@ -215,6 +218,7 @@ public class PlayerController : MonoBehaviour
         stats.SetSpeedLv(boots.speed);
     }
 
+    //SHOULD BE REPLACED
     public void Equip(Item item){
         if (item is Weapon) EquipWeapon((Weapon) item);
         if (item is Shield) EquipShield((Shield) item);
