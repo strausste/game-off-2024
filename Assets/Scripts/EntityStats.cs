@@ -1,4 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Events;
+using System.Linq;
 using UnityEngine;
 
 public class EntityStats : MonoBehaviour
@@ -14,19 +17,23 @@ public class EntityStats : MonoBehaviour
     [SerializeField] Renderer[] meshRenderers;
     [SerializeField] Material flashMaterial;
 
+    public UnityEvent onHit = new UnityEvent();
     Rigidbody rb;
-    Material origMaterial;
+    List<Material> origMaterial = new List<Material>();
     float flashTime = 0.1f;
 
     int hp;
     bool isImmune = false;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         if (meshRenderers.Length > 0) {
-            origMaterial = meshRenderers[0].material;
+            foreach (Renderer renderer in meshRenderers){
+                origMaterial.Add(renderer.material);
+            }
         }
         hp = maxHp;
     }
@@ -40,6 +47,7 @@ public class EntityStats : MonoBehaviour
         }
 
         Push(5);
+        onHit.Invoke();
 
         if (rest <= 0)
             return false;
@@ -65,14 +73,16 @@ public class EntityStats : MonoBehaviour
     }
 
     IEnumerator Flash(){
-        Instantiate(hitParticles, transform.position, Quaternion.identity);
+        if (hitParticles)
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            
         foreach (Renderer renderer in meshRenderers){
             renderer.material = flashMaterial;
         }
         yield return new WaitForSeconds(flashTime);
 
-        foreach (Renderer renderer in meshRenderers){
-            renderer.material = origMaterial;
+        for (int i = 0; i < meshRenderers.Count(); i++){
+            meshRenderers[i].material = origMaterial[i];
         }
     }
 

@@ -729,7 +729,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -816,7 +816,7 @@ MonoBehaviour:
   maxHp: 8
   attackLv: 3
   defenseLv: 1
-  speedLv: 1
+  speedLv: -1
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
   meshRenderers:
   - {fileID: 8552539154135158906}
@@ -826,6 +826,9 @@ MonoBehaviour:
   - {fileID: 3323483455871322233}
   - {fileID: 4362892229173670758}
   flashMaterial: {fileID: 2100000, guid: e37b97d7a87401d4c87db5cd898581cc, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6216681165493325442
 MonoBehaviour:
   m_ObjectHideFlags: 0

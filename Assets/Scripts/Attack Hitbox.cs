@@ -12,8 +12,7 @@ public class AttackHitbox : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            //Must take damage from stats
-            //player.TakeDamage(stats.GetAttack());
+            player.TakeDamage(stats.GetAttack());
         }
     }
 }

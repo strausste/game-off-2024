@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player & cam
       objectReference: {fileID: 0}
+    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+      propertyPath: flashMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e37b97d7a87401d4c87db5cd898581cc, type: 2}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.911
@@ -510,7 +514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 274804406001157841, guid: 48467b397dad1324f95e7ec30c50a0d5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 620262590275722347, guid: 48467b397dad1324f95e7ec30c50a0d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,10 +576,6 @@ PrefabInstance:
     - target: {fileID: 7149088082370280655, guid: 71848f766c75e6b43a1d30c73abd18fb, type: 3}
       propertyPath: m_Name
       value: Skeleton_Berserker
-      objectReference: {fileID: 0}
-    - target: {fileID: 7149088082370280655, guid: 71848f766c75e6b43a1d30c73abd18fb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529307293252904565, guid: 71848f766c75e6b43a1d30c73abd18fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -680,12 +680,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181633885753866540, guid: 6505364efc7646347907e2d0242ee897, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5211990241948434689, guid: 6505364efc7646347907e2d0242ee897, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 199156184}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -702,10 +698,6 @@ PrefabInstance:
     - target: {fileID: 7149088082370280655, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: m_Name
       value: Skeleton_Berserker_Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 7149088082370280655, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7529307293252904565, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -811,10 +803,6 @@ PrefabInstance:
     - target: {fileID: 2268903955887105932, guid: bc8d6cf7e8a2d194ca270eb7c6f00bb3, type: 3}
       propertyPath: m_Name
       value: Skeleton_Warrior
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268903955887105932, guid: bc8d6cf7e8a2d194ca270eb7c6f00bb3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1031,6 +1019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 3463118413011608846, guid: 58f4e3a18aedaeb4d9cbb017fb2a153a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4270722470763020212, guid: 58f4e3a18aedaeb4d9cbb017fb2a153a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.659148
@@ -1132,10 +1124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turtle
       objectReference: {fileID: 0}
-    - target: {fileID: 2593279082569764057, guid: 0f140ff1fe19fc94791d6b2f651f79ef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6349649316697602323, guid: 0f140ff1fe19fc94791d6b2f651f79ef, type: 3}
       propertyPath: player
       value: 
@@ -1200,10 +1188,6 @@ PrefabInstance:
     - target: {fileID: 2268903955887105932, guid: 5ee628e7d4fe92d4990230940e41cb2b, type: 3}
       propertyPath: m_Name
       value: Skeleton_Minion
-      objectReference: {fileID: 0}
-    - target: {fileID: 2268903955887105932, guid: 5ee628e7d4fe92d4990230940e41cb2b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1690,10 +1674,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skeleton_Warrior2
       objectReference: {fileID: 0}
-    - target: {fileID: 2268903955887105932, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2039,6 +2019,10 @@ PrefabInstance:
     - target: {fileID: 9042019168242812118, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
       propertyPath: m_Name
       value: Skeleton_Mage (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042019168242812118, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

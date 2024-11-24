@@ -170,19 +170,16 @@ public class EnemyController : MonoBehaviour
     // Debug
     void OnDrawGizmos()
     {
-        if (player != null)
-        {
-            // Engage distance
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, engageDistance);
+        // Engage distance
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, engageDistance);
 
-            // Disengage distance
-            Gizmos.color = Color.grey;
-            Gizmos.DrawWireSphere(transform.position, disengageDistance);
+        // Disengage distance
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(transform.position, disengageDistance);
 
-            // Attack distance
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackDistance);
-        }
+        // Attack distance
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
     }
 }
