@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
                 transform.position + Inventory.instance.EquippedWeapon.hitboxOffset - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
                 Debug.Log(hit.gameObject.name);
-                if (hit.CompareTag("Enemy") && hit.TryGetComponent(out EnemyController enemy) && !hitEnemies.Contains(hit.gameObject))
+                if (hit.CompareTag("Enemy") && !hitEnemies.Contains(hit.gameObject) && hit.TryGetComponent(out EnemyController enemy))
                 {
                     hitEnemies.Add(hit.gameObject);
                     if (GameController.instance.GetCheatCodes().oneShot)
