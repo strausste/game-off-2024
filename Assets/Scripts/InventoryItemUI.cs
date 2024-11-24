@@ -20,8 +20,8 @@ public class InventoryItemUI : MonoBehaviour
 
     public void SetItem(Item item)
     {
-        itemImage.sprite = item.sprite;
-        itemName.text = item.itemName;
+        itemImage.sprite = item?.sprite;
+        itemName.text = item?.itemName;
         
         this.item = item;
     }
