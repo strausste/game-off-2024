@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+        if (stats.IsDead())
+        {
+            return;
+        }
         
         Vector3 movement = Vector3.zero;
         

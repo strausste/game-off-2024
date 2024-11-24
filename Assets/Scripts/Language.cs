@@ -82,6 +82,13 @@ public class Language : MonoBehaviour
         
         GenSymbols();
         SetMeanings();
+        //Randomize();
+    }
+
+    public void Randomize(){
+        language.Clear();
+        reversed_l.Clear();
+        SetMeanings(true);
     }
 
     void GenSymbols(){
@@ -94,18 +101,26 @@ public class Language : MonoBehaviour
         questionMark = new Symbol(i, questionSprite);
     }
 
-    void SetMeanings(){
+    void SetMeanings(bool random = false){
         //Sets meanings in order
         int index = 0;
-        List<Symbol> tmpSymbols = new List<Symbol>();
-        tmpSymbols.AddRange(symbols);
+        List<Symbol> tmpSymbols = new List<Symbol>(symbols);
+        List<Symbol> currentSymbol = new List<Symbol>();
         
         //Single Symbol Meanings
         foreach (string m in singleMeanings){
-            Symbol[] s = {tmpSymbols[index]};
+            Symbol[] s = new Symbol[1]; 
+            if (random)
+                index = Random.Range(0, tmpSymbols.Count);
+
+            s[0] = tmpSymbols[index];
+            currentSymbol.Add(tmpSymbols[index]);
             tmpSymbols.RemoveAt(index);
             language.Add(s, m);
         }
+
+        //Removes the symbols excluded in this run
+        symbols = currentSymbol;
 
         //Create reversed dictionary
         foreach (var l in language){

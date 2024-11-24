@@ -24,6 +24,7 @@ public class EntityStats : MonoBehaviour
 
     int hp;
     bool isImmune = false;
+    bool isDead = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -69,7 +70,8 @@ public class EntityStats : MonoBehaviour
     }
 
     void Die(){
-        
+        isImmune = true;
+        isDead = true;
     }
 
     IEnumerator Flash(){
@@ -114,16 +116,16 @@ public class EntityStats : MonoBehaviour
         return hp;
     }
     public int GetAttack(){
-        //Sostituire con valori globali 
-        //ES: global_attack_modifier
         return (int)(attackLv * Globals.globalAttackScaling);
     }
     public int GetDefense(){
-        //Sostituire con valori globali
         return (int)(defenseLv * Globals.globalDefenseScaling);
     }
     public int GetSpeed(){
-        //Sostituire con valori globali
         return (int)(Globals.baseSpeed + speedLv * Globals.globalSpeedScaling);
+    }
+
+    public bool IsDead(){
+        return isDead;
     }
 }
