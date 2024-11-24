@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -78,5 +79,7 @@ public class GameController : MonoBehaviour
         
         PlayerPrefs.SetString(timePlayerPrefsKey, String.Join("\n", timesList));
         PlayerPrefs.Save();
+        
+        SceneManager.LoadScene("MainMenu");
     }
 }
