@@ -3206,6 +3206,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 34b54b57ab574ea43befdaddf85bdbd5, type: 2}
     probability: 1
   maxItemDrops: 2
+  lootPrefab: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!1001 &669875595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4515,6 +4516,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
+--- !u!1001 &1043181081
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_Name
+      value: DropBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.349
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000000834465
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.436
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.06666162
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9977757
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 172.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140989420889226937, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!1001 &1061744867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10768,6 +10830,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4561352568958045289, guid: 5f5215802b86a2b73a59af90b2395133, type: 3}
+      propertyPath: musicClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561352568958045289, guid: 5f5215802b86a2b73a59af90b2395133, type: 3}
+      propertyPath: musicClips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e5fa31772bf78d62b5879a30c73a40d, type: 3}
+    - target: {fileID: 4561352568958045289, guid: 5f5215802b86a2b73a59af90b2395133, type: 3}
+      propertyPath: musicClips.Array.data[1].name
+      value: GotDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561352568958045289, guid: 5f5215802b86a2b73a59af90b2395133, type: 3}
+      propertyPath: musicClips.Array.data[1].volume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 6629281193555053078, guid: 5f5215802b86a2b73a59af90b2395133, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.244176
@@ -11183,3 +11261,4 @@ SceneRoots:
   - {fileID: 804416693285546407}
   - {fileID: 3806713211562361737}
   - {fileID: 1199583010}
+  - {fileID: 1043181081}

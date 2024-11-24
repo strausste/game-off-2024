@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     List<AudioSource> musicSources = new List<AudioSource>();
     AudioSource musicSourcePlaying = null;
     [SerializeField] AudioMixerGroup musicGroup = null;
+    [SerializeField] AudioMixerGroup sfxGroup = null;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -60,6 +61,20 @@ public class AudioManager : MonoBehaviour
             audioSource.Play();
             musicSourcePlaying.Stop();
             musicSourcePlaying = audioSource;
+        }
+    }
+
+    public void PlaySound(string clipName)
+    {
+        var clip = musicClips.ToList().Find(m => m.name == clipName)?.clip;
+
+        if (clip != null)
+        {
+            var audioSource = musicSources.Find(s => s.clip == clip);
+
+            audioSource.outputAudioMixerGroup = sfxGroup;
+            audioSource.loop = false;
+            audioSource.Play();
         }
     }
 
