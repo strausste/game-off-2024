@@ -1,51 +1,22 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Assertions.Comparers;
 
 public class Drop : MonoBehaviour
 {
-    [SerializeField] ItemAndProbability[] possibleDrops;
-    [SerializeField] private int maxItemDrops = 0; //If zero no limits
-    
-    public void DropItems()
+    private Item[] drops;
+
+    private void OnTriggerEnter(Collider other)
     {
-        List<ItemAndProbability> droppedItems = new List<ItemAndProbability>();    
-        
-        foreach (var drop in possibleDrops)
+        if (other.CompareTag("Player"))
         {
-            float rand = Random.Range(0f, 1f);
-
-            if (rand < drop.probability)
-            {
-                droppedItems.Add(drop);
-            }
+            Inventory.instance.AddItems(drops);
+            AudioManager.instance.PlaySound("GotDrop");
+            Destroy(gameObject);
         }
-
-        //Dropped more common items if more drops than max
-        if (maxItemDrops > 0 && maxItemDrops < droppedItems.Count)
-        {
-            droppedItems.Sort((a, b) => b.probability.CompareTo(a.probability));
-            
-            droppedItems.RemoveRange(maxItemDrops, droppedItems.Count);
-        }
-        
-        SpawnDrops(droppedItems.ToArray());
     }
 
-    void SpawnDrops(ItemAndProbability[] drops)
+    public void SetDrop(Item []drops)
     {
-        foreach (var drop in drops)
-        {
-            Instantiate(drop.item.prefab, transform.position, transform.rotation);   
-        }
+        this.drops = drops;
     }
 }
-
-[System.Serializable]
-public class ItemAndProbability
-{
-    public Item item;
-    [Range(0f, 1f)]
-    public float probability;
-}
-

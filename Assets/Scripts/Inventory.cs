@@ -139,4 +139,9 @@ public class Inventory : MonoBehaviour
             money = 1000000000;
         }
     }
+
+    public void AddItems(Item []items)
+    {
+        _items.AddRange(items);
+    }
 }
