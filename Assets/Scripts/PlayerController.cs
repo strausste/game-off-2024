@@ -121,12 +121,14 @@ public class PlayerController : MonoBehaviour
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
         if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon){
             //Debug.Log("Attacking");
-            Collider []hits = Physics.OverlapSphere(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
+            Vector3 position = transform.TransformPoint(Inventory.instance.EquippedWeapon.hitboxOffset);
+            
+            Collider []hits = Physics.OverlapSphere(position, 
                 Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
-            Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
-                transform.position + Inventory.instance.EquippedWeapon.hitboxOffset + transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
-            Debug.DrawLine(transform.position + Inventory.instance.EquippedWeapon.hitboxOffset, 
-                transform.position + Inventory.instance.EquippedWeapon.hitboxOffset - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
+            Debug.DrawLine(position, 
+                position + transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
+            Debug.DrawLine(position, 
+                position - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
                 Debug.Log(hit.gameObject.name);
                 if (hit.CompareTag("Enemy") && !hitEnemies.Contains(hit.gameObject) && hit.TryGetComponent(out EnemyController enemy))

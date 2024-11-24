@@ -3181,6 +3181,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
   m_PrefabInstance: {fileID: 661015316}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &667805555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3463118413011608846, guid: 58f4e3a18aedaeb4d9cbb017fb2a153a, type: 3}
+  m_PrefabInstance: {fileID: 1199583010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &667805556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667805555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0eacb00517bcf52855f706d85e4905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - item: {fileID: 11400000, guid: f0aff1c99c609fd4ca04da1344ae7190, type: 2}
+    probability: 0.844
+  - item: {fileID: 11400000, guid: 88d931fb234d0ce409a578400c72c672, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 34b54b57ab574ea43befdaddf85bdbd5, type: 2}
+    probability: 1
+  maxItemDrops: 2
 --- !u!1001 &669875595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5512,7 +5537,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3463118413011608846, guid: 58f4e3a18aedaeb4d9cbb017fb2a153a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 667805556}
   m_SourcePrefab: {fileID: 100100000, guid: 58f4e3a18aedaeb4d9cbb017fb2a153a, type: 3}
 --- !u!1001 &1213129910
 PrefabInstance:
