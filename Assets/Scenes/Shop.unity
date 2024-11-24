@@ -354,6 +354,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+--- !u!114 &721780014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 68330836564433624, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+  m_PrefabInstance: {fileID: 721780013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e5a2fbe84c9878393b00fe009d3c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &742794566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -573,6 +584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4272741723577266301, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 721780014}
     - target: {fileID: 5090445321047473791, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
       propertyPath: m_Name
       value: Prova Shop
