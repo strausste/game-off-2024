@@ -5,7 +5,7 @@ using System.Collections;
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject destination;
-    [SerializeField] private float fadeDuration = 1.5f;
+    [SerializeField] private float fadeDuration = 1.0f;
 
     private Image fadeImage;
 
@@ -36,21 +36,22 @@ public class Door : MonoBehaviour
         // Fade out
         yield return StartCoroutine(FadeToBlack());
 
-        // Teleport the player, -Ste: TODO - disable player's CC (by caching it) 
-        //other.gameObject.SetActive(false);
+        other.gameObject.SetActive(false);
         other.gameObject.transform.position = destination.transform.position;
-        //other.gameObject.SetActive(true);
+        other.gameObject.SetActive(true);
 
         // Fade in
         yield return StartCoroutine(FadeToClear());
     }
 
-    private IEnumerator FadeToBlack()
+ private IEnumerator FadeToBlack()
     {
-        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
         {
-            float alpha = t / fadeDuration;
+            float alpha = Mathf.Lerp(0, 1, timeElapsed / fadeDuration);
             fadeImage.color = new Color(0, 0, 0, alpha);
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
         fadeImage.color = new Color(0, 0, 0, 1); // black at the end
@@ -58,10 +59,14 @@ public class Door : MonoBehaviour
 
     private IEnumerator FadeToClear()
     {
-        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        yield return new WaitForSeconds(0.25f); // TODO: Disable this when all the rooms are no more close to each others
+
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeDuration)
         {
-            float alpha = 1 - (t / fadeDuration);
+            float alpha = Mathf.Lerp(1, 0, timeElapsed / fadeDuration);
             fadeImage.color = new Color(0, 0, 0, alpha);
+            timeElapsed += Time.deltaTime;
             yield return null;
         }
         fadeImage.color = new Color(0, 0, 0, 0); // transparent at the end
