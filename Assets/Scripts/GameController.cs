@@ -92,6 +92,5 @@ public class GameController : MonoBehaviour
     public void LoadLevel(int level){
         Inventory.instance.Save();
         SceneManager.LoadScene("Level" + level);
-        Inventory.instance.EquipCurrent();
     }
 }
