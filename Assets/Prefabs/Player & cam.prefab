@@ -462,6 +462,21 @@ MonoBehaviour:
   slashEffect: {fileID: 8690375538966534662}
   maxBlocks: 2
   gainBlockTime: 2
+  onImmunityAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6505294999062103805}
+        m_TargetAssemblyTypeName: EntityStats, Assembly-CSharp
+        m_MethodName: SetImmune
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onAttack:
     m_PersistentCalls:
       m_Calls:
@@ -500,9 +515,6 @@ MonoBehaviour:
   - {fileID: 7944453437804546410}
   flashMaterial: {fileID: 2100000, guid: e37b97d7a87401d4c87db5cd898581cc, type: 2}
   onHit:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
     m_PersistentCalls:
       m_Calls: []
 --- !u!81 &8198126454188989281

@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gainBlockTime = 2;
     bool isBlocking = false;
     IEnumerator deathCoroutine;
-    
+
+    public UnityEvent<bool> onImmunityAction = new UnityEvent<bool>();
     public bool IsRolling
     {
         get
@@ -90,8 +91,13 @@ public class PlayerController : MonoBehaviour
             lastRollTime = Time.time;
         }
 
-        isRolling = animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll");
-
+        var rolling = animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll");
+        if (rolling != isRolling)
+        {
+            onImmunityAction.Invoke(rolling);
+            isRolling = rolling;
+        }
+        
         animator.SetFloat("Speed", movement.magnitude/stats.GetSpeed());        
         
         HandleAttack();
