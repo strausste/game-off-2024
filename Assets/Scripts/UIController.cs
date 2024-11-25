@@ -65,8 +65,19 @@ public class UIController : MonoBehaviour
     {
     }
 
+    void ClearInventory()
+    {
+        foreach (var child in inventoryChilds)
+        {
+            //Please officer I can explain
+            Destroy(child);
+        }
+        inventoryChilds.Clear();
+    }
+    
     public void OpenInventory(bool open, Item []items = null)
     {
+        ClearInventory();
         inventoryPanel.SetActive(open);
         
         if (open)
@@ -81,15 +92,6 @@ public class UIController : MonoBehaviour
                 
                 inventoryChilds.Add(inventoryItem);
             }
-        }
-        else
-        {
-            foreach (var child in inventoryChilds)
-            {
-                //Please officer I can explain
-                Destroy(child);
-            }
-            inventoryChilds.Clear();
         }
     }
 

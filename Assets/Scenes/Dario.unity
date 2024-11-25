@@ -3200,11 +3200,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDrops:
   - item: {fileID: 11400000, guid: f0aff1c99c609fd4ca04da1344ae7190, type: 2}
-    probability: 0.844
+    probability: 0.241
   - item: {fileID: 11400000, guid: 88d931fb234d0ce409a578400c72c672, type: 2}
-    probability: 1
+    probability: 0.514
   - item: {fileID: 11400000, guid: 34b54b57ab574ea43befdaddf85bdbd5, type: 2}
-    probability: 1
+    probability: 0.618
+  - item: {fileID: 11400000, guid: 516122b7437e2d94983b252b628059da, type: 2}
+    probability: 0.901
   maxItemDrops: 2
   lootPrefab: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!1001 &669875595
@@ -11217,7 +11219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
       propertyPath: _items.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
       propertyPath: '_items.Array.data[0]'
@@ -11226,15 +11228,19 @@ PrefabInstance:
     - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
       propertyPath: '_items.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 0794d87a65fb1e0449eee3013800d45f, type: 2}
+      objectReference: {fileID: 11400000, guid: 28eade2ed5986b840b8fe037eee3de47, type: 2}
     - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
       propertyPath: '_items.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: 752c37dbaa8f3289091db6d61f067bfd, type: 2}
+      objectReference: {fileID: 11400000, guid: 0ed4820ff7eafa14e9b13d8e3cb1f736, type: 2}
     - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
       propertyPath: '_items.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 8d5e6789d4275f1cba9861763a2e6336, type: 2}
+    - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
+      propertyPath: '_items.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f80aa035eb2bceec85d87cb96969933, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -39,6 +41,7 @@ public class Inventory : MonoBehaviour
     }
 
     PlayerController player;
+    EntityStats playerStats;
     
     int money = 0;
 
@@ -63,7 +66,7 @@ public class Inventory : MonoBehaviour
     }
     SavedProperties savedProperties;
     
-    private void Start()
+    private void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -75,11 +78,10 @@ public class Inventory : MonoBehaviour
         Save();
         DontDestroyOnLoad(gameObject);
         
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        
         CheatCodes.activatedCheat.AddListener(SetInfiniteMoney);
 
-        EquipCurrent();
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => InitPlayer();
+        InitPlayer();
     }
 
     private void Update()
@@ -90,6 +92,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    void InitPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerStats = player.GetComponent<EntityStats>();
+        
+        if (equippedWeapon) UseItem(equippedWeapon);
+        if (equippedShield) UseItem(equippedShield);
+        if (equippedBoots) UseItem(equippedBoots);
+    }
+    
     public void AddItem(Item item)
     {
         _items.Add(item);
@@ -133,6 +145,18 @@ public class Inventory : MonoBehaviour
             equippedBoots = (Boots)item;
             player.EquipBoots(equippedBoots);
         }
+        else if (item.GetType() == typeof(Potion))
+        {
+            var potion = (Potion)item;
+            
+            if (playerStats.GetHp() < playerStats.GetMaxHp())
+            {
+                //We could add other types of potions
+                playerStats.IncreaseHp(potion.life);
+                _items.Remove(item);
+                UIController.instance.OpenInventory(true, _items.ToArray());    //Refresh UI
+            }
+        }
         else
         {
             Debug.Log("Implement item use here");
@@ -149,15 +173,17 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void EquipCurrent(){
-        if (equippedWeapon) UseItem(equippedWeapon);
-        if (equippedShield) UseItem(equippedShield);
-        if (equippedBoots) UseItem(equippedBoots);
-    }
-
     public void AddItems(Item []items)
     {
+        var itemsList = items.ToList();
+        
+        var toAdd = itemsList.FindAll(i => i.GetType() != typeof(Money));
+        
         _items.AddRange(items);
+        
+        var money = itemsList.FindAll(i => i.GetType() == typeof(Money));
+        
+        money.ForEach(m => this.money += ((Money)m).amount);
     }
 
     public void Save(){

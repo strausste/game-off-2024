@@ -120,6 +120,11 @@ public class EntityStats : MonoBehaviour
     public int GetHp(){
         return hp;
     }
+
+    public int GetMaxHp()
+    {
+        return maxHp;
+    }
     public int GetAttack(){
         return (int)(attackLv * Globals.globalAttackScaling);
     }
@@ -132,5 +137,10 @@ public class EntityStats : MonoBehaviour
 
     public bool IsDead(){
         return isDead;
+    }
+
+    public void IncreaseHp(int amount)
+    {
+        hp += amount;
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Shield", menuName = "Scriptable Objects/Shield")]
-public class Shield : Item
+[CreateAssetMenu(fileName = "Shield", menuName = "Scriptable Objects/Items/Shield")]
+public class Shield : Equipment
 {
     public Vector3 modelOffset;
     public Vector3 modelScale = Vector3.one;
