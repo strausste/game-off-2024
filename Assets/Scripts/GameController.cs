@@ -82,4 +82,16 @@ public class GameController : MonoBehaviour
         
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void RestartLevel(){
+        Inventory.instance.Load();
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void LoadLevel(int level){
+        Inventory.instance.Save();
+        SceneManager.LoadScene("Level" + level);
+        Inventory.instance.EquipCurrent();
+    }
 }

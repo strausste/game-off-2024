@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private int currentBlocks = 2;
     [SerializeField] private float gainBlockTime = 2;
     bool isBlocking = false;
+    IEnumerator deathCoroutine;
     
     public bool IsRolling
     {
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         stats = GetComponent<EntityStats>();
     }
     void Start(){
+        deathCoroutine = Die();
         currentBlocks = maxBlocks;
         StartCoroutine(GainBlocks(gainBlockTime));
     }
@@ -135,7 +138,7 @@ public class PlayerController : MonoBehaviour
             Debug.DrawLine(position, 
                 position - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach(Collider hit in hits){
-                Debug.Log(hit.gameObject.name);
+                //Debug.Log(hit.gameObject.name);
                 if (hit.CompareTag("Enemy") && !hitEnemies.Contains(hit.gameObject) && hit.TryGetComponent(out EnemyController enemy))
                 {
                     hitEnemies.Add(hit.gameObject);
@@ -240,27 +243,20 @@ public class PlayerController : MonoBehaviour
         stats.SetSpeedLv(boots.speed);
     }
 
-    //SHOULD BE REPLACED
     public void Equip(Item item){
-        if (item is Weapon) EquipWeapon((Weapon) item);
-        if (item is Shield) EquipShield((Shield) item);
-        if (item is Boots) EquipBoots((Boots) item);
+        Inventory.instance.UseItem(item);
     }
 
     public void TakeDamage(int damage){
         if (!stats.TryHurt(damage)){
+            print(gameObject.name + " è morto");
             animator.SetTrigger("die");
-            Die();
+            StartCoroutine(deathCoroutine);
         }
     }
 
-    void Die(){
-
+    IEnumerator Die(){
+        yield return new WaitForSeconds(4);
+        GameController.instance.RestartLevel();
     }
-
-    // IEnumerator disableSwordHitbox(){    //
-    //     //Disables the attack hitbox after attacking
-    //     yield return new WaitForSeconds(0.1f);
-    //     swordCollider.enabled = false;
-    // }
 }

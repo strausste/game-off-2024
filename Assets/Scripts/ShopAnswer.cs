@@ -31,7 +31,6 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     public void Answer(Symbol[] phrase){
         if (dealing){
             if (phrase.SequenceEqual(language.GetSymbol("POSITIVE"))){
-                print("EQUIPPA");
                 player.Equip(toDisplay);
 
                 dealing = false;

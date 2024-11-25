@@ -10,8 +10,6 @@ public class EnemyController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform player; 
-    [SerializeField] private PlayerHealthController phc; 
-
 
     [Header("Property")] 
     [SerializeField] private EnemyType enemyType;
@@ -82,8 +80,12 @@ public class EnemyController : MonoBehaviour
     }
     
     void Follow(){
+        Vector3 targetDirection = agent.destination - transform.position;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection.normalized, Time.deltaTime * agent.angularSpeed, 0.0f);
+        newDirection.y = 0;
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-    
         if (distanceToPlayer <= engageDistance)
         {
             lastPlayerPos = player.position;
@@ -108,6 +110,8 @@ public class EnemyController : MonoBehaviour
 
     void Attack()
     {
+        agent.ResetPath();
+        agent.isStopped = true;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (Time.time - lastAttackTime >= attackCooldown)
@@ -117,12 +121,10 @@ public class EnemyController : MonoBehaviour
         }
         
         Vector3 targetDirection = player.position - transform.position;
-        int rotSpeed = 5;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection.normalized, Time.deltaTime * rotSpeed, 0.0f);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection.normalized, Time.deltaTime * agent.angularSpeed, 0.0f);
         newDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(newDirection);
-        agent.isStopped = true;
-
+        
         if (distanceToPlayer > attackDistance && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
             state = State.FOLLOW;

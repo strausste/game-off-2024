@@ -40,10 +40,13 @@ public class EntityStats : MonoBehaviour
     }
 
     public bool TryHurt(int damage){
+        if (isImmune) 
+            return true;
+
         int trueDamage = damage - GetDefense();
         int rest = GetHp();
         trueDamage = Mathf.Clamp(trueDamage, 1, damage);
-        if (hp >= 0 && !isImmune){
+        if (hp >= 0){
             rest = Hurt(trueDamage);
         }
 
@@ -70,6 +73,8 @@ public class EntityStats : MonoBehaviour
     }
 
     void Die(){
+        //print(gameObject.name + " è morto");
+        //onDeath.Invoke();
         isImmune = true;
         isDead = true;
     }

@@ -498,7 +498,13 @@ MonoBehaviour:
   - {fileID: 1684089479657066081}
   - {fileID: 6537295226115416152}
   - {fileID: 7944453437804546410}
-  flashMaterial: {fileID: 0}
+  flashMaterial: {fileID: 2100000, guid: e37b97d7a87401d4c87db5cd898581cc, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!81 &8198126454188989281
 AudioListener:
   m_ObjectHideFlags: 0

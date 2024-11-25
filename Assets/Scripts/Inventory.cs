@@ -53,6 +53,15 @@ public class Inventory : MonoBehaviour
             money = value;
         }
     }
+
+    class SavedProperties {
+        public List<Item> items;
+        public int money;
+        public Weapon weapon;
+        public Shield shield;
+        public Boots boots;
+    }
+    SavedProperties savedProperties;
     
     private void Start()
     {
@@ -63,15 +72,14 @@ public class Inventory : MonoBehaviour
         }
 
         instance = this;
+        Save();
         DontDestroyOnLoad(gameObject);
         
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         
         CheatCodes.activatedCheat.AddListener(SetInfiniteMoney);
 
-        if (equippedWeapon) UseItem(equippedWeapon);
-        if (equippedShield) UseItem(equippedShield);
-        if (equippedBoots) UseItem(equippedBoots);
+        EquipCurrent();
     }
 
     private void Update()
@@ -115,12 +123,13 @@ public class Inventory : MonoBehaviour
         }
         else if (item.GetType() == typeof(Shield))
         {
-            Debug.Log("Equipped shield");
+            //Debug.Log("Equipped shield");
             equippedShield = (Shield)item;
             player.EquipShield(equippedShield);
         }
         else if (item.GetType() == typeof(Boots))
         {
+            //Debug.Log("Equipped shield");
             equippedBoots = (Boots)item;
             player.EquipBoots(equippedBoots);
         }
@@ -140,8 +149,31 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void EquipCurrent(){
+        if (equippedWeapon) UseItem(equippedWeapon);
+        if (equippedShield) UseItem(equippedShield);
+        if (equippedBoots) UseItem(equippedBoots);
+    }
+
     public void AddItems(Item []items)
     {
         _items.AddRange(items);
+    }
+
+    public void Save(){
+        savedProperties = new SavedProperties();
+        savedProperties.items = _items;
+        savedProperties.money = money;
+        savedProperties.weapon = equippedWeapon;
+        savedProperties.shield = equippedShield;
+        savedProperties.boots = equippedBoots;
+    }
+
+    public void Load(){
+        _items = savedProperties.items;
+        money = savedProperties.money;
+        equippedWeapon = savedProperties.weapon;
+        equippedShield = savedProperties.shield;
+        equippedBoots = savedProperties.boots;
     }
 }

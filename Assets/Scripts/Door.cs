@@ -5,6 +5,7 @@ using System.Collections;
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject destination;
+    bool locked = false;
     [SerializeField] private float fadeDuration = 1.0f;
 
     private Image fadeImage;
@@ -25,7 +26,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !locked)
         {
             StartCoroutine(TeleportWithFade(other));
         }
@@ -70,5 +71,9 @@ public class Door : MonoBehaviour
             yield return null;
         }
         fadeImage.color = new Color(0, 0, 0, 0); // transparent at the end
+    }
+
+    public void SetLocked(bool locked){
+        this.locked = locked;
     }
 }
