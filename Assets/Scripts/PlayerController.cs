@@ -195,6 +195,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LoseBlocks()
+    {
+        //If is not blocking shouldn't lose blocks
+        if(!isBlocking)
+            return;
+        
+        currentBlocks--;
+    }
+
     public void EquipWeapon(Weapon weapon){
         if(!weapon)
             return;

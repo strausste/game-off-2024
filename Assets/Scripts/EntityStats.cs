@@ -40,6 +40,8 @@ public class EntityStats : MonoBehaviour
     }
 
     public bool TryHurt(int damage){
+        onHit.Invoke();
+        
         if (isImmune) 
             return true;
 
@@ -51,7 +53,6 @@ public class EntityStats : MonoBehaviour
         }
 
         Push(5);
-        onHit.Invoke();
 
         if (rest <= 0)
             return false;
