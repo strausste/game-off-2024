@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - SymbolSelector
+  - UI_FadeImage
   layers:
   - Default
   - TransparentFX
