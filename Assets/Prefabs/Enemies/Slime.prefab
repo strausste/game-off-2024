@@ -225,9 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
-  playerSpottedPhrase: 12000000
-  diePhrase: 04000000
-  generalPhrase: 0100000005000000
+  playerSpottedPhrase: 19000000
+  diePhrase: 0b000000
+  generalPhrase: 080000000e000000
 --- !u!1 &2541505784763852293
 GameObject:
   m_ObjectHideFlags: 0

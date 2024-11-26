@@ -48,6 +48,6 @@ public class Symbol
     }
     public override string ToString()
     {
-        return "Symbol " + getId();
+        return "Symbol " + id.ToString();
     }
 }

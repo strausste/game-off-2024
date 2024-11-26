@@ -30,13 +30,13 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     public void Answer(Symbol[] phrase){
         if (dealing){
-            if (phrase.SequenceEqual(language.GetSymbol("POSITIVE"))){
+            if (phrase.SequenceEqual(language.GetSymbol(Meaning.POSITIVE))){
                 player.Equip(toDisplay);
 
                 dealing = false;
                 itemDisplay.Clear();
             }
-            else if (phrase.SequenceEqual(language.GetSymbol("NEGATIVE"))){
+            else if (phrase.SequenceEqual(language.GetSymbol(Meaning.NEGATIVE))){
                 dealing = false;
                 itemDisplay.Clear();
             }
@@ -58,18 +58,18 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     }
 
     void InitAnswers(){
-        answers.Add(language.GetSymbol("STRENGHT"), new Meaning[]{Meaning.STRENGHT, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("DEFENSE"), new Meaning[]{Meaning.DEFENSE, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("SPEED"), new Meaning[]{Meaning.SPEED, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("WEAPON") , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("SHIELD") , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("BOOTS") , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
-        answers.Add(language.GetSymbol("FRIEND") , new Meaning[]{Meaning.POSITIVE});
-        answers.Add(language.GetSymbol("ENEMY") , new Meaning[]{Meaning.NEGATIVE});
+        answers.Add(language.GetSymbol(Meaning.STRENGHT), new Meaning[]{Meaning.STRENGHT, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.DEFENSE), new Meaning[]{Meaning.DEFENSE, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.SPEED), new Meaning[]{Meaning.SPEED, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.WEAPON) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.SHIELD) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.BOOTS) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.FRIEND) , new Meaning[]{Meaning.POSITIVE});
+        answers.Add(language.GetSymbol(Meaning.ENEMY) , new Meaning[]{Meaning.NEGATIVE});
 
         answers.Add(new Symbol[]{
-            language.GetSymbol("HERE")[0], 
-            language.GetSymbol("OBJECT")[0]}, 
+            language.GetSymbol(Meaning.HERE)[0], 
+            language.GetSymbol(Meaning.OBJECT)[0]}, 
             new Meaning[]{Meaning.POSITIVE});
 
     }
@@ -82,15 +82,15 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     void ShowRelativeItem(Symbol[] phrase){
         foreach (Item item in shopItems){
                 print(item.GetType());
-                if (item is Weapon && phrase.SequenceEqual(language.GetSymbol("WEAPON"))){
+                if (item is Weapon && phrase.SequenceEqual(language.GetSymbol(Meaning.WEAPON))){
                     toDisplay = item;
                     break;
                 }
-                if (item is Shield && phrase.SequenceEqual(language.GetSymbol("SHIELD"))){
+                if (item is Shield && phrase.SequenceEqual(language.GetSymbol(Meaning.SHIELD))){
                     toDisplay = item;
                     break;
                 }
-                if (item is Boots && phrase.SequenceEqual(language.GetSymbol("BOOTS"))){
+                if (item is Boots && phrase.SequenceEqual(language.GetSymbol(Meaning.BOOTS))){
                     toDisplay = item;
                     break;
                 }

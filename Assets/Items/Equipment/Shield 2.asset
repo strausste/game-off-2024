@@ -18,4 +18,4 @@ MonoBehaviour:
   modelOffset: {x: 0, y: 0.084, z: 0.053}
   modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: -35.155, y: -46.107, z: -15.236}
-  damageProtection: 2
+  damageProtection: 3

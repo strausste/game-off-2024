@@ -61,4 +61,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ebd0b1fe94509d74a91c974caa2ba33c, type: 3}
   - {fileID: 21300000, guid: 2d5d678e483883f4bb3a7dd1cf0347d9, type: 3}
   - {fileID: 21300000, guid: 37893b0c68374ae47965288cdc91ac98, type: 3}
+  numbersImages:
+  - {fileID: 21300000, guid: 0248a0cd59c1d8d499bb15e64b888cdc, type: 3}
+  - {fileID: 21300000, guid: a41cb76f59b707340acb0a1cfc43991f, type: 3}
+  - {fileID: 21300000, guid: 22c57f8006cc0674ca588a6bb8cd8bed, type: 3}
+  - {fileID: 21300000, guid: 73f8ca1ea5329a849b0e55601e4474eb, type: 3}
+  - {fileID: 21300000, guid: 3f9eb99f1159bda4d8d36c4c29fd374f, type: 3}
+  - {fileID: 21300000, guid: 633526ada2846b341acddfac196424e9, type: 3}
   questionSprite: {fileID: 21300000, guid: c7291c4bcdef59a40b22c746d6f971b4, type: 3}

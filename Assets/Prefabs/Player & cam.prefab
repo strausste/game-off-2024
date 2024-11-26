@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 2840532392028225820}
+  stats: {fileID: 6505294999062103805}
   rollSpeed: 11
   rollCooldown: 0.3
   animator: {fileID: 4203384678252278769}

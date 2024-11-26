@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Ruined Sword
   sprite: {fileID: 21300000, guid: 7091c16663ec90a5e99a5682ecfc713e, type: 3}
   prefab: {fileID: 3627310878010933022, guid: 4e96c042e78b4f542876b9d41fd87eac, type: 3}
-  attack: 1
+  attack: 2
   modelOffset: {x: 0, y: 0, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: 0, y: 0, z: 0}

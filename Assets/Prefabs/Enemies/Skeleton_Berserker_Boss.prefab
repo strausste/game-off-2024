@@ -419,7 +419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  phc: {fileID: 0}
   enemyType: 0
   engageDistance: 8
   disengageDistance: 10.5
@@ -469,9 +468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
-  playerSpottedPhrase: 12000000
-  diePhrase: 04000000
-  generalPhrase: 0100000005000000
+  playerSpottedPhrase: 19000000
+  diePhrase: 0b000000
+  generalPhrase: 080000000d000000
 --- !u!4 &7529307293252904565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fdcc8fac1cb2ec54dbaa76c6fd79a047, type: 3}

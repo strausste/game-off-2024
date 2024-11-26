@@ -21,11 +21,10 @@ public class WriteSymbols : MonoBehaviour
         language = Language.instance;
         List<Symbol> symbols = new List<Symbol>();
         foreach (Meaning mean in meanings){
-            symbols.AddRange(language.GetSymbol(Enum.GetName(typeof(Meaning), mean)));
+            symbols.AddRange(language.GetSymbol(mean));
         }
 
         foreach (Symbol symbol in symbols){
-            //GameObject sprite = symbolPrefab.gameObject;
             GameObject instance = Instantiate(symbolPrefab, layout.transform);
             instance.GetComponent<Image>().sprite = symbol.getSprite();
             instance.GetComponent<Image>().color = Color.black;

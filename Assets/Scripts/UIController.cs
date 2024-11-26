@@ -18,6 +18,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject inventoryContentPanel;
     private List<GameObject> inventoryChilds = new List<GameObject>();
     [SerializeField] private GameObject inventoryItemPrefab;
+    [SerializeField] private GameObject attackStat;
+    [SerializeField] private GameObject defenseStat;
+    [SerializeField] private GameObject speedStat;
     
     private void Awake()
     {
@@ -61,10 +64,6 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-    }
-
     void ClearInventory()
     {
         foreach (var child in inventoryChilds)
@@ -91,6 +90,35 @@ public class UIController : MonoBehaviour
                 itemUI.OnClick.AddListener(ClickedItem);
                 
                 inventoryChilds.Add(inventoryItem);
+            }
+
+            EntityStats stats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
+            Language language = Language.instance;
+
+            GameObject atkSymbol = Instantiate(symbolPrefab, attackStat.transform);
+            GameObject atkNum = Instantiate(symbolPrefab, attackStat.transform);
+            atkSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.STRENGHT)[0].getSprite();
+            atkNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetAttackLv())[0].getSprite();
+
+            GameObject defSymbol = Instantiate(symbolPrefab, defenseStat.transform);
+            GameObject defNum = Instantiate(symbolPrefab, defenseStat.transform);
+            defSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.DEFENSE)[0].getSprite();
+            defNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetDefenseLv())[0].getSprite();
+
+            GameObject spdSymbol = Instantiate(symbolPrefab, speedStat.transform);
+            GameObject spdNum = Instantiate(symbolPrefab, speedStat.transform);
+            spdSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.SPEED)[0].getSprite();
+            spdNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetSpeedLv())[0].getSprite();
+        }
+        else {
+            foreach (Transform child in attackStat.transform){
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in defenseStat.transform){
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in speedStat.transform){
+                Destroy(child.gameObject);
             }
         }
     }

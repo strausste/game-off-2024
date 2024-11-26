@@ -1,39 +1,48 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public enum Meaning {
-        START, 
-        ME,
-        YOU,
-        POSITIVE,
-        NEGATIVE,
-        STRENGHT,
-        DEFENSE,
-        SPEED,
-        OPEN,
-        HERE,
-        MONEY,
-        //"DOOR",
-        CHEST,
-        //"GO",
-        //"ROOM",
-        SECRET,
-        OBJECT,
-        WEAPON,
-        SHIELD,
-        BOOTS,
-        FRIEND,
-        ENEMY,
-        QUESTION
-    };
+    QUESTION,
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    START, 
+    ME,
+    YOU,
+    POSITIVE,
+    NEGATIVE,
+    STRENGHT,
+    DEFENSE,
+    SPEED,
+    OPEN,
+    HERE,
+    MONEY,
+    //"DOOR",
+    CHEST,
+    //"GO",
+    //"ROOM",
+    SECRET,
+    OBJECT,
+    WEAPON,
+    SHIELD,
+    BOOTS,
+    FRIEND,
+    ENEMY
+};
 
 public class Language : MonoBehaviour
 {
     [SerializeField] Sprite[] symbolImages;
+    [SerializeField] Sprite[] numbersImages;
     [SerializeField] Sprite questionSprite;
     //Symbols in the language
     public List<Symbol> symbols = new List<Symbol>();
+    List<Symbol>numbers = new List<Symbol>();
     Symbol questionMark;
     List<string> singleMeanings = new List<string>(){
         "START", 
@@ -93,12 +102,21 @@ public class Language : MonoBehaviour
 
     void GenSymbols(){
         int i = 0;
+
+        //Adds question Mark
+        questionMark = new Symbol(i, questionSprite);
+        i++;
+
+        //Adds Numbers
+        foreach (Sprite image in numbersImages) {
+            numbers.Add(new Symbol(i, image));
+            i++;
+        }
+        //Adds Characters
         foreach (Sprite image in symbolImages) {
             symbols.Add(new Symbol(i, image));
             i++;
         }
-        //Adds question Mark
-        questionMark = new Symbol(i, questionSprite);
     }
 
     void SetMeanings(bool random = false){
@@ -111,7 +129,7 @@ public class Language : MonoBehaviour
         foreach (string m in singleMeanings){
             Symbol[] s = new Symbol[1]; 
             if (random)
-                index = Random.Range(0, tmpSymbols.Count);
+                index = UnityEngine.Random.Range(0, tmpSymbols.Count);
 
             s[0] = tmpSymbols[index];
             currentSymbol.Add(tmpSymbols[index]);
@@ -180,13 +198,25 @@ public class Language : MonoBehaviour
          return null;
     }
 
-    public Symbol[] GetSymbol(string mean){
-        if (mean == "QUESTION") {
+    public Symbol[] GetSymbol(Meaning mean){
+        if (mean == Meaning.QUESTION) {
             return new Symbol[]{questionMark};
         }
-        if (reversed_l.ContainsKey(mean))
-            return reversed_l[mean];
+        if (((int)mean) <= numbers.Count){
+            return new Symbol[]{GetNumber((int)mean)};
+        }
+        if (reversed_l.ContainsKey(Enum.GetName(typeof(Meaning), mean)))
+            return reversed_l[Enum.GetName(typeof(Meaning), mean)];
         
+        Debug.LogError("No symbol of meaning: " + mean + " found");
         return null;
+    }
+
+    public Symbol GetNumber(int number){
+        if (number <= numbers.Count){
+            return numbers[number-1];
+        }
+        Debug.LogError("Symbol of number " + number + " doesn't exist");
+        return numbers[0];
     }
 }

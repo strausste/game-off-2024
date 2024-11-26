@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Iron Sword
   sprite: {fileID: 21300000, guid: 7091c16663ec90a5e99a5682ecfc713e, type: 3}
   prefab: {fileID: 3790417379895770973, guid: b7853cea8837d3f4ca8fe0263a3e713e, type: 3}
-  attack: 2
+  attack: 3
   modelOffset: {x: 0, y: 0, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: 0, y: 0, z: 0}

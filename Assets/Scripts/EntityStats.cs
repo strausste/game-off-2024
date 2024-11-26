@@ -135,7 +135,15 @@ public class EntityStats : MonoBehaviour
     public int GetSpeed(){
         return (int)(Globals.baseSpeed + speedLv * Globals.globalSpeedScaling);
     }
-
+    public int GetAttackLv(){
+        return attackLv;
+    }
+    public int GetDefenseLv(){
+        return defenseLv;
+    }
+    public int GetSpeedLv(){
+        return speedLv;
+    }
     public bool IsDead(){
         return isDead;
     }

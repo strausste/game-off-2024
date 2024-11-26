@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController cc;
+    [SerializeField] EntityStats stats;
     [Header("Roll")]
     [SerializeField] float rollSpeed = 12f;
     [SerializeField] float rollCooldown = .5f;
@@ -29,8 +28,6 @@ public class PlayerController : MonoBehaviour
     [Header("Effects")]
     [SerializeField] VisualEffect slashEffect;
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
-
-    EntityStats stats;
     List<GameObject> hitEnemies = new List<GameObject>();
     bool isRolling = false;
     [SerializeField] private int maxBlocks = 2;

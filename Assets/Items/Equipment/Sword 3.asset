@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Great Sword
   sprite: {fileID: 21300000, guid: 7091c16663ec90a5e99a5682ecfc713e, type: 3}
   prefab: {fileID: 849505831518952209, guid: f3f894c2d9dae634fb4778892a6cbe43, type: 3}
-  attack: 1
+  attack: 4
   modelOffset: {x: 0, y: 0, z: 0}
   modelScale: {x: 1, y: 1, z: 1}
   modelRotation: {x: 0, y: 0, z: 0}
