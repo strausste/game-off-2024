@@ -72,6 +72,7 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("Destroying duplicate Inventory");
             Destroy(gameObject);
+            return;
         }
 
         instance = this;
@@ -92,11 +93,21 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /*public void InitPlayer(GameObject player)
+    {
+        this.player = player.GetComponent<PlayerController>();
+        playerStats = player.GetComponent<EntityStats>();
+
+        if (equippedWeapon) UseItem(equippedWeapon);
+        if (equippedShield) UseItem(equippedShield);
+        if (equippedBoots) UseItem(equippedBoots);
+    }*/
+
     void InitPlayer()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = FindFirstObjectByType<PlayerController>();
         playerStats = player.GetComponent<EntityStats>();
-        
+
         if (equippedWeapon) UseItem(equippedWeapon);
         if (equippedShield) UseItem(equippedShield);
         if (equippedBoots) UseItem(equippedBoots);

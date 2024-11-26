@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4173959397162763713}
   - component: {fileID: 3720806774723170506}
   - component: {fileID: 8872712335983749531}
+  - component: {fileID: 1076251304557229050}
   m_Layer: 0
   m_Name: Game controller
   m_TagString: Untagged
@@ -59,7 +60,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxInputLength: 30
-  onePunch: 0
-  phantomPain: 0
-  dollarDollarBillYall: 0
-  iAmSpeed: 0
+  oneShot: 0
+  unlockMeanings: 0
+  getMoney: 0
+  speedIncrease: 0
+  noDamage: 0
+--- !u!114 &1076251304557229050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253679395014054267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfb84bce28cab54d81d07a90b6e3a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolImages:
+  - {fileID: 21300000, guid: 04f0aaf2764aaba4bbececb4afca12b0, type: 3}
+  - {fileID: 21300000, guid: b37807234d88bc247a5d2c470aa91cec, type: 3}
+  - {fileID: 21300000, guid: 663b7a87eb8aec446b6b243d3ef48c1b, type: 3}
+  - {fileID: 21300000, guid: 5ce94c43f4fcd3f4abc756ce08181337, type: 3}
+  - {fileID: 21300000, guid: f99352edf7b5adb409407067d44abb9d, type: 3}
+  - {fileID: 21300000, guid: c553a36b23f84c94d8a1a3e284e1b4dd, type: 3}
+  - {fileID: 21300000, guid: 68847fa92b42e9340bb81c805bbf1c24, type: 3}
+  - {fileID: 21300000, guid: ec1bee6093519234da633bdc1f77d303, type: 3}
+  - {fileID: 21300000, guid: 774aa180b32924f488d05840ea81e9ea, type: 3}
+  - {fileID: 21300000, guid: 826d961b6ad89484c9cfbfe5ed228997, type: 3}
+  - {fileID: 21300000, guid: 0209da4b67a9baa4796cdcf1221dd13d, type: 3}
+  - {fileID: 21300000, guid: c9c222b806ba6e048a2cc23ac6ad7753, type: 3}
+  - {fileID: 21300000, guid: 3bf426fda06113647a292dd8fc29192d, type: 3}
+  - {fileID: 21300000, guid: ebd0b1fe94509d74a91c974caa2ba33c, type: 3}
+  - {fileID: 21300000, guid: 2d5d678e483883f4bb3a7dd1cf0347d9, type: 3}
+  - {fileID: 21300000, guid: 37893b0c68374ae47965288cdc91ac98, type: 3}
+  numbersImages:
+  - {fileID: 21300000, guid: 0248a0cd59c1d8d499bb15e64b888cdc, type: 3}
+  - {fileID: 21300000, guid: a41cb76f59b707340acb0a1cfc43991f, type: 3}
+  - {fileID: 21300000, guid: 22c57f8006cc0674ca588a6bb8cd8bed, type: 3}
+  - {fileID: 21300000, guid: 73f8ca1ea5329a849b0e55601e4474eb, type: 3}
+  - {fileID: 21300000, guid: 3f9eb99f1159bda4d8d36c4c29fd374f, type: 3}
+  - {fileID: 21300000, guid: 633526ada2846b341acddfac196424e9, type: 3}
+  questionSprite: {fileID: 21300000, guid: c7291c4bcdef59a40b22c746d6f971b4, type: 3}
