@@ -17,6 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Livelli/Livello 3.unity
     guid: 5ef70f8722f5c794289c9c427d397a4b
+  - enabled: 1
+    path: Assets/Scenes/Livelli/Livello 4.unity
+    guid: cb2cd062a6e561349a4ee5f57f9a89f1
+  - enabled: 1
+    path: Assets/Scenes/Livelli/Livello 5.unity
+    guid: 64a6735bb60921745909545637bf76b3
+  - enabled: 1
+    path: Assets/Scenes/Livelli/Livello Boss.unity
+    guid: c30d47a7c17d8324ca800afbe1ab3b35
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

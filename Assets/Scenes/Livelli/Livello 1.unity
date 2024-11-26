@@ -5415,6 +5415,14 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 1577130123}
+    - target: {fileID: 6897117416396445758, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
+      propertyPath: 'meanings.Array.data[0]'
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897117416396445758, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
+      propertyPath: 'meanings.Array.data[1]'
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9026332711432286741, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
       propertyPath: player
       value: 
