@@ -48,11 +48,9 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent onAttack = new UnityEvent();
 
-    private void Awake() {
-        stats = GetComponent<EntityStats>();
-    }
     void Start(){
         deathCoroutine = Die();
+        //Inventory.instance.InitPlayer(gameObject);
         currentBlocks = maxBlocks;
         StartCoroutine(GainBlocks(gainBlockTime));
     }
@@ -202,6 +200,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void EquipWeapon(Weapon weapon){
+        print("Sto Equipaggiando " + weapon.name);
+        if (equippedWeaponObject)
+            print("Prima avevo " + equippedWeaponObject.name);
         if(!weapon)
             return;
 

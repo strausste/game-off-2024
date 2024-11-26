@@ -8,7 +8,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     [SerializeField] public GameObject canvas;
     [SerializeField] ItemDisplay itemDisplay;
     [SerializeField] Item[] shopItems;
-    [SerializeField] PlayerController player;
+    PlayerController player;
     Language language;
     SymbolSpeaker speaker;
     Animator animator;
@@ -21,6 +21,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     void Start()
     {
         SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
+        player = FindFirstObjectByType<PlayerController>();
         speaker = GetComponent<SymbolSpeaker>();
         animator = GetComponent<Animator>();
         canvas.SetActive(false);
