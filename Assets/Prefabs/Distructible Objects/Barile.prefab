@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a436cdc9d61a64b8b621e3bc1cf71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 2
+  lifePoints: 3
   dyingParticles: {fileID: 1979391822931488965, guid: 18288e464063cba428f6493e6850d078, type: 3}
   meshRenderer: {fileID: 7918464891806036956}
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
