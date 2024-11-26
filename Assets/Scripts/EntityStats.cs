@@ -45,6 +45,7 @@ public class EntityStats : MonoBehaviour
         if (isImmune) 
             return true;
 
+        
         int trueDamage = damage - GetDefense();
         int rest = GetHp();
         trueDamage = Mathf.Clamp(trueDamage, 1, damage);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gainBlockTime = 2;
     bool isBlocking = false;
     IEnumerator deathCoroutine;
+    private EntityStats entityStats;
 
     public UnityEvent<bool> onImmunityAction = new UnityEvent<bool>();
     public bool IsRolling
@@ -53,6 +55,13 @@ public class PlayerController : MonoBehaviour
         deathCoroutine = Die();
         //Inventory.instance.InitPlayer(gameObject);
         currentBlocks = maxBlocks;
+        entityStats = GetComponent<EntityStats>();
+        
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("OnEnable");
         StartCoroutine(GainBlocks(gainBlockTime));
     }
 
@@ -183,15 +192,19 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonUp("Block"))
         {
             animator.SetBool("Block", false);
+            
+            entityStats.SetImmune(false);
             isBlocking = false;
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Block"))
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Block") && currentBlocks > 0)
         {
+            entityStats.SetImmune(true);
             isBlocking = true;
         }
         else if (isBlocking)
         {
+            entityStats.SetImmune(false);
             animator.SetBool("Block", false);
             isBlocking = false;
         }
@@ -199,23 +212,37 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator GainBlocks(float gainTime)
     {
+        Debug.Log("Starting gaining blocks");
+        
+        Debug.Log($"Gain time {gainBlockTime}");
         while (true)
         {
-            yield return new WaitForSeconds(gainTime);
+            Debug.Log(currentBlocks);
             if (currentBlocks < maxBlocks)
             {
                 currentBlocks++;
+                Debug.Log("Gained blocks");
             }
+            yield return new WaitForSeconds(gainTime);
         }
+        Debug.Log("Ending gaining blocks");
     }
 
     public void LoseBlocks()
     {
         //If is not blocking shouldn't lose blocks
-        if(!isBlocking)
-            return;
+        if (!isBlocking)
+        {
+            return;   
+        }
         
         currentBlocks--;
+
+        if (currentBlocks <= 0)
+        {
+            Debug.Log("Shield break");
+            animator.SetTrigger("ShieldBreak");
+        }
     }
 
     public void EquipWeapon(Weapon weapon){
