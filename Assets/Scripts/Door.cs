@@ -6,8 +6,8 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject destination;
     bool locked = false;
-    [SerializeField] private float fadeDuration = 1.0f;
-
+    /*[SerializeField] private float fadeDuration = 0.2f;
+    
     private Image fadeImage;
 
     void Start()
@@ -23,15 +23,19 @@ public class Door : MonoBehaviour
             Debug.LogError("UI_FadeImage object not found!");
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !locked)
         {
-            StartCoroutine(TeleportWithFade(other));
+            other.gameObject.SetActive(false);
+            other.gameObject.transform.position = destination.transform.position;
+            other.gameObject.SetActive(true);
+
+            //StartCoroutine(TeleportWithFade(other));
         }
     }
-
+    /*
     private IEnumerator TeleportWithFade(Collider other)
     {
         // Fade out
@@ -44,7 +48,7 @@ public class Door : MonoBehaviour
         // Fade in
         yield return StartCoroutine(FadeToClear());
     }
-
+    
  private IEnumerator FadeToBlack()
     {
         float timeElapsed = 0f;
@@ -72,7 +76,7 @@ public class Door : MonoBehaviour
         }
         fadeImage.color = new Color(0, 0, 0, 0); // transparent at the end
     }
-
+    */
     public void SetLocked(bool locked){
         this.locked = locked;
     }
