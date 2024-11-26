@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] VisualEffect slashEffect;
     //[SerializeField] BoxCollider swordCollider; //Not needed, spawn dinamically in HandleAttack()
     List<GameObject> hitEnemies = new List<GameObject>();
+    List<GameObject> hitObjects = new List<GameObject>(); 
     bool isRolling = false;
     [SerializeField] private int maxBlocks = 2;
     private int currentBlocks = 2;
@@ -122,24 +123,27 @@ public class PlayerController : MonoBehaviour
         {
             slashEffect.Play();
             hitEnemies.Clear();
+            hitObjects.Clear();
             onAttack.Invoke();
         }
-        
+
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
-        if(animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon){
+        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon)
+        {
             //Debug.Log("Attacking");
             Vector3 position = transform.TransformPoint(Inventory.instance.EquippedWeapon.hitboxOffset);
-            
-            Collider []hits = Physics.OverlapSphere(position, 
-                Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies"));
-            Debug.DrawLine(position, 
+
+            Collider[] hits = Physics.OverlapSphere(position,
+                Inventory.instance.EquippedWeapon.hitboxSize, LayerMask.GetMask("Enemies", "Prop"));
+            Debug.DrawLine(position,
                 position + transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
-            Debug.DrawLine(position, 
+            Debug.DrawLine(position,
                 position - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
-            foreach(Collider hit in hits){
-                //Debug.Log(hit.gameObject.name);
+            foreach (Collider hit in hits)
+            {
+                Debug.Log(hit.gameObject.name);
                 if (hit.CompareTag("Enemy") && !hitEnemies.Contains(hit.gameObject) && hit.TryGetComponent(out EnemyController enemy))
                 {
                     hitEnemies.Add(hit.gameObject);
@@ -152,6 +156,21 @@ public class PlayerController : MonoBehaviour
                         enemy.TakeDamage(stats.GetAttack());
                     }
                 }
+
+                //oggetti distruggibili
+                if (hit.CompareTag("Prop") && !hitObjects.Contains(hit.gameObject) && hit.TryGetComponent(out DestructableObject obj))
+                {
+                    hitObjects.Add(hit.gameObject);
+                    if (GameController.instance.GetCheatCodes().oneShot)
+                    {
+                        obj.TakeDamage(100000);  //One shots any enemy (hopefully)
+                    }
+                    else
+                    {
+                        obj.TakeDamage(stats.GetAttack());
+                    }
+                }
+
             }
         }
     }
