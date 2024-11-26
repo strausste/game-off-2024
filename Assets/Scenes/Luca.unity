@@ -281,11 +281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9201804634125978305, guid: bbc4c31c4842ded48bdf7cbbae9be138, type: 3}
   m_PrefabInstance: {fileID: 4386619861350040547}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &496085130 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1734435207143091567, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
-  m_PrefabInstance: {fileID: 902122005351407701}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &607492870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,6 +565,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 737146252043313758, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
+      propertyPath: m_Name
+      value: PropDestroyedParticles
+      objectReference: {fileID: 0}
     - target: {fileID: 5445202573260451230, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
       propertyPath: m_Name
       value: Barile (1)
@@ -615,7 +614,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3059075118662467907, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 2
-  dyingParticles: {fileID: 496085130}
+  dyingParticles: {fileID: 0}
 --- !u!54 &1533241001
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1820,7 +1820,7 @@ PrefabInstance:
     - target: {fileID: 1880794419784680211, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
       propertyPath: dyingParticles
       value: 
-      objectReference: {fileID: 496085130}
+      objectReference: {fileID: 0}
     - target: {fileID: 5445202573260451230, guid: 02e6239e413e19544b2614ac530b24f9, type: 3}
       propertyPath: m_Name
       value: Barile
