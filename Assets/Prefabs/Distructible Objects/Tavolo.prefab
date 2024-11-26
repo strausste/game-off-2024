@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8336951767923994144}
   - component: {fileID: 348005348007700746}
   - component: {fileID: 6166085437403977766}
+  - component: {fileID: 5118478753198881884}
   m_Layer: 7
   m_Name: Tavolo
   m_TagString: Prop
@@ -128,3 +129,19 @@ MonoBehaviour:
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
   originalMaterial: {fileID: 2100000, guid: 18f63ff904099034daf971dac5b32582, type: 2}
   flashMaterial: {fileID: 2100000, guid: e37b97d7a87401d4c87db5cd898581cc, type: 2}
+--- !u!208 &5118478753198881884
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570775120432788888}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.0120001, y: 0.446, z: 0.62100005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.446, z: 0.014}
+  m_TimeToStationary: 0.5
