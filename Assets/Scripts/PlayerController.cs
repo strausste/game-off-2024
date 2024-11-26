@@ -219,9 +219,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public void EquipWeapon(Weapon weapon){
-        print("Sto Equipaggiando " + weapon.name);
-        if (equippedWeaponObject)
-            print("Prima avevo " + equippedWeaponObject.name);
         if(!weapon)
             return;
 
@@ -281,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage){
         if (!stats.TryHurt(damage)){
-            print(gameObject.name + " è morto");
+            //print(gameObject.name + " è morto");
             animator.SetTrigger("die");
             StartCoroutine(deathCoroutine);
         }

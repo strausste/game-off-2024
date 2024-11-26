@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Iron Boots+
   sprite: {fileID: 0}
+  price: 5
   prefab: {fileID: 1174071662317179840, guid: 252855d4e7809144c83fd521b1176ebd, type: 3}
   modelOffsetLeft: {x: -0.1270005, y: 0.002999189, z: 0.009996047}
   modelOffsetRight: {x: 0.1, y: 0.058, z: -0.005}

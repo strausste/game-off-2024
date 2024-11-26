@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Leather Boots
   sprite: {fileID: 0}
+  price: 2
   prefab: {fileID: 4140423875149599732, guid: fe25f95d7ec66fe46acb86321d93c553, type: 3}
   modelOffsetLeft: {x: -0.1270005, y: 0.002999189, z: 0.009996047}
   modelOffsetRight: {x: 0.1, y: 0.058, z: -0.005}

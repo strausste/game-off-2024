@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using System;
 
 public enum Meaning {
@@ -11,7 +10,7 @@ public enum Meaning {
     FOUR,
     FIVE,
     SIX,
-    START, 
+    GO, 
     ME,
     YOU,
     POSITIVE,
@@ -19,7 +18,7 @@ public enum Meaning {
     STRENGHT,
     DEFENSE,
     SPEED,
-    OPEN,
+    //OPEN,
     HERE,
     MONEY,
     //"DOOR",
@@ -32,7 +31,8 @@ public enum Meaning {
     SHIELD,
     BOOTS,
     FRIEND,
-    ENEMY
+    ENEMY,
+    SHOP
 };
 
 public class Language : MonoBehaviour
@@ -53,13 +53,13 @@ public class Language : MonoBehaviour
         "STRENGHT",
         "DEFENSE",
         "SPEED",
-        "OPEN",
+        //"OPEN",
         "HERE",
         "MONEY",
         //"DOOR",
         "CHEST",
         //"GO",
-        //"ROOM",
+        "ROOM",
         "SECRET",
         "OBJECT"
     };
@@ -69,8 +69,8 @@ public class Language : MonoBehaviour
         "SHIELD",
         "BOOTS",
         "FRIEND",
-        "ENEMY"
-        // SHOP = MONEY OBJECT o ROOM MONEY
+        "ENEMY",
+        "SHOP"
         // KEY = OBJECT OPEN
     };
 
@@ -177,6 +177,10 @@ public class Language : MonoBehaviour
                 case "ENEMY":
                     first = reversed_l["YOU"][0];
                     second = reversed_l["NEGATIVE"][0];
+                    break;
+                case "SHOP":
+                    first = reversed_l["MONEY"][0];
+                    second = reversed_l["ROOM"][0];
                     break;
             }
             Symbol[] sym = {first, second};

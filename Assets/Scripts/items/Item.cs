@@ -5,4 +5,5 @@ public class Item : ScriptableObject
 {
     public string itemName;
     public Sprite sprite;  //Preview in inventory
+    public int price;
 }

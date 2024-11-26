@@ -32,12 +32,26 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     public void Answer(Symbol[] phrase){
         if (dealing){
             if (phrase.SequenceEqual(language.GetSymbol(Meaning.POSITIVE))){
-                player.Equip(toDisplay);
-
-                dealing = false;
-                itemDisplay.Clear();
+                //Player wants to Buy
+                if(Inventory.instance.Money >= toDisplay.price){
+                    //Player has needed money
+                    player.Equip(toDisplay);
+                    dealing = false;
+                    toDisplay = null;
+                    itemDisplay.Clear();
+                    animator.SetTrigger("trade");
+                    speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.OBJECT, Meaning.HERE});
+                }
+                else{
+                    //Player has not needed money
+                    dealing = false;
+                    itemDisplay.Clear();
+                    animator.SetTrigger("trade");
+                    speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.MONEY, Meaning.NEGATIVE});
+                }
             }
             else if (phrase.SequenceEqual(language.GetSymbol(Meaning.NEGATIVE))){
+                //Player doesn't want to buy
                 dealing = false;
                 itemDisplay.Clear();
             }
@@ -48,8 +62,9 @@ public class ShopAnswer : MonoBehaviour, IInteractable
         }
         else{
             if (answers.ContainsKey(phrase)){
+                if (ShowRelativeItem(phrase))
+                    return;
                 speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, answers[phrase]);
-                ShowRelativeItem(phrase);
             }
             else {
                 speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.QUESTION});
@@ -59,20 +74,57 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     }
 
     void InitAnswers(){
+        //Buyable objects will bypass the answer
         answers.Add(language.GetSymbol(Meaning.STRENGHT), new Meaning[]{Meaning.STRENGHT, Meaning.QUESTION});
         answers.Add(language.GetSymbol(Meaning.DEFENSE), new Meaning[]{Meaning.DEFENSE, Meaning.QUESTION});
         answers.Add(language.GetSymbol(Meaning.SPEED), new Meaning[]{Meaning.SPEED, Meaning.QUESTION});
-        answers.Add(language.GetSymbol(Meaning.WEAPON) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
-        answers.Add(language.GetSymbol(Meaning.SHIELD) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
-        answers.Add(language.GetSymbol(Meaning.BOOTS) , new Meaning[]{Meaning.MONEY, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.WEAPON) , new Meaning[]{});
+        answers.Add(language.GetSymbol(Meaning.SHIELD) , new Meaning[]{});
+        answers.Add(language.GetSymbol(Meaning.BOOTS) , new Meaning[]{});
         answers.Add(language.GetSymbol(Meaning.FRIEND) , new Meaning[]{Meaning.POSITIVE});
         answers.Add(language.GetSymbol(Meaning.ENEMY) , new Meaning[]{Meaning.NEGATIVE});
+        answers.Add(language.GetSymbol(Meaning.ME) , new Meaning[]{Meaning.YOU, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.YOU) , new Meaning[]{Meaning.ME, Meaning.QUESTION});
+        answers.Add(language.GetSymbol(Meaning.SHOP) , new Meaning[]{Meaning.SHOP, Meaning.HERE});
+        answers.Add(language.GetSymbol(Meaning.HERE) , new Meaning[]{Meaning.HERE, Meaning.SHOP});
+        answers.Add(language.GetSymbol(Meaning.MONEY) , new Meaning[]{Meaning.MONEY, Meaning.MONEY, Meaning.MONEY});
 
         answers.Add(new Symbol[]{
-            language.GetSymbol(Meaning.HERE)[0], 
-            language.GetSymbol(Meaning.OBJECT)[0]}, 
+            language.GetSymbol(Meaning.HERE)[0], language.GetSymbol(Meaning.OBJECT)[0]}, 
             new Meaning[]{Meaning.POSITIVE});
-
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.OBJECT)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.MONEY)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+            new Meaning[]{Meaning.NEGATIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.HERE)[0], language.GetSymbol(Meaning.MONEY)[0]}, 
+            new Meaning[]{Meaning.NEGATIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.YOU)[0], language.GetSymbol(Meaning.GO)[0]}, 
+            new Meaning[]{Meaning.NEGATIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.GO)[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.WEAPON)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.SHIELD)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.BOOTS)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+            new Meaning[]{Meaning.POSITIVE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.STRENGHT)[0]}, 
+            new Meaning[]{Meaning.YOU, Meaning.STRENGHT});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.DEFENSE)[0]}, 
+            new Meaning[]{Meaning.YOU, Meaning.DEFENSE});
+        answers.Add(new Symbol[]{
+            language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.SPEED)[0]}, 
+            new Meaning[]{Meaning.YOU, Meaning.SPEED});
     }
 
     public void Interact()
@@ -80,20 +132,30 @@ public class ShopAnswer : MonoBehaviour, IInteractable
         UIController.instance.OpenSymbolSelector(true);
     }
 
-    void ShowRelativeItem(Symbol[] phrase){
+    bool ShowRelativeItem(Symbol[] phrase){
+        EntityStats stats = player.GetComponent<EntityStats>();
+
         foreach (Item item in shopItems){
-                print(item.GetType());
                 if (item is Weapon && phrase.SequenceEqual(language.GetSymbol(Meaning.WEAPON))){
-                    toDisplay = item;
-                    break;
+                    Weapon weapon = (Weapon) item;
+                    if (weapon.attack == stats.GetAttackLv() + 1){
+                        toDisplay = item;
+                        break;
+                    }
                 }
                 if (item is Shield && phrase.SequenceEqual(language.GetSymbol(Meaning.SHIELD))){
-                    toDisplay = item;
-                    break;
+                    Shield shield = (Shield) item;
+                    if (shield.damageProtection == stats.GetDefenseLv() + 1){
+                        toDisplay = item;
+                        break;
+                    }
                 }
                 if (item is Boots && phrase.SequenceEqual(language.GetSymbol(Meaning.BOOTS))){
-                    toDisplay = item;
-                    break;
+                    Boots boots = (Boots) item;
+                    if (boots.speed == stats.GetSpeedLv() + 1){
+                        toDisplay = item;
+                        break;
+                    }
                 }
             }
         
@@ -101,6 +163,22 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             itemDisplay.SetItem(toDisplay);
             //Non so perché ma se non metto il desync non si apre
             Invoke("Deal", 0.1f);
+
+            List<Meaning> totPrice = new List<Meaning>();
+            int n = toDisplay.price / 6;
+            for (int i = 0; i < n; i++){
+                totPrice.Add(Meaning.SIX);
+            }
+            
+            totPrice.Add((Meaning)(toDisplay.price % 6));
+            totPrice.Add(Meaning.MONEY);
+
+            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, totPrice.ToArray());
+            return true;
+        }
+        else{
+            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.NEGATIVE});
+            return false;
         }
     }
 

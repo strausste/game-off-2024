@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shield
   sprite: {fileID: 21300000, guid: 0b2c8790f5b38d6e09681f6c81af5b7c, type: 3}
+  price: 3
   prefab: {fileID: 7597984125359847925, guid: 67e97fa0f56fad542a30c2e0a43af33e, type: 3}
   modelOffset: {x: 0, y: 0.084, z: 0.053}
   modelScale: {x: 1, y: 1, z: 1}
-  modelRotation: {x: -35.155, y: -46.107, z: -15.236}
+  modelRotation: {x: -35.155, y: -46.107, z: -117.6}
   damageProtection: 3
