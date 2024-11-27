@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Ending gaining blocks");
     }
 
-    public void LoseBlocks()
+    void LoseBlocks()
     {
         //If is not blocking shouldn't lose blocks
         if (!isBlocking)
@@ -238,6 +238,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Shield break");
             animator.SetTrigger("ShieldBreak");
+            currentBlocks = 0;
         }
     }
 
@@ -299,18 +300,35 @@ public class PlayerController : MonoBehaviour
         Inventory.instance.UseItem(item);
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage, Vector3 from){
+        var relativePos = from - transform.position;
+
+        relativePos.y = 0;
+        
+        relativePos = relativePos.normalized;
+        
+        var angle = Mathf.Abs(Vector3.Angle(relativePos, transform.forward));
+
+        Debug.Log(angle);
+        
+        //If is blocking and roughly in front of enemy, block attack
+        if (isBlocking && angle < 45)
+        {
+            LoseBlocks();
+            return;
+        }
+        
         if (!stats.TryHurt(damage)){
             //print(gameObject.name + " è morto");
             animator.SetTrigger("die");
             StartCoroutine(deathCoroutine);
         }
-        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
+        //UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
     }
 
     public void Heal(int amount){
         stats.IncreaseHp(amount);
-        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
+        //UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
     }
 
     IEnumerator Die(){

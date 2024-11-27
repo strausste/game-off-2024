@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.TakeDamage(senderStats.GetAttack());
+            player.TakeDamage(senderStats.GetAttack(), sender.transform.position);
         }
         Destroy(gameObject);
     }

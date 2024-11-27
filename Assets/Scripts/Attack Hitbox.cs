@@ -12,7 +12,7 @@ public class AttackHitbox : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            player.TakeDamage(stats.GetAttack());
+            player.TakeDamage(stats.GetAttack(), transform.parent.position);
         }
     }
 }
