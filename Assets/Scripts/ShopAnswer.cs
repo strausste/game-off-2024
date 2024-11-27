@@ -40,14 +40,14 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                     toDisplay = null;
                     itemDisplay.Clear();
                     animator.SetTrigger("trade");
-                    speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.OBJECT, Meaning.HERE});
+                    speaker.Speak(new Meaning[]{Meaning.OBJECT, Meaning.HERE});
                 }
                 else{
                     //Player has not needed money
                     dealing = false;
                     itemDisplay.Clear();
                     animator.SetTrigger("trade");
-                    speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.MONEY, Meaning.NEGATIVE});
+                    speaker.Speak(new Meaning[]{Meaning.MONEY, Meaning.NEGATIVE});
                 }
             }
             else if (phrase.SequenceEqual(language.GetSymbol(Meaning.NEGATIVE))){
@@ -56,7 +56,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                 itemDisplay.Clear();
             }
             else{
-                speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.QUESTION});
+                speaker.Speak(new Meaning[]{Meaning.QUESTION});
                 UIController.instance.OpenSymbolSelector(true);
             }
         }
@@ -64,10 +64,10 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             if (answers.ContainsKey(phrase)){
                 if (ShowRelativeItem(phrase))
                     return;
-                speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, answers[phrase]);
+                speaker.Speak(answers[phrase]);
             }
             else {
-                speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.QUESTION});
+                speaker.Speak(new Meaning[]{Meaning.QUESTION});
             }
             animator.SetTrigger("speak");
         }
@@ -107,14 +107,11 @@ public class ShopAnswer : MonoBehaviour, IInteractable
         answers.Add(new Symbol[]{
             language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.GO)[0]}, 
             new Meaning[]{Meaning.POSITIVE});
-        answers.Add(new Symbol[]{
-            language.GetSymbol(Meaning.WEAPON)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+        answers.Add(language.GetSymbol(Meaning.WEAPON).Concat(language.GetSymbol(Meaning.HERE)).ToArray(), 
             new Meaning[]{Meaning.POSITIVE});
-        answers.Add(new Symbol[]{
-            language.GetSymbol(Meaning.SHIELD)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+        answers.Add(language.GetSymbol(Meaning.SHIELD).Concat(language.GetSymbol(Meaning.HERE)).ToArray(), 
             new Meaning[]{Meaning.POSITIVE});
-        answers.Add(new Symbol[]{
-            language.GetSymbol(Meaning.BOOTS)[0], language.GetSymbol(Meaning.HERE)[0]}, 
+        answers.Add(language.GetSymbol(Meaning.BOOTS).Concat(language.GetSymbol(Meaning.HERE)).ToArray(), 
             new Meaning[]{Meaning.POSITIVE});
         answers.Add(new Symbol[]{
             language.GetSymbol(Meaning.ME)[0], language.GetSymbol(Meaning.STRENGHT)[0]}, 
@@ -173,11 +170,11 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             totPrice.Add((Meaning)(toDisplay.price % 6));
             totPrice.Add(Meaning.MONEY);
 
-            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, totPrice.ToArray());
+            speaker.Speak(totPrice.ToArray());
             return true;
         }
         else{
-            speaker.Speak(SymbolSpeaker.PhraseType.CUSTOM, new Meaning[]{Meaning.NEGATIVE});
+            speaker.Speak(new Meaning[]{Meaning.NEGATIVE});
             return false;
         }
     }

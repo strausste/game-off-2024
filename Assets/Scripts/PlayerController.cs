@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
                 position - transform.forward * Inventory.instance.EquippedWeapon.hitboxSize, Color.red);
             foreach (Collider hit in hits)
             {
-                Debug.Log(hit.gameObject.name);
+                //Debug.Log(hit.gameObject.name);
                 if (hit.CompareTag("Enemy") && !hitEnemies.Contains(hit.gameObject) && hit.TryGetComponent(out EnemyController enemy))
                 {
                     hitEnemies.Add(hit.gameObject);
@@ -212,20 +212,20 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator GainBlocks(float gainTime)
     {
-        Debug.Log("Starting gaining blocks");
+        //Debug.Log("Starting gaining blocks");
         
-        Debug.Log($"Gain time {gainBlockTime}");
+        //Debug.Log($"Gain time {gainBlockTime}");
         while (true)
         {
-            Debug.Log(currentBlocks);
+            //Debug.Log(currentBlocks);
             if (currentBlocks < maxBlocks)
             {
                 currentBlocks++;
-                Debug.Log("Gained blocks");
+                //Debug.Log("Gained blocks");
             }
             yield return new WaitForSeconds(gainTime);
         }
-        Debug.Log("Ending gaining blocks");
+        //Debug.Log("Ending gaining blocks");
     }
 
     public void LoseBlocks()

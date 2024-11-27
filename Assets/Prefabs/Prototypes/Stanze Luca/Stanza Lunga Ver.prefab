@@ -119,6 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4467149847119381010}
+  - component: {fileID: 2597750684806038453}
   m_Layer: 0
   m_Name: Stanza Lunga Ver
   m_TagString: Untagged
@@ -146,6 +147,27 @@ Transform:
   - {fileID: 1058751326601438234}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2597750684806038453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822476218175313457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 19.1, y: 7.3, z: 27.8}
+  m_Center: {x: 0, y: 2.4, z: 0}
 --- !u!1 &3195977440361848781
 GameObject:
   m_ObjectHideFlags: 0

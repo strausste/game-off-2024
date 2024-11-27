@@ -24,8 +24,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
         {
-            //Must take damage from stats
-            //player.TakeDamage(senderStats.GetAttack());
+            player.TakeDamage(senderStats.GetAttack());
         }
         Destroy(gameObject);
     }

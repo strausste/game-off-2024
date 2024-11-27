@@ -8053,9 +8053,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6082765040667143985, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1577944086}
-    - targetCorrespondingSourceObject: {fileID: 6082765040667143985, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1577944085}
   m_SourcePrefab: {fileID: 100100000, guid: 5072233346bd1884ca52fd969a8d6ae8, type: 3}
 --- !u!4 &1577944082 stripped
@@ -8091,27 +8088,6 @@ MonoBehaviour:
   doors:
   - {fileID: 1207944162}
   - {fileID: 803265271}
---- !u!65 &1577944086
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630634851}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 16.35, y: 7.3, z: 16.8}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1594381975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10540,9 +10516,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 891080078445672581, guid: ff69e234252e59748bfc8674eebcd644, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1869369385}
-    - targetCorrespondingSourceObject: {fileID: 891080078445672581, guid: ff69e234252e59748bfc8674eebcd644, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1869369384}
   m_SourcePrefab: {fileID: 100100000, guid: ff69e234252e59748bfc8674eebcd644, type: 3}
 --- !u!4 &1869369382 stripped
@@ -10574,27 +10547,6 @@ MonoBehaviour:
   doors:
   - {fileID: 0}
   - {fileID: 148616904}
---- !u!65 &1869369385
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865531985}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 25.98, y: 7.3, z: 16.82}
-  m_Center: {x: 5, y: -3.45, z: 0}
 --- !u!4 &1878991916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1327721735146546507, guid: 0f140ff1fe19fc94791d6b2f651f79ef, type: 3}
@@ -11392,45 +11344,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player & cam
       objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: maxHp
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1668303408}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoseBlocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505294999062103805, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
-      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 459.1
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11542,9 +11462,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1822476218175313457, guid: dde098273ca3ca643b203ec373b1fa80, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2071594543}
-    - targetCorrespondingSourceObject: {fileID: 1822476218175313457, guid: dde098273ca3ca643b203ec373b1fa80, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2071594542}
   m_SourcePrefab: {fileID: 100100000, guid: dde098273ca3ca643b203ec373b1fa80, type: 3}
 --- !u!4 &2071594541 stripped
@@ -11572,27 +11489,6 @@ MonoBehaviour:
   doors:
   - {fileID: 2117835474}
   - {fileID: 673977944}
---- !u!65 &2071594543
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343879676}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 19.1, y: 7.3, z: 27.8}
-  m_Center: {x: 0, y: 2.4, z: 0}
 --- !u!1001 &2074941188
 PrefabInstance:
   m_ObjectHideFlags: 0

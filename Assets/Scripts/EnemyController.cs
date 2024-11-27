@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    /* -ste: I've not decided yet if divide this class in two childs (RangedEnemyController and MeleeEnemyController) */
     public enum EnemyType {MELEE, RANGED};
     enum State {IDLE, FOLLOW, ATTACK, DIE}
 
@@ -22,7 +21,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Collider attackBox;
     [SerializeField] private float attackCooldown = 1;
     [SerializeField] private float attackDistance;
-    [SerializeField] private int attackDamage;
 
     [Header("Ranged")] 
     [SerializeField] GameObject projectile;
@@ -38,6 +36,7 @@ public class EnemyController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = FindFirstObjectByType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         stats = GetComponent<EntityStats>();
@@ -71,7 +70,10 @@ public class EnemyController : MonoBehaviour
         {
             if (TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker))
             {
-                speaker.Speak(SymbolSpeaker.PhraseType.PLAYER_SPOTTED);
+                if (Random.Range(0,5) == 0)
+                    speaker.Speak(new Meaning[]{Meaning.ENEMY});
+                else if (Random.Range(0,5) == 0)
+                    speaker.Speak(new Meaning[]{Meaning.STRENGHT});
             }
 
             state = State.FOLLOW;
@@ -154,6 +156,9 @@ public class EnemyController : MonoBehaviour
         if (!stats.TryHurt(damage)){
             state = State.DIE;
             animator.SetTrigger("die");
+            if (TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker) && Random.Range(0,4) == 0){
+                speaker.Speak(new Meaning[]{Meaning.NEGATIVE});
+            }
         }
     }
 

@@ -45,7 +45,7 @@ public class Language : MonoBehaviour
     List<Symbol>numbers = new List<Symbol>();
     Symbol questionMark;
     List<string> singleMeanings = new List<string>(){
-        "START", 
+        "GO", 
         "ME",
         "YOU",
         "POSITIVE",
@@ -58,7 +58,6 @@ public class Language : MonoBehaviour
         "MONEY",
         //"DOOR",
         "CHEST",
-        //"GO",
         "ROOM",
         "SECRET",
         "OBJECT"
@@ -151,9 +150,8 @@ public class Language : MonoBehaviour
             return;
         }
             
-        //int obj = reversed_l["OBJECT"][0];
-        Symbol first = reversed_l["START"][0];
-        Symbol second = reversed_l["START"][0];
+        Symbol first = reversed_l["GO"][0];
+        Symbol second = reversed_l["GO"][0];
 
         //Multiple Symbol Meanings
         foreach (string m in multiMeanings){
