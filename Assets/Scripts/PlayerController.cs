@@ -315,4 +315,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(4);
         GameController.instance.RestartLevel();
     }
+
+    public void UpdateHealth()
+    {
+        UIController.instance.SetHealth(entityStats.GetHp(), entityStats.GetMaxHp());
+    }
 }

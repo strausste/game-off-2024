@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject attackStat;
     [SerializeField] private GameObject defenseStat;
     [SerializeField] private GameObject speedStat;
+    [SerializeField] Slider healthBar;
     
     private void Awake()
     {
@@ -139,5 +140,10 @@ public class UIController : MonoBehaviour
         float seconds = timeSinceStart % 60f;
         
         timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
+    }
+
+    public void SetHealth(int health, int maxHealth)
+    {
+        healthBar.SetValueWithoutNotify((float)health / maxHealth);        
     }
 }

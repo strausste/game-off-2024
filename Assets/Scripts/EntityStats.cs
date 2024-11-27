@@ -18,6 +18,7 @@ public class EntityStats : MonoBehaviour
     [SerializeField] Material flashMaterial;
 
     public UnityEvent onHit = new UnityEvent();
+    public UnityEvent onDamaged = new UnityEvent();
     Rigidbody rb;
     List<Material> origMaterial = new List<Material>();
     float flashTime = 0.1f;
@@ -26,7 +27,6 @@ public class EntityStats : MonoBehaviour
     bool isImmune = false;
     bool isDead = false;
     
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,6 +70,8 @@ public class EntityStats : MonoBehaviour
         }
         
         StartCoroutine(Flash());
+        
+        onDamaged.Invoke();
         
         return rest;
     }
