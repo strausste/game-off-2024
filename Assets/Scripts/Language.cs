@@ -23,10 +23,11 @@ public enum Meaning {
     MONEY,
     //"DOOR",
     CHEST,
-    //"GO",
-    //"ROOM",
+    ROOM,
     SECRET,
     OBJECT,
+    LIFE,
+    ELEMENT,
     WEAPON,
     SHIELD,
     BOOTS,
@@ -60,16 +61,23 @@ public class Language : MonoBehaviour
         "CHEST",
         "ROOM",
         "SECRET",
-        "OBJECT"
+        "OBJECT",
+        "LIFE",
+        "ELEMENT"
     };
 
     List<string> multiMeanings = new List<string>(){
+        "POTION",
         "WEAPON", 
         "SHIELD",
         "BOOTS",
         "FRIEND",
         "ENEMY",
-        "SHOP"
+        "SHOP",
+        "FIRE",
+        "EARTH",
+        "WATER",
+        "AIR"
         // KEY = OBJECT OPEN
     };
 
@@ -91,12 +99,14 @@ public class Language : MonoBehaviour
         GenSymbols();
         SetMeanings();
         //Randomize();
+        //UIController.instance.InitUISymbols();
     }
 
     public void Randomize(){
         language.Clear();
         reversed_l.Clear();
         SetMeanings(true);
+        //UIController.instance.InitUISymbols();
     }
 
     void GenSymbols(){
@@ -180,6 +190,26 @@ public class Language : MonoBehaviour
                     first = reversed_l["MONEY"][0];
                     second = reversed_l["ROOM"][0];
                     break;
+                case "POTION": 
+                    first = reversed_l["OBJECT"][0];
+                    second = reversed_l["LIFE"][0];
+                    break;
+                case "FIRE": 
+                    first = reversed_l["ELEMENT"][0];
+                    second = reversed_l["STRENGHT"][0];
+                    break;
+                case "EARTH": 
+                    first = reversed_l["ELEMENT"][0];
+                    second = reversed_l["DEFENSE"][0];
+                    break;
+                case "WATER": 
+                    first = reversed_l["ELEMENT"][0];
+                    second = reversed_l["LIFE"][0];
+                    break;
+                case "AIR": 
+                    first = reversed_l["ELEMENT"][0];
+                    second = reversed_l["SPEED"][0];
+                    break;
             }
             Symbol[] sym = {first, second};
             language.Add(sym, m);
@@ -201,6 +231,7 @@ public class Language : MonoBehaviour
     }
 
     public Symbol[] GetSymbol(Meaning mean){
+        //print("Cerca simbolo " + Enum.GetName(typeof(Meaning), mean));
         if (mean == Meaning.QUESTION) {
             return new Symbol[]{questionMark};
         }

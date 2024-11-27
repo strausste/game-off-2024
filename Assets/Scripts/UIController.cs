@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +19,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject attackStat;
     [SerializeField] private GameObject defenseStat;
     [SerializeField] private GameObject speedStat;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private GameObject healthSymbol;
     
     private void Awake()
     {
@@ -33,6 +33,15 @@ public class UIController : MonoBehaviour
 
         
         inventoryPanel.SetActive(false);
+    }
+
+    /*public void InitUISymbols() {
+        print("Dovrebbe entrare");
+        healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.STRENGHT)[0].getSprite();
+    }*/
+
+    private void Start() {
+        healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.LIFE)[0].getSprite();
     }
 
     public void SetSymbols(Symbol[] symbols, Action<Symbol> onClick)
@@ -139,5 +148,10 @@ public class UIController : MonoBehaviour
         float seconds = timeSinceStart % 60f;
         
         timer.SetText($"{minutes}:{String.Format("{0:00.00}", seconds)}");
+    }
+
+    public void UpdateHealthBar(int max, int value){
+        healthBar.maxValue = max;
+        healthBar.value = value;
     }
 }

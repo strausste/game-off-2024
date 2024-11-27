@@ -3,13 +3,8 @@ using UnityEngine;
 
 public class RoomEnemies : MonoBehaviour
 {
-    [SerializeField] List<GameObject> enemies;
-    [SerializeField] Door[] doors;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    List<GameObject> enemies = new List<GameObject>();
+    List<Door> doors = new List<Door>();
 
     // Update is called once per frame
     void Update()
@@ -25,6 +20,12 @@ public class RoomEnemies : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Enemy")){
+            enemies.Add(other.gameObject);
+        }
+        if (other.CompareTag("Door")){
+            doors.Add(other.GetComponent<Door>());
+        }
         if (other.CompareTag("Player")){
             Lock();
         }

@@ -152,5 +152,7 @@ public class EntityStats : MonoBehaviour
     public void IncreaseHp(int amount)
     {
         hp += amount;
+        if (hp > maxHp)
+            hp = maxHp;
     }
 }

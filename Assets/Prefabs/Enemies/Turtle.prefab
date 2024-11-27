@@ -152,7 +152,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &4971129435106657756
 CapsuleCollider:
@@ -218,7 +218,6 @@ MonoBehaviour:
   attackBox: {fileID: 8998677297996039496}
   attackCooldown: 2
   attackDistance: 1.86
-  attackDamage: 1
   projectile: {fileID: 0}
   shootTransform: {fileID: 0}
 --- !u!114 &1599218978465038962
@@ -257,9 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
-  playerSpottedPhrase: 19000000
-  diePhrase: 0b000000
-  generalPhrase: 080000000c000000
 --- !u!1 &2852129153121311365
 GameObject:
   m_ObjectHideFlags: 0

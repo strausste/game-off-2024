@@ -87,10 +87,11 @@ public class GameController : MonoBehaviour
         Inventory.instance.Load();
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
+        FindFirstObjectByType<PlayerController>().Heal(100);
     }
 
-    public void LoadLevel(int level){
+    public void LoadLevel(string level){
         Inventory.instance.Save();
-        SceneManager.LoadScene("Level" + level);
+        SceneManager.LoadScene(level);
     }
 }

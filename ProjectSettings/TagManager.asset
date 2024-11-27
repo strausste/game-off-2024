@@ -8,6 +8,7 @@ TagManager:
   - SymbolSelector
   - UI_FadeImage
   - Prop
+  - Door
   layers:
   - Default
   - TransparentFX

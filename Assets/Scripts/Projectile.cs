@@ -5,11 +5,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] int speed = 20;
     GameObject sender;
     EntityStats senderStats;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        senderStats = sender.GetComponent<EntityStats>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -19,6 +14,7 @@ public class Projectile : MonoBehaviour
 
     public void SetSender(GameObject sender){
         this.sender = sender;
+        senderStats = sender.GetComponent<EntityStats>();
     }
 
     private void OnTriggerEnter(Collider other) {

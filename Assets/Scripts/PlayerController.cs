@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gainBlockTime = 2;
     bool isBlocking = false;
     IEnumerator deathCoroutine;
-    private EntityStats entityStats;
 
     public UnityEvent<bool> onImmunityAction = new UnityEvent<bool>();
     public bool IsRolling
@@ -53,15 +52,12 @@ public class PlayerController : MonoBehaviour
 
     void Start(){
         deathCoroutine = Die();
-        //Inventory.instance.InitPlayer(gameObject);
         currentBlocks = maxBlocks;
-        entityStats = GetComponent<EntityStats>();
-        
     }
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable");
+        //Debug.Log("OnEnable");
         StartCoroutine(GainBlocks(gainBlockTime));
     }
 
@@ -193,18 +189,18 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Block", false);
             
-            entityStats.SetImmune(false);
+            stats.SetImmune(false);
             isBlocking = false;
         }
 
         if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Block") && currentBlocks > 0)
         {
-            entityStats.SetImmune(true);
+            stats.SetImmune(true);
             isBlocking = true;
         }
         else if (isBlocking)
         {
-            entityStats.SetImmune(false);
+            stats.SetImmune(false);
             animator.SetBool("Block", false);
             isBlocking = false;
         }
@@ -309,6 +305,12 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("die");
             StartCoroutine(deathCoroutine);
         }
+        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
+    }
+
+    public void Heal(int amount){
+        stats.IncreaseHp(amount);
+        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
     }
 
     IEnumerator Die(){

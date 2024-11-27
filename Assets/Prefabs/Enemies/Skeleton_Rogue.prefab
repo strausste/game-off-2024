@@ -731,7 +731,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &5124854057498762492
 CapsuleCollider:
@@ -797,7 +797,6 @@ MonoBehaviour:
   attackBox: {fileID: 2625466843984925028}
   attackCooldown: 2
   attackDistance: 12.49
-  attackDamage: 1
   projectile: {fileID: 2427062885712830361, guid: 81b8ec1638c589f41a23b901d97c8511, type: 3}
   shootTransform: {fileID: 756306771588186724}
 --- !u!114 &463510035075449107
@@ -813,9 +812,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 8
-  attackLv: 3
+  attackLv: 1
   defenseLv: 1
-  speedLv: -1
+  speedLv: 1
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
   meshRenderers:
   - {fileID: 8552539154135158906}
@@ -841,9 +840,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
-  playerSpottedPhrase: 19000000
-  diePhrase: 0b000000
-  generalPhrase: 080000000c000000
 --- !u!4 &620262590275722347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb6476ac455a3994e93be3f6bb9ee2ec, type: 3}

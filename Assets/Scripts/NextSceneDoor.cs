@@ -40,7 +40,7 @@ public class NextSceneDoor : MonoBehaviour
         yield return StartCoroutine(FadeToBlack());
 
         //cambio scena
-        SceneManager.LoadScene(nextScene);
+        GameController.instance.LoadLevel(nextScene);
 
         // Fade in
         //yield return StartCoroutine(FadeToClear());    //non funziona, bisognerebbe chiamarlo nella nuova scena, gana
