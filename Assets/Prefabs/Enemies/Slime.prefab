@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 5211990241948434689}
   - component: {fileID: 2607890967841399961}
   - component: {fileID: 8266262945361565316}
+  - component: {fileID: -6460253743423099687}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Enemy
@@ -83,7 +84,7 @@ Animator:
   m_GameObject: {fileID: 2181633885753866540}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 56fc0b4f7d154039a7099564596a545b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9bbcf96c9a254c5ba654027c656d7b39, type: 2}
+  m_Controller: {fileID: 9100000, guid: bb28a5d87a3f0e34c9f50a1496421d6a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -186,7 +187,6 @@ MonoBehaviour:
   attackBox: {fileID: 7630860612848994492}
   attackCooldown: 2
   attackDistance: 2.14
-  attackDamage: 1
   projectile: {fileID: 0}
   shootTransform: {fileID: 0}
 --- !u!114 &2607890967841399961
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e57334afa5681e489f56f99741d82b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
+  maxHp: 3
   attackLv: 1
   defenseLv: 1
   speedLv: 1
@@ -225,9 +225,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
-  playerSpottedPhrase: 19000000
-  diePhrase: 0b000000
-  generalPhrase: 080000000e000000
+--- !u!114 &-6460253743423099687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181633885753866540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0eacb00517bcf52855f706d85e4905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - item: {fileID: 11400000, guid: 07b45acf9002a292dbc3f36ec6f511a4, type: 2}
+    probability: 0.2
+  maxItemDrops: 1
+  lootPrefab: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!1 &2541505784763852293
 GameObject:
   m_ObjectHideFlags: 0

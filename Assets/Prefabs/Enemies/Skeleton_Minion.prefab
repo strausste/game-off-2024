@@ -182,6 +182,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 564de0bdaaba3b24cbde39492a21d2f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4603896997419206381}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 564de0bdaaba3b24cbde39492a21d2f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8672393970285361542}
   m_SourcePrefab: {fileID: 100100000, guid: 564de0bdaaba3b24cbde39492a21d2f5, type: 3}
 --- !u!4 &1456655599941025078 stripped
 Transform:
@@ -325,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e57334afa5681e489f56f99741d82b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 8
+  maxHp: 6
   attackLv: 2
   defenseLv: 1
   speedLv: 1
@@ -352,6 +355,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
+--- !u!114 &8672393970285361542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2268903955887105932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0eacb00517bcf52855f706d85e4905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - item: {fileID: 11400000, guid: 07b45acf9002a292dbc3f36ec6f511a4, type: 2}
+    probability: 0.2
+  maxItemDrops: 1
+  lootPrefab: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!4 &2399183686342247129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5551195440747407356, guid: 564de0bdaaba3b24cbde39492a21d2f5, type: 3}

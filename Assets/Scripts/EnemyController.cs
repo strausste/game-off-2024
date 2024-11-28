@@ -153,6 +153,12 @@ public class EnemyController : MonoBehaviour
         if (state == State.DIE)
             return;
 
+        agent.isStopped = true;
+        agent.ResetPath();
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            animator.SetTrigger("hit");
+
         if (!stats.TryHurt(damage)){
             state = State.DIE;
             animator.SetTrigger("die");

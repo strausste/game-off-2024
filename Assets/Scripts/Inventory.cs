@@ -86,10 +86,6 @@ public class Inventory : MonoBehaviour
         InitPlayer();
     }
 
-    private void Start() {
-        UIController.instance.UpdateMoney(money);
-    }
-
     private void Update()
     {
         if (Input.GetButtonDown("OpenInventory"))
@@ -190,6 +186,7 @@ public class Inventory : MonoBehaviour
     public void IncMoney(int amount){
         money += amount;
         money = Math.Clamp(money, 0, 1000);
+        UIController.instance.UpdateMoney(money);
     }
 
     void SetInfiniteMoney()
