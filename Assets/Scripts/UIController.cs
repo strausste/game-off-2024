@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -15,12 +17,14 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private GameObject inventoryContentPanel;
     private List<GameObject> inventoryChilds = new List<GameObject>();
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject inventoryItemPrefab;
     [SerializeField] private GameObject attackStat;
     [SerializeField] private GameObject defenseStat;
     [SerializeField] private GameObject speedStat;
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject healthSymbol;
+    
     
     private void Awake()
     {
@@ -37,6 +41,21 @@ public class UIController : MonoBehaviour
 
     private void Start() {
         healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.LIFE)[0].getSprite();
+    }
+
+    private void Update() {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (pauseMenu.activeSelf){
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else{
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+                
+        }
     }
 
     public void SetSymbols(Symbol[] symbols, Action<Symbol> onClick)
@@ -148,5 +167,13 @@ public class UIController : MonoBehaviour
     public void UpdateHealthBar(int max, int value){
         healthBar.maxValue = max;
         healthBar.value = value;
+    }
+
+    public void MainMenu(){
+        Destroy(Language.instance.gameObject);
+        Destroy(GameController.instance.gameObject);
+        Destroy(Inventory.instance.gameObject);
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 }

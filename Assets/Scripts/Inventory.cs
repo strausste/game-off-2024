@@ -105,6 +105,10 @@ public class Inventory : MonoBehaviour
 
     void InitPlayer()
     {
+        if (!player){
+            Debug.LogError("Player not found in scene");
+            return;
+        }
         player = FindFirstObjectByType<PlayerController>();
         playerStats = player.GetComponent<EntityStats>();
 
