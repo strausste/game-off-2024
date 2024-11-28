@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject healthSymbol;
     [SerializeField] private GameObject moneyLayout;
     [SerializeField] private GameObject moneySymbol;
-    
+    [SerializeField] private GameObject settingsPanel;
     
     private void Awake()
     {
@@ -49,15 +49,7 @@ public class UIController : MonoBehaviour
     private void Update() {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (pauseMenu.activeSelf){
-                pauseMenu.SetActive(false);
-                Time.timeScale = 1;
-            }
-            else{
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0;
-            }
-                
+            Pause(!pauseMenu.activeSelf);
         }
     }
 
@@ -198,5 +190,23 @@ public class UIController : MonoBehaviour
         Destroy(Inventory.instance.gameObject);
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
+    }
+
+    public void OpenSettings(bool open)
+    {
+        settingsPanel.SetActive(open);
+    }
+
+    public void Pause(bool open)
+    {
+        if (open){
+            pauseMenu.SetActive(true);
+            settingsPanel.SetActive(false);
+            Time.timeScale = 0;
+        }
+        else{
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }

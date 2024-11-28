@@ -123,6 +123,35 @@ public class AudioManager : MonoBehaviour
         
         return source;
     }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicGroup.audioMixer.SetFloat("MusicVolume", volume);
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        sfxGroup.audioMixer.SetFloat("SfxVolume", volume);
+    }
+
+    public float GetSfxVolume()
+    {
+        var volume = 0f;
+        
+        sfxGroup.audioMixer.GetFloat("SfxVolume", out volume);
+        
+        return volume;
+    }
+    
+    
+    public float GetMusicVolume()
+    {
+        var volume = 0f;
+        
+        musicGroup.audioMixer.GetFloat("MusicVolume", out volume);
+        
+        return volume;
+    }
 }
 
 [System.Serializable]
