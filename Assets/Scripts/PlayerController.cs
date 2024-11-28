@@ -323,12 +323,12 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("die");
             StartCoroutine(deathCoroutine);
         }
-        //UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
+        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
     }
 
     public void Heal(int amount){
         stats.IncreaseHp(amount);
-        //UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
+        UIController.instance.UpdateHealthBar(stats.GetMaxHp(), stats.GetHp());
     }
 
     IEnumerator Die(){

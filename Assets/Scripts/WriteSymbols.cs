@@ -28,6 +28,7 @@ public class WriteSymbols : MonoBehaviour
             GameObject instance = Instantiate(symbolPrefab, layout.transform);
             instance.GetComponent<Image>().sprite = symbol.getSprite();
             instance.GetComponent<Image>().color = Color.black;
+            instance.GetComponent<Image>().raycastTarget = false;
         }
     }
 

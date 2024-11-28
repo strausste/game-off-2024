@@ -91,10 +91,12 @@ public class Language : MonoBehaviour
     {
         if (instance && instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
 
         instance = this;
+        DontDestroyOnLoad(gameObject);
         
         GenSymbols();
         SetMeanings();

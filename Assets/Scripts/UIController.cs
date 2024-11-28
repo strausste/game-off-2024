@@ -35,11 +35,6 @@ public class UIController : MonoBehaviour
         inventoryPanel.SetActive(false);
     }
 
-    /*public void InitUISymbols() {
-        print("Dovrebbe entrare");
-        healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.STRENGHT)[0].getSprite();
-    }*/
-
     private void Start() {
         healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.LIFE)[0].getSprite();
     }
