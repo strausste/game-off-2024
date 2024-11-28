@@ -24,6 +24,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject speedStat;
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject healthSymbol;
+    [SerializeField] private GameObject moneyLayout;
+    [SerializeField] private GameObject moneySymbol;
     
     
     private void Awake()
@@ -41,6 +43,7 @@ public class UIController : MonoBehaviour
 
     private void Start() {
         healthSymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.LIFE)[0].getSprite();
+        moneySymbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.MONEY)[0].getSprite();
     }
 
     private void Update() {
@@ -167,6 +170,26 @@ public class UIController : MonoBehaviour
     public void UpdateHealthBar(int max, int value){
         healthBar.maxValue = max;
         healthBar.value = value;
+    }
+
+    public void UpdateMoney(int amount){
+        foreach (Transform child in moneyLayout.transform){
+            Destroy(child.gameObject);
+        }
+
+        if (amount <= 0)
+            return;
+
+        int six = amount / 6;
+        for (int i = 0; i < six; i++){
+            GameObject symbol = Instantiate(symbolPrefab, moneyLayout.transform);
+            symbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.SIX)[0].getSprite();
+            symbol.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
+        }
+
+        GameObject rest = Instantiate(symbolPrefab, moneyLayout.transform);
+        rest.GetComponent<Image>().sprite = Language.instance.GetSymbol((Meaning)(amount % 6))[0].getSprite();
+        rest.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
     }
 
     public void MainMenu(){

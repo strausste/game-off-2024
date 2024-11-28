@@ -35,6 +35,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                 //Player wants to Buy
                 if(Inventory.instance.Money >= toDisplay.price){
                     //Player has needed money
+                    Inventory.instance.IncMoney(-toDisplay.price);
                     player.Equip(toDisplay);
                     dealing = false;
                     toDisplay = null;
@@ -170,7 +171,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             totPrice.Add((Meaning)(toDisplay.price % 6));
             totPrice.Add(Meaning.MONEY);
 
-            speaker.Speak(totPrice.ToArray());
+            speaker.Speak(totPrice.ToArray(), 5);
             return true;
         }
         else{

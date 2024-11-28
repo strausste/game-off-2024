@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -85,6 +86,10 @@ public class Inventory : MonoBehaviour
         InitPlayer();
     }
 
+    private void Start() {
+        UIController.instance.UpdateMoney(money);
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("OpenInventory"))
@@ -105,11 +110,13 @@ public class Inventory : MonoBehaviour
 
     void InitPlayer()
     {
+        player = FindFirstObjectByType<PlayerController>();
+
         if (!player){
             Debug.LogError("Player not found in scene");
             return;
         }
-        player = FindFirstObjectByType<PlayerController>();
+        
         playerStats = player.GetComponent<EntityStats>();
 
         if (equippedWeapon) UseItem(equippedWeapon);
@@ -180,6 +187,11 @@ public class Inventory : MonoBehaviour
         changedEquipment.Invoke();
     }
 
+    public void IncMoney(int amount){
+        money += amount;
+        money = Math.Clamp(money, 0, 1000);
+    }
+
     void SetInfiniteMoney()
     {
         if (GameController.instance.GetCheatCodes().getMoney)
@@ -199,6 +211,7 @@ public class Inventory : MonoBehaviour
         var money = itemsList.FindAll(i => i.GetType() == typeof(Money));
         
         money.ForEach(m => this.money += ((Money)m).amount);
+        UIController.instance.UpdateMoney(this.money);
     }
 
     public void Save(){
