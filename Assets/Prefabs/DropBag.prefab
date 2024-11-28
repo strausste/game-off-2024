@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4c77916f63fb9da1b19c6370cae1e26, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.349
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4c77916f63fb9da1b19c6370cae1e26, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000000834465
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4c77916f63fb9da1b19c6370cae1e26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.436
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b4c77916f63fb9da1b19c6370cae1e26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -128,7 +128,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332786409262081027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ca6e262e52be7103e82851d53b49dad7, type: 2}
   m_CullingMode: 0

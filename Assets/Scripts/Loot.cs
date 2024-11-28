@@ -45,7 +45,7 @@ public class Loot : MonoBehaviour
     void SpawnDrops(ItemAndProbability[] drops)
     {
         var dropBag =Instantiate(lootPrefab, transform.position, transform.rotation);
-        
+     
         var dropComponent = dropBag.GetComponent<Drop>();
 
         List<Item> dropList = new List<Item>();
