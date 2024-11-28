@@ -22,8 +22,12 @@ public class DestructableObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        StartDyingEffect();
-        StartDyingSFX();
+        if (lifePoints<=0)  //non togliere o fa un casino nero caricando le nuove scene
+        {
+            StartDyingEffect();
+            StartDyingSFX();
+        }
+        
     }
 
     private void StartDyingEffect()

@@ -18359,6 +18359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EmptySoundDestroyer
       objectReference: {fileID: 0}
+    - target: {fileID: 2843945623363946132, guid: 2fd6309a9711d2143a33ccb1ffa3490c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4136074959151099294, guid: 2fd6309a9711d2143a33ccb1ffa3490c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 87.0097
