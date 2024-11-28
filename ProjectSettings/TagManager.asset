@@ -9,6 +9,7 @@ TagManager:
   - UI_FadeImage
   - Prop
   - Door
+  - EmptySoundObj
   layers:
   - Default
   - TransparentFX

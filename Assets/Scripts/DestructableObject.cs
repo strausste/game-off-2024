@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class DestructableObject : MonoBehaviour
 {
+    [Header("Misc")]
     [SerializeField] int lifePoints;
-    private bool destroyed;
+
+    [Header("Death")]
     [SerializeField] ParticleSystem dyingParticles;
+    [SerializeField] AudioClip deathSfx;
 
     [Header("Hit")]
     [SerializeField] Renderer meshRenderer;
@@ -14,23 +18,13 @@ public class DestructableObject : MonoBehaviour
     [SerializeField] Material originalMaterial;
     [SerializeField] Material flashMaterial;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+
+    private void OnDestroy()
     {
-        destroyed = false;
+        StartDyingEffect();
+        StartDyingSFX();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(destroyed)
-        {
-            StartDyingEffect();
-            Destroy(gameObject);
-        }
-    }
-
-
 
     private void StartDyingEffect()
     {
@@ -38,6 +32,20 @@ public class DestructableObject : MonoBehaviour
         {
             Instantiate(dyingParticles, transform.position, Quaternion.identity);
         }
+    }
+
+    private void StartDyingSFX()
+    {
+        if (deathSfx)
+        {
+            GameObject aud = new GameObject();
+            aud.gameObject.tag = "EmptySoundObj";
+            aud.AddComponent<AudioSource>();
+            aud.GetComponent<AudioSource>().clip = deathSfx;
+            aud.GetComponent<AudioSource>().volume = 0.2f;
+            aud.GetComponent<AudioSource>().Play();
+        }
+        
     }
 
     public void TakeDamage(int damage)
@@ -48,7 +56,7 @@ public class DestructableObject : MonoBehaviour
 
         if (lifePoints <= 0)
         {
-            destroyed = true;
+            Destroy(gameObject);
         }
     }
 
@@ -63,4 +71,5 @@ public class DestructableObject : MonoBehaviour
 
         meshRenderer.material = originalMaterial;
     }
+
 }

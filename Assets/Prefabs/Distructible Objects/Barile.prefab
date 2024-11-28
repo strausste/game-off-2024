@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePoints: 3
   dyingParticles: {fileID: 1979391822931488965, guid: 18288e464063cba428f6493e6850d078, type: 3}
+  deathSfx: {fileID: 8300000, guid: 4600c6b0684a51443acaad50b860f76f, type: 3}
   meshRenderer: {fileID: 7918464891806036956}
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
   originalMaterial: {fileID: 2100000, guid: 92fc69208d19d9d4b8a006a1338fcc77, type: 2}
