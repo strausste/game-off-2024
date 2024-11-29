@@ -7,6 +7,7 @@ public class FixedCamera : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cameraController = FindFirstObjectByType<CameraController>();
         fixedTransform = transform.GetChild(0).transform;
     }
 

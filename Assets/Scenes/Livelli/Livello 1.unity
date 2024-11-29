@@ -6854,6 +6854,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7853123994018879212, guid: 9acdbe6a70a4c5245a76f31b0eef3e9f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7996723423970464157, guid: 9acdbe6a70a4c5245a76f31b0eef3e9f, type: 3}
       propertyPath: cameraController
       value: 
@@ -9177,6 +9181,10 @@ PrefabInstance:
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 1662438830}
+    - target: {fileID: 4359867219671262182, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.89
+      objectReference: {fileID: 0}
     - target: {fileID: 5090445321047473791, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
       propertyPath: m_Name
       value: Prova Shop

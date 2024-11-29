@@ -250,13 +250,7 @@ public class Language : MonoBehaviour
         if (reversed_l.ContainsKey(Enum.GetName(typeof(Meaning), mean))){
             if (reversed){
                 Symbol[] symbols = reversed_l[Enum.GetName(typeof(Meaning), mean)];
-                foreach(Symbol symbol in symbols){
-                    print(symbol);
-                }
                 symbols = symbols.Reverse().ToArray();
-                foreach(Symbol symbol in symbols){
-                    print(symbol);
-                }
                 if (language.ContainsKey(symbols)) 
                     return symbols;
                 print("Can't express the meaning " + Enum.GetName(typeof(Meaning), mean + " in 2 ways"));

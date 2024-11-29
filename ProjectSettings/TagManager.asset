@@ -10,6 +10,7 @@ TagManager:
   - Prop
   - Door
   - EmptySoundObj
+  - CameraZone
   layers:
   - Default
   - TransparentFX
