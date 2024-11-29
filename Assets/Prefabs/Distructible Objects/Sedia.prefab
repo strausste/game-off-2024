@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7230121695810156205}
   - component: {fileID: 6614210086165460079}
   - component: {fileID: 1929937705800200424}
+  - component: {fileID: 5176226024204644089}
   m_Layer: 7
   m_Name: Sedia
   m_TagString: Prop
@@ -146,3 +147,24 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.0050000004, y: 0.44000003, z: -0.0050000004}
   m_TimeToStationary: 0.5
+--- !u!65 &5176226024204644089
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3615938223304123225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.48336232, y: 0.98044217, z: 0.44146258}
+  m_Center: {x: -0.0049581137, y: 0.889138, z: -0.0047534527}

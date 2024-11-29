@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 348005348007700746}
   - component: {fileID: 6166085437403977766}
   - component: {fileID: 5118478753198881884}
+  - component: {fileID: 1437878424819364363}
   m_Layer: 7
   m_Name: Tavolo
   m_TagString: Prop
@@ -146,3 +147,24 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.446, z: 0.014}
   m_TimeToStationary: 0.5
+--- !u!65 &1437878424819364363
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570775120432788888}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0239124, y: 0.7378042, z: 1.2415045}
+  m_Center: {x: -0.0004204512, y: 1.2620946, z: 0.014463662}

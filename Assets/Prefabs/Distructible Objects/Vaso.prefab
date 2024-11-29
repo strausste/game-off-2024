@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2357731673793255121}
   - component: {fileID: 5818247361268298250}
   - component: {fileID: 7894977918898651720}
+  - component: {fileID: 5996148639841339229}
   m_Layer: 7
   m_Name: Vaso
   m_TagString: Prop
@@ -146,3 +147,26 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.24900001, z: 0}
   m_TimeToStationary: 0.5
+--- !u!136 &5996148639841339229
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017803157690428230}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.20048621
+  m_Height: 0.9404356
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5601999, z: 0}
