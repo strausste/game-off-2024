@@ -315,6 +315,7 @@ public class PlayerController : MonoBehaviour
         //If is blocking and roughly in front of enemy, block attack
         if (isBlocking && angle < 45)
         {
+            animator.SetTrigger("Hit");
             LoseBlocks();
             return;
         }
