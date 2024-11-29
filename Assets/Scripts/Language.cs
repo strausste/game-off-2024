@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public enum Meaning {
     QUESTION,
@@ -33,7 +34,12 @@ public enum Meaning {
     BOOTS,
     FRIEND,
     ENEMY,
-    SHOP
+    SHOP,
+    POTION,
+    FIRE,
+    WATER,
+    EARTH,
+    AIR
 };
 
 public class Language : MonoBehaviour
@@ -74,6 +80,7 @@ public class Language : MonoBehaviour
         "FRIEND",
         "ENEMY",
         "SHOP",
+        "POTION",
         "FIRE",
         "EARTH",
         "WATER",
@@ -215,10 +222,10 @@ public class Language : MonoBehaviour
             }
             Symbol[] sym = {first, second};
             language.Add(sym, m);
+            reversed_l.Add(m, sym);
 
             Symbol[] reversed = {second, first};
             language.Add(reversed, m); 
-            reversed_l.Add(m, sym);
         }
     }
 
@@ -232,7 +239,7 @@ public class Language : MonoBehaviour
          return null;
     }
 
-    public Symbol[] GetSymbol(Meaning mean){
+    public Symbol[] GetSymbol(Meaning mean, bool reversed = false){
         //print("Cerca simbolo " + Enum.GetName(typeof(Meaning), mean));
         if (mean == Meaning.QUESTION) {
             return new Symbol[]{questionMark};
@@ -240,9 +247,23 @@ public class Language : MonoBehaviour
         if (((int)mean) <= numbers.Count){
             return new Symbol[]{GetNumber((int)mean)};
         }
-        if (reversed_l.ContainsKey(Enum.GetName(typeof(Meaning), mean)))
+        if (reversed_l.ContainsKey(Enum.GetName(typeof(Meaning), mean))){
+            if (reversed){
+                Symbol[] symbols = reversed_l[Enum.GetName(typeof(Meaning), mean)];
+                foreach(Symbol symbol in symbols){
+                    print(symbol);
+                }
+                symbols = symbols.Reverse().ToArray();
+                foreach(Symbol symbol in symbols){
+                    print(symbol);
+                }
+                if (language.ContainsKey(symbols)) 
+                    return symbols;
+                print("Can't express the meaning " + Enum.GetName(typeof(Meaning), mean + " in 2 ways"));
+            }
             return reversed_l[Enum.GetName(typeof(Meaning), mean)];
-        
+        }
+            
         Debug.LogError("No symbol of meaning: " + mean + " found");
         return null;
     }

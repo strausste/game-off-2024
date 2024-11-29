@@ -2944,11 +2944,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5655680197523178275, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: meanings.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5655680197523178275, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: 'meanings.Array.data[0]'
-      value: 10
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5655680197523178275, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: 'meanings.Array.data[1]'
