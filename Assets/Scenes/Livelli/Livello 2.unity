@@ -8109,7 +8109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 344.4
+      value: 169.49
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8117,7 +8117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.1
+      value: 73.71
       objectReference: {fileID: 0}
     - target: {fileID: 8017479208784728259, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12931,6 +12931,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7853123994018879212, guid: 9b3bf61f8c23ea54aab836873f3fe600, type: 3}
     - {fileID: 6826161465789976204, guid: 9b3bf61f8c23ea54aab836873f3fe600, type: 3}
+    - {fileID: 8692716052290317289, guid: 9b3bf61f8c23ea54aab836873f3fe600, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b3bf61f8c23ea54aab836873f3fe600, type: 3}
@@ -14182,10 +14183,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enigma Piedistallo
       objectReference: {fileID: 0}
+    - target: {fileID: 6007990734402267049, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
+      propertyPath: risposta.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007990734402267049, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
+      propertyPath: 'risposta.Array.data[0]'
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7334275752623809865, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.94
+      objectReference: {fileID: 0}
     - target: {fileID: 8169262749871553067, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
       propertyPath: destination
       value: 
       objectReference: {fileID: 1729101185}
+    - target: {fileID: 8578812089147084929, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
+      propertyPath: meanings.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5941749521715180115, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
