@@ -76,7 +76,6 @@ public class EntityStats : MonoBehaviour
 
     void Die(){
         //print(gameObject.name + " è morto");
-        //onDeath.Invoke();
         isImmune = true;
         isDead = true;
     }

@@ -21,4 +21,4 @@ MonoBehaviour:
   modelRotationLeft: {x: 7.399, y: -85.817, z: 0}
   modelRotationRight: {x: -152.745, y: -78.388, z: -22.104}
   modelScale: {x: 88, y: 65.99998, z: 58}
-  speed: 4
+  speed: 5

@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     void Start(){
         deathCoroutine = Die();
         currentBlocks = maxBlocks;
+        UIController.instance.UpdateMoney(Inventory.instance.Money);
     }
 
     private void OnEnable()

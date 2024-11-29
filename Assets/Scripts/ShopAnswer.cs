@@ -54,6 +54,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             else if (phrase.SequenceEqual(language.GetSymbol(Meaning.NEGATIVE))){
                 //Player doesn't want to buy
                 dealing = false;
+                toDisplay = null;
                 itemDisplay.Clear();
             }
             else{
@@ -175,7 +176,6 @@ public class ShopAnswer : MonoBehaviour, IInteractable
             return true;
         }
         else{
-            speaker.Speak(new Meaning[]{Meaning.NEGATIVE});
             return false;
         }
     }
