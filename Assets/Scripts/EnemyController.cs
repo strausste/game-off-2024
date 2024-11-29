@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
     private float lastAttackTime = 0f;
     private State state = State.IDLE;
     Vector3 lastPlayerPos;
+    AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         stats = GetComponent<EntityStats>();
+        audioSource = GetComponent<AudioSource>();
 
         agent.speed = stats.GetSpeed();
     }
@@ -154,13 +156,14 @@ public class EnemyController : MonoBehaviour
             return;
 
         agent.isStopped = true;
-        agent.ResetPath();
+        audioSource.Play();
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
             animator.SetTrigger("hit");
 
         if (!stats.TryHurt(damage)){
             state = State.DIE;
+            GetComponent<Rigidbody>().isKinematic = true;
             animator.SetTrigger("die");
             if (TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker) && Random.Range(0,4) == 0){
                 speaker.Speak(new Meaning[]{Meaning.NEGATIVE});
