@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] CharacterController cc;
     [SerializeField] EntityStats stats;
     [Header("Roll")]
-    [SerializeField] float rollSpeed = 12f;
+    [SerializeField] float rollSpeed = 4f;
     [SerializeField] float rollCooldown = .5f;
     float lastRollTime = -1;
 
@@ -87,9 +87,9 @@ public class PlayerController : MonoBehaviour
             
             transform.forward = input.normalized;
 
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : stats.GetSpeed() * (Inventory.instance.EquippedBoots?.speed ?? 1) * input;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : stats.GetSpeed() * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : rollSpeed * (Inventory.instance.EquippedBoots?.speed ?? 1) * transform.forward.normalized;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : (rollSpeed + stats.GetSpeed()) * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 
