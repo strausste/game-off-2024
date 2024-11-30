@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
 
     void InitPlayer(Scene scene)
     {
-        if(scene.buildIndex == 0 && gameObject){
+        if(scene.buildIndex == 0 && this != null && gameObject != null){
             Destroy(gameObject);
             return;
         }
