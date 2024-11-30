@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Boots", menuName = "Scriptable Objects/Items/Boots")]
-public class Boots : Equipment
+public class Boots : Item
 {
     public Vector3 modelOffsetLeft;
     public Vector3 modelOffsetRight;

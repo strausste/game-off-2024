@@ -13,7 +13,9 @@ public class Loot : MonoBehaviour
     
     private void OnDestroy()
     {
-        DropItems();
+        if (GetComponent<EntityStats>().GetHp() <= 0){
+            DropItems();
+        }   
     }
 
     public void DropItems()

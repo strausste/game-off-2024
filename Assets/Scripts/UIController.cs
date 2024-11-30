@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,9 +18,7 @@ public class UIController : MonoBehaviour
     private List<GameObject> inventoryChilds = new List<GameObject>();
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject inventoryItemPrefab;
-    [SerializeField] private GameObject attackStat;
-    [SerializeField] private GameObject defenseStat;
-    [SerializeField] private GameObject speedStat;
+    [SerializeField] private GameObject[] statsSymbols;
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject healthSymbol;
     [SerializeField] private GameObject moneyLayout;
@@ -110,34 +107,39 @@ public class UIController : MonoBehaviour
                 inventoryChilds.Add(inventoryItem);
             }
 
+            foreach (Transform child in statsSymbols[0].transform){
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in statsSymbols[1].transform){
+                Destroy(child.gameObject);
+            }
+            foreach (Transform child in statsSymbols[2].transform){
+                Destroy(child.gameObject);
+            }
+
             EntityStats stats = GameObject.FindGameObjectWithTag("Player").GetComponent<EntityStats>();
             Language language = Language.instance;
 
-            GameObject atkSymbol = Instantiate(symbolPrefab, attackStat.transform);
-            GameObject atkNum = Instantiate(symbolPrefab, attackStat.transform);
+            GameObject atkSymbol = Instantiate(symbolPrefab, statsSymbols[0].transform);
+            GameObject atkNum = Instantiate(symbolPrefab, statsSymbols[0].transform);
             atkSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.STRENGHT)[0].getSprite();
             atkNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetAttackLv())[0].getSprite();
+            Destroy(atkSymbol.GetComponent<Button>());
+            Destroy(atkNum.GetComponent<Button>());
 
-            GameObject defSymbol = Instantiate(symbolPrefab, defenseStat.transform);
-            GameObject defNum = Instantiate(symbolPrefab, defenseStat.transform);
+            GameObject defSymbol = Instantiate(symbolPrefab, statsSymbols[1].transform);
+            GameObject defNum = Instantiate(symbolPrefab, statsSymbols[1].transform);
             defSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.DEFENSE)[0].getSprite();
             defNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetDefenseLv())[0].getSprite();
+            Destroy(defSymbol.GetComponent<Button>());
+            Destroy(defNum.GetComponent<Button>());
 
-            GameObject spdSymbol = Instantiate(symbolPrefab, speedStat.transform);
-            GameObject spdNum = Instantiate(symbolPrefab, speedStat.transform);
+            GameObject spdSymbol = Instantiate(symbolPrefab, statsSymbols[2].transform);
+            GameObject spdNum = Instantiate(symbolPrefab, statsSymbols[2].transform);
             spdSymbol.GetComponent<Image>().sprite = language.GetSymbol(Meaning.SPEED)[0].getSprite();
             spdNum.GetComponent<Image>().sprite = language.GetSymbol((Meaning)stats.GetSpeedLv())[0].getSprite();
-        }
-        else {
-            foreach (Transform child in attackStat.transform){
-                Destroy(child.gameObject);
-            }
-            foreach (Transform child in defenseStat.transform){
-                Destroy(child.gameObject);
-            }
-            foreach (Transform child in speedStat.transform){
-                Destroy(child.gameObject);
-            }
+            Destroy(spdSymbol.GetComponent<Button>());
+            Destroy(spdNum.GetComponent<Button>());
         }
     }
 

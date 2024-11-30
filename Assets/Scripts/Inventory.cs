@@ -94,16 +94,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    /*public void InitPlayer(GameObject player)
-    {
-        this.player = player.GetComponent<PlayerController>();
-        playerStats = player.GetComponent<EntityStats>();
-
-        if (equippedWeapon) UseItem(equippedWeapon);
-        if (equippedShield) UseItem(equippedShield);
-        if (equippedBoots) UseItem(equippedBoots);
-    }*/
-
     void InitPlayer()
     {
         player = FindFirstObjectByType<PlayerController>();
@@ -170,7 +160,7 @@ public class Inventory : MonoBehaviour
             if (playerStats.GetHp() < playerStats.GetMaxHp())
             {
                 //We could add other types of potions
-                playerStats.IncreaseHp(potion.life);
+                player.Heal(potion.life);
                 _items.Remove(item);
                 UIController.instance.OpenInventory(true, _items.ToArray());    //Refresh UI
             }

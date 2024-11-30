@@ -32,4 +32,12 @@ public class BalloonText : MonoBehaviour
         canvas = GetComponentInChildren<WriteSymbols>();
         canvas.SetMeanings(meanings);
     }
+
+    public void SetOffset(Vector3 offset){
+        this.offset = offset;
+    }
+
+    public void Flip(){
+        GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
+    }
 }

@@ -40,7 +40,7 @@ public class ItemDisplay : MonoBehaviour
 
     void DisplayItem(){
         Clear();
-        itemInstance = Instantiate(((Equipment) item).prefab, transform);
+        itemInstance = Instantiate(item.prefab, transform);
         itemInstance.transform.localScale *= itemScale;
         itemInstance.transform.Rotate(Vector3.forward * itemTilt);
     }

@@ -861,7 +861,9 @@ MonoBehaviour:
   possibleDrops:
   - item: {fileID: 11400000, guid: 07b45acf9002a292dbc3f36ec6f511a4, type: 2}
     probability: 0.2
-  maxItemDrops: 1
+  - item: {fileID: 11400000, guid: 2f80aa035eb2bceec85d87cb96969933, type: 2}
+    probability: 0.1
+  maxItemDrops: 2
   lootPrefab: {fileID: 332786409262081027, guid: 6dfd0ee97c0531732890e416eaeeb533, type: 3}
 --- !u!82 &-4106206009441439566
 AudioSource:

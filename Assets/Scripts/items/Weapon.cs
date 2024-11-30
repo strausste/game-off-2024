@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Objects/Items/Weapon")]
-public class Weapon : Equipment
+public class Weapon : Item
 {
     public int attack;
     public Vector3 modelOffset;
