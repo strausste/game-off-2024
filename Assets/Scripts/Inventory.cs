@@ -82,8 +82,8 @@ public class Inventory : MonoBehaviour
         
         CheatCodes.activatedCheat.AddListener(SetInfiniteMoney);
 
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => InitPlayer();
-        InitPlayer();
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) => InitPlayer(scene);
+        InitPlayer(SceneManager.GetActiveScene());
     }
 
     private void Update()
@@ -94,12 +94,17 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void InitPlayer()
+    void InitPlayer(Scene scene)
     {
+        if(scene.buildIndex == 0 && gameObject){
+            Destroy(gameObject);
+            return;
+        }
+
         player = FindFirstObjectByType<PlayerController>();
 
         if (!player){
-            Debug.LogError("Player not found in scene");
+            Debug.Log("Player not found in scene");
             return;
         }
         
