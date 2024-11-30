@@ -6,6 +6,8 @@ public class TutorialScroller : MonoBehaviour
 {
     [SerializeField] GameObject[] imagesCanvas;
     [SerializeField] GameObject buttonCanvas;
+    int activeCanvas = 0;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,46 +19,54 @@ public class TutorialScroller : MonoBehaviour
             image.gameObject.SetActive(false);
         }
         imagesCanvas[0].SetActive(true);/**/
+        
+        StartCoroutine(WaitToPress());
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i=0; i<imagesCanvas.Length; i++)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            print("INIZIO FOR");
-            print(i);
-            buttonCanvas.SetActive(false);      //dioooo
-            StartCoroutine(WaitToPress());
-
-            if (buttonCanvas.activeSelf)
+            print("tasto premuto");
+            if (activeCanvas < imagesCanvas.Length - 1)
             {
-                print("è attivo");
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    print("tasto premuto");
-                    if (imagesCanvas[i + 1])
-                    {
-                        print("esiste");
-                        imagesCanvas[i].gameObject.SetActive(false);
-                        imagesCanvas[i + 1].gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        print("non esiste");
-                        SceneManager.LoadScene("Level 1");
-                    }
-                }
+                print("esiste");
+                imagesCanvas[activeCanvas].gameObject.SetActive(false);
+                imagesCanvas[activeCanvas + 1].gameObject.SetActive(true);
+
+                activeCanvas += 1;
+
+                StartCoroutine(WaitToPress());
             }
-            print("FINE FOR");
+            else
+            {
+                print("non esiste");
+                SceneManager.LoadScene(2);
+            }
         }
+
+
+        // for(int i=0; i<imagesCanvas.Length; i++)
+        // {
+        //     print("INIZIO FOR");
+        //     print(i);
+        //     buttonCanvas.SetActive(false);      //dioooo
+
+        //     if (buttonCanvas.activeSelf)
+        //     {
+        //         print("ï¿½ attivo");
+                
+        //     }
+        //     print("FINE FOR");
+        // }
 
     }
 
     private IEnumerator WaitToPress()
     {
-        print("dentro");
-        
+        buttonCanvas.SetActive(false);
+        print("dentro");        
 
         yield return new WaitForSeconds(2f);
 

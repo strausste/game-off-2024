@@ -21,15 +21,12 @@ public class Muro : MonoBehaviour, IInteractable
     UnityEvent<Symbol[]> eventoSimboliInput = new UnityEvent<Symbol[]>();
 
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         solved = false;
         canvas.SetActive(false);
         secretDoor.SetActive(false);
-        SymbolsSelector.inputSymbolsEvent.AddListener(GetInputSymbols);
 
         foreach (Meaning risp in risposta)
         {
@@ -57,14 +54,15 @@ public class Muro : MonoBehaviour, IInteractable
             if (numberOfTries > 0) {
                 // prende la lista dei simboli dati in input dal player
                 UIController.instance.OpenSymbolSelector(true);
-
+                SymbolsSelector.inputSymbolsEvent.AddListener(GetInputSymbols);
             }
         }
     }
 
     public void GetInputSymbols(Symbol[] symbols)
     {
-        
+        Debug.Log("Get input muro");
+
         listaStringInput.Add(Language.instance.GetMeaning(symbols));
 
         Control();
@@ -106,7 +104,8 @@ public class Muro : MonoBehaviour, IInteractable
     {
         if (!solved)
         {
-            canvas.SetActive(false);
+            canvas.SetActive(false);            
+            SymbolsSelector.inputSymbolsEvent.RemoveListener(GetInputSymbols);
         }
     }
 }
