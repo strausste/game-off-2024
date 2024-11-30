@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class RoomEnemies : MonoBehaviour
 {
-    List<GameObject> enemies = new List<GameObject>();
-    List<Door> doors = new List<Door>();
-    List<GameObject> zones = new List<GameObject>();
+    List<GameObject> enemies;
+    List<GameObject> doors;
+    List<GameObject> zones;
+
+    private void Start() {
+        enemies = new List<GameObject>();
+        doors = new List<GameObject>();
+        zones = new List<GameObject>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,7 +31,7 @@ public class RoomEnemies : MonoBehaviour
             enemies.Add(other.gameObject);
         }
         if (other.CompareTag("Door")){
-            doors.Add(other.GetComponent<Door>());
+            doors.Add(other.gameObject);
         }
         if (other.CompareTag("CameraZone")){
             zones.Add(other.gameObject);
@@ -36,8 +42,9 @@ public class RoomEnemies : MonoBehaviour
     }
 
     void Lock(){
-        foreach(Door door in doors){
-            door.SetLocked(true);
+        foreach(GameObject door in doors){
+            if (door.TryGetComponent<Door>(out Door doorComponent))
+                doorComponent.SetLocked(true);
         }
         foreach(GameObject zone in zones){
             zone.SetActive(false);
@@ -45,8 +52,10 @@ public class RoomEnemies : MonoBehaviour
     }
 
     void Unlock(){
-        foreach(Door door in doors){
-            door.SetLocked(false);
+        print(doors.Count);
+        foreach(GameObject door in doors){
+            if (door.TryGetComponent<Door>(out Door doorComponent))
+                doorComponent.SetLocked(false);
         }
         foreach(GameObject zone in zones){
             zone.SetActive(true);
