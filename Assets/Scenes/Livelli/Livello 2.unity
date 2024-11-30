@@ -8028,6 +8028,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e5a2fbe84c9878393b00fe009d3c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &950112671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3293567711111656712, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+  m_PrefabInstance: {fileID: 950112669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &953141310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14703,6 +14708,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b7af8f581bb057c45856c4064b2e4c51, type: 2}
+    - target: {fileID: 2206570137805734425, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 516122b7437e2d94983b252b628059da, type: 2}
+    - target: {fileID: 2206570137805734425, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 950112671}
     - target: {fileID: 2246778036669389394, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

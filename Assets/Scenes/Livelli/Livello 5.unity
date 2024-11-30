@@ -8650,6 +8650,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d0707e79d7a16e9418ed4fc2fbaa6f2f, type: 2}
+    - target: {fileID: 2206570137805734425, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 516122b7437e2d94983b252b628059da, type: 2}
+    - target: {fileID: 2206570137805734425, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2025482768}
     - target: {fileID: 2246778036669389394, guid: 32674c8b7a782844f8ec03ac984317a3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -24061,6 +24069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e5a2fbe84c9878393b00fe009d3c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2025482768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3293567711111656712, guid: 2d8150b7cf177014aa095b302fc773a6, type: 3}
+  m_PrefabInstance: {fileID: 2025482765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2036162039
 PrefabInstance:
   m_ObjectHideFlags: 0
