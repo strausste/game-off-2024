@@ -25,6 +25,11 @@ public class EnemyController : MonoBehaviour
     [Header("Ranged")] 
     [SerializeField] GameObject projectile;
     [SerializeField] Transform shootTransform;
+
+    [Header("Sounds")] 
+    [SerializeField] AudioClip[] deathClip;
+    [SerializeField] AudioClip[] attackClip;
+    [SerializeField] AudioClip[] spotClip;
     
     private NavMeshAgent agent;
     private Animator animator;
@@ -42,6 +47,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         stats = GetComponent<EntityStats>();
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.1f;
 
         agent.speed = stats.GetSpeed();
     }
@@ -80,6 +86,7 @@ public class EnemyController : MonoBehaviour
 
             state = State.FOLLOW;
             animator.SetBool("following", true);
+            audioSource.PlayOneShot(spotClip[Random.Range(0, spotClip.Length)], 4);
         }
     }
     
@@ -122,6 +129,7 @@ public class EnemyController : MonoBehaviour
         {
             lastAttackTime = Time.time;
             animator.SetTrigger("attack");
+            audioSource.PlayOneShot(attackClip[Random.Range(0, attackClip.Length)], 4);
         }
         
         Vector3 targetDirection = player.position - transform.position;
@@ -156,7 +164,6 @@ public class EnemyController : MonoBehaviour
             return;
 
         agent.isStopped = true;
-        audioSource.Play();
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
             animator.SetTrigger("hit");
@@ -168,6 +175,10 @@ public class EnemyController : MonoBehaviour
             if (TryGetComponent<SymbolSpeaker>(out SymbolSpeaker speaker) && Random.Range(0,4) == 0){
                 speaker.Speak(new Meaning[]{Meaning.NEGATIVE});
             }
+            audioSource.PlayOneShot(deathClip[Random.Range(0, deathClip.Length)], 4);
+        }
+        else{
+            audioSource.Play();
         }
     }
 

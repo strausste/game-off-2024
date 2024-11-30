@@ -319,6 +319,14 @@ MonoBehaviour:
   attackDistance: 1.7
   projectile: {fileID: 2427062885712830361, guid: 81b8ec1638c589f41a23b901d97c8511, type: 3}
   shootTransform: {fileID: 756306771588186724, guid: 48467b397dad1324f95e7ec30c50a0d5, type: 3}
+  deathClip:
+  - {fileID: 8300000, guid: 5b046464f5b332a4f97597f5525d4acc, type: 3}
+  attackClip:
+  - {fileID: 8300000, guid: 4df77e0f0f5fa144b881cf59b50f5bea, type: 3}
+  - {fileID: 8300000, guid: 95bdfc28c6546c049941fb981903a549, type: 3}
+  spotClip:
+  - {fileID: 8300000, guid: dbff6ae146f8301458204c09dbfd0d59, type: 3}
+  - {fileID: 8300000, guid: 70e515eefc2a47747a538a4be1f8cff2, type: 3}
 --- !u!114 &4860913786145671936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 5971062407587903206, guid: 7efce45ea55966b42bc45d4d4dee5116, type: 3}
+  offset: {x: 0, y: 0, z: 0}
+  flip: 0
 --- !u!114 &8672393970285361542
 MonoBehaviour:
   m_ObjectHideFlags: 0
