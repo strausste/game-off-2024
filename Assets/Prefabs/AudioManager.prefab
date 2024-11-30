@@ -48,5 +48,8 @@ MonoBehaviour:
   - name: Level1
     clip: {fileID: 8300000, guid: 5bff61988a22f77ca86dd421461549ca, type: 3}
     volume: 0.6
+  - name: GotDrop
+    clip: {fileID: 8300000, guid: 5e5fa31772bf78d62b5879a30c73a40d, type: 3}
+    volume: 0.3
   musicGroup: {fileID: 2495281124448214975, guid: cbdeb95a5ccbb552eae43c42548c9593, type: 2}
   sfxGroup: {fileID: -7524837384313849845, guid: cbdeb95a5ccbb552eae43c42548c9593, type: 2}

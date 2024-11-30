@@ -18,12 +18,6 @@ public class Chest : MonoBehaviour, IInteractable
         canvas.SetActive(false);
     }
 
-    private void Update()
-    {
-
-
-    }
-
     public void Interact()
     {
         if (!open)
@@ -33,7 +27,7 @@ public class Chest : MonoBehaviour, IInteractable
                 animator.SetTrigger("Trigger");
                 open = true;
                 canvas.SetActive(false);
-                player.GetComponent<Inventory>().AddItem(item);
+                Inventory.instance.AddItem(item);
             }
         }
     }
