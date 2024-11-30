@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialScroller : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class TutorialScroller : MonoBehaviour
         {
             print("INIZIO FOR");
             print(i);
+            buttonCanvas.SetActive(false);      //dioooo
             StartCoroutine(WaitToPress());
 
             if (buttonCanvas.activeSelf)
@@ -42,7 +44,7 @@ public class TutorialScroller : MonoBehaviour
                     else
                     {
                         print("non esiste");
-                        GameController.instance.LoadLevel("Livello 1");
+                        SceneManager.LoadScene("Level 1");
                     }
                 }
             }
@@ -54,7 +56,7 @@ public class TutorialScroller : MonoBehaviour
     private IEnumerator WaitToPress()
     {
         print("dentro");
-        buttonCanvas.SetActive(false);
+        
 
         yield return new WaitForSeconds(2f);
 
