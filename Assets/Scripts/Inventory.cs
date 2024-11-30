@@ -203,7 +203,7 @@ public class Inventory : MonoBehaviour
         
         var toAdd = itemsList.FindAll(i => i.GetType() != typeof(Money));
         
-        _items.AddRange(items);
+        _items.AddRange(toAdd);
         
         var money = itemsList.FindAll(i => i.GetType() == typeof(Money));
         

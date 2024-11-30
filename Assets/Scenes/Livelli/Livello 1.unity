@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 8dab978358311cf4ca6c41a21c72de03, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 454df32c502fcbaa68b32b5ea1cfdc2f, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 66c5237c37c8b444a88fb7d031d43dc6, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1676,7 +1676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563541043191426334, guid: bd2e3161f6345bc31b271de7167e0f7e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6864280408996489652, guid: bd2e3161f6345bc31b271de7167e0f7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3030,6 +3030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
+  globalVolume: 0
   mode: 2
   size: {x: 10, y: 10, z: 10}
   overrideRendererFilters: 0
@@ -3060,8 +3062,6 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: -848277367
   fillEmptySpaces: 1
-  version: 2
-  globalVolume: 0
 --- !u!4 &588186669
 Transform:
   m_ObjectHideFlags: 0
@@ -6431,6 +6431,10 @@ PrefabInstance:
     - target: {fileID: 3840620344952485587, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944255444476853097, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8557149512900666508, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
       propertyPath: m_Name
@@ -12254,7 +12258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83d2f7ae04ab6f4f99b0d85377be998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedBakingSet: {fileID: 11400000, guid: d51bee960602bb049bb1968148fef1ed, type: 2}
+  serializedBakingSet: {fileID: 0}
   sceneGUID: 689d6f5be8d7bdd4e80adcd12d1af323
   obsoleteAsset: {fileID: 0}
   obsoleteCellSharedDataAsset: {fileID: 0}
