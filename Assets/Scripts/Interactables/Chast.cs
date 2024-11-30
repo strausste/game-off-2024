@@ -9,7 +9,6 @@ public class Chest : MonoBehaviour, IInteractable
 
     public GameObject player;
 
-    [SerializeField] Item item;
 
 
     private void Start()
@@ -27,7 +26,7 @@ public class Chest : MonoBehaviour, IInteractable
                 animator.SetTrigger("Trigger");
                 open = true;
                 canvas.SetActive(false);
-                Inventory.instance.AddItem(item);
+                Inventory.instance.IncMoney(5);
             }
         }
     }
