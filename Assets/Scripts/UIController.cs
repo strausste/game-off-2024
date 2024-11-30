@@ -177,11 +177,13 @@ public class UIController : MonoBehaviour
             GameObject symbol = Instantiate(symbolPrefab, moneyLayout.transform);
             symbol.GetComponent<Image>().sprite = Language.instance.GetSymbol(Meaning.SIX)[0].getSprite();
             symbol.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
+            Destroy(symbol.GetComponent<Button>());
         }
 
         GameObject rest = Instantiate(symbolPrefab, moneyLayout.transform);
         rest.GetComponent<Image>().sprite = Language.instance.GetSymbol((Meaning)(amount % 6))[0].getSprite();
         rest.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
+        Destroy(rest.GetComponent<Button>());
     }
 
     public void MainMenu(){
