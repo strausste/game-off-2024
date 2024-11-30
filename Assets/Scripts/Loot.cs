@@ -40,13 +40,21 @@ public class Loot : MonoBehaviour
             Debug.Log(droppedItems.Count);
             droppedItems.RemoveRange(maxItemDrops, droppedItems.Count-1);
         }
-        
-        SpawnDrops(droppedItems.ToArray());
+
+        #if UNITY_EDITOR
+        foreach(var item in droppedItems){
+            Debug.Log(item.item.itemName);
+        }
+        #endif
+
+        if(droppedItems.Count > 0){
+            SpawnDrops(droppedItems.ToArray());
+        }        
     }
 
     void SpawnDrops(ItemAndProbability[] drops)
     {
-        var dropBag =Instantiate(lootPrefab, transform.position, transform.rotation);
+        var dropBag = Instantiate(lootPrefab, transform.position, transform.rotation);
      
         var dropComponent = dropBag.GetComponent<Drop>();
 
