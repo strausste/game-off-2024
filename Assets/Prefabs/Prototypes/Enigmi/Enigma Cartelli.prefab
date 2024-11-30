@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 902182964629902736, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6563687
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 902182964629902736, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: m_LocalPosition.z
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 902182964629902736, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6563687
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 902182964629902736, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
       propertyPath: m_LocalPosition.z
@@ -522,8 +522,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.51880556, y: 0.07094217, z: 0.52467436}
-  m_Center: {x: 0, y: 0.019365, z: 0.08086964}
+  m_Size: {x: 0.51880556, y: 0.07094217, z: 0.6455306}
+  m_Center: {x: 0, y: 0.01936512, z: 0.1412983}
 --- !u!4 &7371493060080555926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 902182964629902736, guid: 505816fdf0e01dc46b1da9f774941665, type: 3}
