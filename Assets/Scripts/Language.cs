@@ -80,7 +80,6 @@ public class Language : MonoBehaviour
         "FRIEND",
         "ENEMY",
         "SHOP",
-        "POTION",
         "FIRE",
         "EARTH",
         "WATER",
@@ -155,6 +154,20 @@ public class Language : MonoBehaviour
             language.Add(s, m);
         }
 
+        #if UNITY_EDITOR
+        foreach (var l in language)
+        {
+            var s = "";
+            foreach (var key in l.Key)
+            {
+                s += key?.getId();
+            }
+            
+            Debug.Log(s + ", " + l.Value);
+        }
+        Debug.Log("End of language");
+        #endif
+        
         //Removes the symbols excluded in this run
         symbols = currentSymbol;
 
@@ -221,8 +234,29 @@ public class Language : MonoBehaviour
                     break;
             }
             Symbol[] sym = {first, second};
-            language.Add(sym, m);
-            reversed_l.Add(m, sym);
+            
+            try
+            {
+                language.Add(sym, m);
+                reversed_l.Add(m, sym);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(m);
+                var s1 = $"{first}, ${second}";
+                Debug.Log(s1);
+                
+                foreach (var l in language)
+                {
+                    var s = "";
+                    foreach (var key in l.Key)
+                    {
+                        s += key?.getId();
+                    }
+                    
+                    Debug.Log(s + ": "+ l.Value);
+                }
+            }
 
             Symbol[] reversed = {second, first};
             language.Add(reversed, m); 
