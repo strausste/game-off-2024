@@ -9593,6 +9593,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505080201273927928, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1662438830}
     - target: {fileID: 6366256784997512848, guid: 8ee5f163f4a01a749be8494802679584, type: 3}
       propertyPath: destination
       value: 
@@ -13021,6 +13025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Piedistallo arma
       objectReference: {fileID: 0}
+    - target: {fileID: 4521299735916320806, guid: 0ef1959c85d00334382a888f6e1ff142, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1662438830}
     - target: {fileID: 7446939375350285812, guid: 0ef1959c85d00334382a888f6e1ff142, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0007247925
@@ -13078,6 +13086,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 218955118351361160, guid: a895b621fff18e140a5b18dda886341d, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1662438830}
     - target: {fileID: 2927043639518228881, guid: a895b621fff18e140a5b18dda886341d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 214.65
