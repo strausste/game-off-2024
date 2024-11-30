@@ -3030,6 +3030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
+  globalVolume: 0
   mode: 2
   size: {x: 10, y: 10, z: 10}
   overrideRendererFilters: 0
@@ -3060,8 +3062,6 @@ MonoBehaviour:
     e33: 1
   cachedHashCode: -848277367
   fillEmptySpaces: 1
-  version: 2
-  globalVolume: 0
 --- !u!4 &588186669
 Transform:
   m_ObjectHideFlags: 0
@@ -6431,6 +6431,10 @@ PrefabInstance:
     - target: {fileID: 3840620344952485587, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944255444476853097, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8557149512900666508, guid: 61aeba92d0374344bb90cd3bfb79b098, type: 3}
       propertyPath: m_Name
