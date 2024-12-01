@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     string lastAnimatorState = "";
 
     public UnityEvent onAttack = new UnityEvent();
+    [SerializeField] TrailRenderer swordTrail;
 
     void Start(){
         deathCoroutine = Die();
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
         
         Vector3 movement = Vector3.zero;
-        
+
         bool canMove = (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) &&
             !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll") && !animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
         
@@ -122,9 +123,13 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Fire1") && !animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
             animator.SetTrigger("Attack");
         }
+
+        bool attackAnimation = animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
+        
+        swordTrail.emitting = attackAnimation;
         
         //Should enter here only when is actually starting the attack
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && 
+        if (attackAnimation && 
             lastAnimatorState != animator.GetCurrentAnimatorStateInfo(1).fullPathHash.ToString())
         {
             slashEffect.Play();
@@ -136,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
         //Mentre è in corso un animazione di attacco, attiva hitbox
         //To be hit enemies must be in the Enemies layer and have the Enemy tag (both set in the inspector)
-        if (animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack") && Inventory.instance.EquippedWeapon)
+        if (attackAnimation && Inventory.instance.EquippedWeapon)
         {
             //Debug.Log("Attacking");
             Vector3 position = transform.TransformPoint(Inventory.instance.EquippedWeapon.hitboxOffset);
