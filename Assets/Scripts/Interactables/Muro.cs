@@ -89,12 +89,15 @@ public class Muro : MonoBehaviour, IInteractable
             canvas.SetActive(false);
             solved = true;
             
+            openSelector = false;
             UIController.instance.OpenSymbolSelector(false);    
             SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
+            return;
         }
 
         print("tentativi-1");
         numberOfTries--;
+        openSelector = false;
     }
 
 
