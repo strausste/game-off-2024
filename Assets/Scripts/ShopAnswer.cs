@@ -229,9 +229,11 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     }
     
     private void OnTriggerExit(Collider other) {
-        if (other.TryGetComponent(out PlayerController player))
+        if (other.TryGetComponent(out PlayerController player)){
             canvas.SetActive(false);
-        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
+            SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
+            UIController.instance.OpenSymbolSelector(false);
+        }
     }
 
 }

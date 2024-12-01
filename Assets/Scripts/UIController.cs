@@ -150,6 +150,7 @@ public class UIController : MonoBehaviour
 
     public void OpenSymbolSelector(bool open)
     {
+        Debug.Log("selector " + open);
         symbolSelector.SetActive(open);
     }
 

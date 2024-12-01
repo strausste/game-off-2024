@@ -19,7 +19,7 @@ public class Muro : MonoBehaviour, IInteractable
     private List<string> listaStringRisposta = new List<string>();
 
     UnityEvent<Symbol[]> eventoSimboliInput = new UnityEvent<Symbol[]>();
-
+    bool openSelector;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,12 +51,11 @@ public class Muro : MonoBehaviour, IInteractable
         
         if (!solved)
         {
-            if (numberOfTries > 0) {
+            if (numberOfTries > 0 && !openSelector) {
                 // prende la lista dei simboli dati in input dal player
                 UIController.instance.OpenSymbolSelector(true);
                 SymbolsSelector.inputSymbolsEvent.AddListener(GetInputSymbols);
-
-                
+                openSelector = true;
             }
         }
     }
@@ -106,11 +105,14 @@ public class Muro : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if (!solved)
-        {
-            canvas.SetActive(false);            
-            SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
+        if(!canvas.activeInHierarchy){
+            return;
         }
+
+        openSelector = false;
+        canvas.SetActive(false);            
+        UIController.instance.OpenSymbolSelector(false);    
+        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
     }
 }
 
