@@ -23,7 +23,7 @@ public class HighscoresController : MonoBehaviour
         int position = 1;
         foreach (var time in times)
         {
-            formattedTime +=  $"{position}. {time}\n";
+            formattedTime +=  $"{position}. {time} seconds\n";
             
             position++;
         }

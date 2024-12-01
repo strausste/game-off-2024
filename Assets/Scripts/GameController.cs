@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            times = (Time.time - timerStart).ToString();
+            times = (Time.time - timerStart).ToString("0.00");
         }
         
         Debug.Log(times);
