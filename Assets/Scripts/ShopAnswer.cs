@@ -139,6 +139,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
         SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
         UIController.instance.OpenSymbolSelector(true);
     }
@@ -212,6 +213,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     void Deal(){
         UIController.instance.OpenSymbolSelector(true);
+        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
         SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
         dealing = true;
     }
