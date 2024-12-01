@@ -3040,11 +3040,11 @@ PrefabInstance:
       objectReference: {fileID: 1908887308}
     - target: {fileID: 6007990734402267049, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
       propertyPath: numberOfTries
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6007990734402267049, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
       propertyPath: risposta.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6007990734402267049, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
       propertyPath: 'risposta.Array.data[0]'

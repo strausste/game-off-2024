@@ -14024,7 +14024,7 @@ PrefabInstance:
       objectReference: {fileID: 1638190838}
     - target: {fileID: 6007990734402267049, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
       propertyPath: numberOfTries
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6007990734402267049, guid: e58b6cdc99fd0af46a88fa61f335918f, type: 3}
       propertyPath: risposta.Array.size

@@ -55,17 +55,20 @@ public class Muro : MonoBehaviour, IInteractable
                 // prende la lista dei simboli dati in input dal player
                 UIController.instance.OpenSymbolSelector(true);
                 SymbolsSelector.inputSymbolsEvent.AddListener(GetInputSymbols);
+
+                
             }
         }
     }
 
     public void GetInputSymbols(Symbol[] symbols)
     {
-        Debug.Log("Get input muro");
+        Debug.Log("Get input muro");            
 
         listaStringInput.Add(Language.instance.GetMeaning(symbols));
 
         Control();
+        listaStringInput.Clear();
     }
 
     public void Control()
@@ -84,10 +87,11 @@ public class Muro : MonoBehaviour, IInteractable
         }
         if(flag == true)
         {
-            canvas.SetActive(true);
+            canvas.SetActive(false);
             solved = true;
         }
-        
+
+        print("tentativi-1");
         numberOfTries--;
     }
 
