@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameController.instance && GameController.instance.GamePaused)
+        if (GameController.instance && (GameController.instance.GamePaused || Time.timeScale == 0) )
         {
             return;
         }
@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
 
             movement = GameController.instance.GetCheatCodes().speedIncrease ? 100 * input : stats.GetSpeed() * input;
         }else if(animator.GetCurrentAnimatorStateInfo(0).IsTag("Roll")){
-            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : (rollSpeed + stats.GetSpeed()) * transform.forward.normalized;
+            movement = GameController.instance.GetCheatCodes().speedIncrease ? 110 * transform.forward.normalized : 
+                (rollSpeed + stats.GetSpeed()) * transform.forward.normalized;
             lastRollTime = Time.time;
         }
 
