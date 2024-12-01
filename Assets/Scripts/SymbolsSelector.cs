@@ -14,7 +14,6 @@ public class SymbolsSelector : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
-        Debug.Log("Start symbol selector");
         ClearSymbols();
     }
 

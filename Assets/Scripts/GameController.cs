@@ -14,14 +14,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public static GameController instance;
+    public static GameController instance = null;
     [SerializeField] CheatCodes cheatCodes;    
     private float timerStart;
     
     void Awake(){
-        if(instance && instance != this){
+        if(instance != null && instance != this){
             Destroy(gameObject);
-
+            Debug.Log("Destroying game controller, instance is ", instance?.gameObject);
             return;
         }
 
