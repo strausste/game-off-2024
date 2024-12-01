@@ -12,9 +12,10 @@ public class SymbolsSelector : MonoBehaviour
     [SerializeField] private bool singleMode = false; //Select only one symbol
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
-        SetSymbols();
+        Debug.Log("Start symbol selector");
+        ClearSymbols();
     }
 
     void SetSymbols()
