@@ -30,12 +30,12 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     public void Answer(Symbol[] phrase){
         if (dealing){
-            if (phrase.SequenceEqual(language.GetSymbol(Meaning.POSITIVE))){
+            if (language.GetMeaning(phrase) == "POSITIVE"){
                 //Player wants to Buy
                 if(Inventory.instance.Money >= toDisplay.price){
                     //Player has needed money
                     Inventory.instance.IncMoney(-toDisplay.price);
-                    player.Equip(toDisplay);
+                    Inventory.instance.AddItem(toDisplay);
                     speaker.Speak(new Meaning[]{Meaning.OBJECT, Meaning.HERE});
                 }
                 else{
@@ -46,7 +46,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                 animator.SetTrigger("trade");
                 CancelDeal();
             }
-            else if (phrase.SequenceEqual(language.GetSymbol(Meaning.NEGATIVE))){
+            else if (language.GetMeaning(phrase) == "NEGATIVE"){
                 //Player doesn't want to buy
                 CancelDeal();
             }
