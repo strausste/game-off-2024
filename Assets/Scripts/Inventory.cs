@@ -115,11 +115,6 @@ public class Inventory : MonoBehaviour
         if (equippedBoots) UseItem(equippedBoots);
     }
     
-    public void AddItem(Item item)
-    {
-        _items.Add(item);
-    }
-
     public Item[] GetItems()
     {
         return _items.ToArray();
@@ -192,6 +187,20 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void AddItem(Item item)
+    {
+        if (item.GetType() == typeof(Weapon) || item.GetType() == typeof(Shield) || item.GetType() == typeof(Boots))
+        {
+            UseItem(item);
+        }
+        else 
+        {
+            Item[] itemArr = {item};
+            
+            AddItems(itemArr);
+        }
+    }
+    
     public void AddItems(Item []items)
     {
         var itemsList = items.ToList();
