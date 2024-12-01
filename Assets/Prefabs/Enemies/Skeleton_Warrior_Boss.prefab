@@ -385,7 +385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 15
   attackLv: 3
-  defenseLv: 3
+  defenseLv: 2
   speedLv: 1
   hitParticles: {fileID: 3688056151171644831, guid: f2968974531257c44b315555bd2920c4, type: 3}
   meshRenderers:
