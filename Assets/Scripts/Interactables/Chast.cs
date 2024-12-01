@@ -8,8 +8,7 @@ public class Chest : MonoBehaviour, IInteractable
     public GameObject canvas;
 
     public GameObject player;
-
-
+    [SerializeField] AudioSource chestSound;    
 
     private void Start()
     {
@@ -27,6 +26,7 @@ public class Chest : MonoBehaviour, IInteractable
                 open = true;
                 canvas.SetActive(false);
                 Inventory.instance.IncMoney(5);
+                chestSound?.Play();
             }
         }
     }
