@@ -430,7 +430,7 @@ MonoBehaviour:
   disengageDistance: 10.5
   attackBox: {fileID: 2723384164985333566}
   attackCooldown: 2.5
-  attackDistance: 2
+  attackDistance: 2.35
   projectile: {fileID: 0}
   shootTransform: {fileID: 0}
   deathClip:
