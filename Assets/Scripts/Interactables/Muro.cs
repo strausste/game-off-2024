@@ -88,6 +88,9 @@ public class Muro : MonoBehaviour, IInteractable
         {
             canvas.SetActive(false);
             solved = true;
+            
+            UIController.instance.OpenSymbolSelector(false);    
+            SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
         }
 
         print("tentativi-1");
@@ -95,9 +98,9 @@ public class Muro : MonoBehaviour, IInteractable
     }
 
 
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        if (!solved)
+        if (!solved && other.CompareTag("Player"))
         {
             canvas.SetActive(true);
         }
@@ -105,7 +108,7 @@ public class Muro : MonoBehaviour, IInteractable
 
     private void OnTriggerExit(Collider other)
     {
-        if(!canvas.activeInHierarchy){
+        if(!canvas.activeInHierarchy || !other.CompareTag("Player")){
             return;
         }
 
