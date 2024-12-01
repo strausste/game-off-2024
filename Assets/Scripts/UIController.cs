@@ -71,8 +71,7 @@ public class UIController : MonoBehaviour
             if (GameController.instance.GetCheatCodes().unlockMeanings)
             {
                 var meaningText = symbolUi.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                var symbolList = new Symbol[]{};
-                symbolList.Append(symbol);
+                Symbol []symbolList = {symbol};
                 meaningText.gameObject.SetActive(true);
                 meaningText.text = Language.instance.GetMeaning(symbolList);
             }
