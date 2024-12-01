@@ -182,6 +182,9 @@ public class UIController : MonoBehaviour
             Destroy(symbol.GetComponent<Button>());
         }
 
+        if (amount % 6 == 0)
+            return;
+
         GameObject rest = Instantiate(symbolPrefab, moneyLayout.transform);
         rest.GetComponent<Image>().sprite = Language.instance.GetSymbol((Meaning)(amount % 6))[0].getSprite();
         rest.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);

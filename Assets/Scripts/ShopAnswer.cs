@@ -146,8 +146,10 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     bool ShowRelativeItem(Symbol[] phrase){
         EntityStats stats = player.GetComponent<EntityStats>();
 
+        bool foundFlag = false;
         foreach (Item item in shopItems){
                 if (item is Weapon && language.GetMeaning(phrase) == "WEAPON"){
+                    foundFlag = true;
                     Weapon weapon = (Weapon) item;
                     if (weapon.attack == stats.GetAttackLv() + 1){
                         toDisplay = item;
@@ -155,6 +157,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                     }
                 }
                 if (item is Shield && language.GetMeaning(phrase) == "SHIELD"){
+                    foundFlag = true;
                     Shield shield = (Shield) item;
                     if (shield.damageProtection == stats.GetDefenseLv() + 1){
                         toDisplay = item;
@@ -162,6 +165,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                     }
                 }
                 if (item is Boots && language.GetMeaning(phrase) == "BOOTS"){
+                    foundFlag = true;
                     Boots boots = (Boots) item;
                     if (boots.speed == stats.GetSpeedLv() + 1){
                         toDisplay = item;
@@ -170,6 +174,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                 }
     
                 if (item is Potion && language.GetMeaning(phrase) == "POTION"){
+                    foundFlag = true;
                     toDisplay = item;
                     break;
                 }
@@ -186,10 +191,18 @@ public class ShopAnswer : MonoBehaviour, IInteractable
                 totPrice.Add(Meaning.SIX);
             }
             
-            totPrice.Add((Meaning)(toDisplay.price % 6));
+            if(toDisplay.price % 6 != 0){
+                totPrice.Add((Meaning)(toDisplay.price % 6));
+            }
             totPrice.Add(Meaning.MONEY);
 
+            animator.SetTrigger("speak");
             speaker.Speak(totPrice.ToArray(), 5);
+            return true;
+        }
+        else if (foundFlag){
+            animator.SetTrigger("speak");
+            speaker.Speak(new Meaning[]{Meaning.NEGATIVE, Meaning.OBJECT});
             return true;
         }
         else{
