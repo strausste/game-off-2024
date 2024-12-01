@@ -20,7 +20,6 @@ public class ShopAnswer : MonoBehaviour, IInteractable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
         player = FindFirstObjectByType<PlayerController>();
         speaker = GetComponent<SymbolSpeaker>();
         animator = GetComponent<Animator>();
@@ -140,6 +139,7 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
         UIController.instance.OpenSymbolSelector(true);
     }
 
@@ -212,23 +212,26 @@ public class ShopAnswer : MonoBehaviour, IInteractable
 
     void Deal(){
         UIController.instance.OpenSymbolSelector(true);
+        SymbolsSelector.inputSymbolsEvent.AddListener(Answer);
         dealing = true;
     }
 
     void CancelDeal(){
+        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
         dealing = false;
         toDisplay = null;
         itemDisplay.Clear();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.TryGetComponent<PlayerController>(out PlayerController player))
+        if (other.TryGetComponent(out PlayerController player))
             canvas.SetActive(true);
     }
     
     private void OnTriggerExit(Collider other) {
-        if (other.TryGetComponent<PlayerController>(out PlayerController player))
+        if (other.TryGetComponent(out PlayerController player))
             canvas.SetActive(false);
+        SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
     }
 
 }

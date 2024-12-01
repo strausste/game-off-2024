@@ -109,7 +109,7 @@ public class Muro : MonoBehaviour, IInteractable
         if (!solved)
         {
             canvas.SetActive(false);            
-            SymbolsSelector.inputSymbolsEvent.RemoveListener(GetInputSymbols);
+            SymbolsSelector.inputSymbolsEvent.RemoveAllListeners();
         }
     }
 }
