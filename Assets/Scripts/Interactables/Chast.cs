@@ -26,7 +26,7 @@ public class Chest : MonoBehaviour, IInteractable
                 open = true;
                 canvas.SetActive(false);
                 Inventory.instance.IncMoney(5);
-                chestSound?.Play();
+                chestSound?.PlayDelayed(0.5f);
             }
         }
     }
