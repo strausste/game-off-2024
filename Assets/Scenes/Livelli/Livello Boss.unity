@@ -10073,15 +10073,15 @@ PrefabInstance:
       objectReference: {fileID: 1619961230}
     - target: {fileID: 7542948234612479294, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: attackDistance
-      value: 3.64
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 7542948234612479294, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: engageDistance
-      value: 12.44
+      value: 11.4
       objectReference: {fileID: 0}
     - target: {fileID: 7542948234612479294, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: disengageDistance
-      value: 14.88
+      value: 20.6
       objectReference: {fileID: 0}
     - target: {fileID: 8301394085852902754, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: m_Mass

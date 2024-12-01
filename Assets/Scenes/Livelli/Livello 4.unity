@@ -1910,15 +1910,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4000002
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4000002
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1966,7 +1966,7 @@ PrefabInstance:
       objectReference: {fileID: 127313565}
     - target: {fileID: 1758191912842857147, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: attackDistance
-      value: 3.41
+      value: 4.34
       objectReference: {fileID: 0}
     - target: {fileID: 1758191912842857147, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: engageDistance

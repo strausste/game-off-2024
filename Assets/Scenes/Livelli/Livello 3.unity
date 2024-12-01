@@ -19868,7 +19868,7 @@ PrefabInstance:
       objectReference: {fileID: 1490749694}
     - target: {fileID: 1758191912842857147, guid: bc8d6cf7e8a2d194ca270eb7c6f00bb3, type: 3}
       propertyPath: attackDistance
-      value: 3
+      value: 3.42
       objectReference: {fileID: 0}
     - target: {fileID: 2268903955887105932, guid: bc8d6cf7e8a2d194ca270eb7c6f00bb3, type: 3}
       propertyPath: m_Name
