@@ -2775,6 +2775,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2745085738030926403, guid: 06366f39e6b0f1e4089fb4ffb1a2d1b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 342491995}
+    - targetCorrespondingSourceObject: {fileID: 2745085738030926403, guid: 06366f39e6b0f1e4089fb4ffb1a2d1b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 342491996}
   m_SourcePrefab: {fileID: 100100000, guid: 06366f39e6b0f1e4089fb4ffb1a2d1b7, type: 3}
 --- !u!1 &342491994 stripped
 GameObject:
@@ -2795,6 +2798,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: Credits
   fadeDuration: 1
+--- !u!114 &342491996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342491994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f676ae908afdf18d8f654920928ccc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &346165027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2865,6 +2880,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1288941537}
     m_Modifications:
+    - target: {fileID: 544601065922670904, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
+      propertyPath: possibleDrops.Array.data[1].probability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3
@@ -5074,6 +5093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1288941537}
     m_Modifications:
+    - target: {fileID: 544601065922670904, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
+      propertyPath: possibleDrops.Array.data[1].probability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1456655599941025078, guid: 5eefaaede63f8634e84f0d3635138cc5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3
@@ -7793,6 +7816,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8661593834332405482, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
+      propertyPath: possibleDrops.Array.data[1].probability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9042019168242812118, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
       propertyPath: m_Name
       value: Skeleton_Shaman
@@ -9610,6 +9637,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8661593834332405482, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
+      propertyPath: possibleDrops.Array.data[1].probability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9042019168242812118, guid: ebe5c60e449311848832db4dd8546ce8, type: 3}
       propertyPath: m_Name
       value: Skeleton_Shaman (2)
@@ -10076,6 +10107,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1288941537}
     m_Modifications:
+    - target: {fileID: -1314273171902423799, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
+      propertyPath: possibleDrops.Array.data[1].probability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1671144979469408726, guid: 1cc2d8b644dcadb4e8e41dce99cd4a34, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.0655656

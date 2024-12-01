@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetString(timePlayerPrefsKey, String.Join("\n", timesList));
         PlayerPrefs.Save();
         
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
     }
 
     public void RestartLevel(){

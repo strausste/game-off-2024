@@ -4891,7 +4891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1113854371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   triggerEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 971182606459347636}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 0
@@ -10930,6 +10930,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdfb22ece3768b3d9903f73166210b8e, type: 3}
+--- !u!1 &971182606459347636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7253679395014054267, guid: bdfb22ece3768b3d9903f73166210b8e, type: 3}
+  m_PrefabInstance: {fileID: 971182606459347635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1647447295319379553
 PrefabInstance:
   m_ObjectHideFlags: 0
