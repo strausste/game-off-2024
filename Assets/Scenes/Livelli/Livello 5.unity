@@ -3250,6 +3250,14 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 703496960}
+    - target: {fileID: 8578812089147084929, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
+      propertyPath: meanings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578812089147084929, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
+      propertyPath: 'meanings.Array.data[1]'
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3875009253096492404, guid: 71d928cfcf51d1e42a1b7baf21c2dd70, type: 3}
@@ -18196,6 +18204,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
+      propertyPath: equippedBoots
+      value: 
+      objectReference: {fileID: 11400000, guid: 6227e5af92607eb45a7212cb2a39d0c4, type: 2}
+    - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
+      propertyPath: equippedShield
+      value: 
+      objectReference: {fileID: 11400000, guid: 34b54b57ab574ea43befdaddf85bdbd5, type: 2}
+    - target: {fileID: 7290467114340068495, guid: dd04a4561742ce1fe8d9900206c7d216, type: 3}
+      propertyPath: equippedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 763bf851bda01a840aa1e0dfb9f8d5d0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
